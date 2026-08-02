@@ -1,0 +1,31 @@
+{
+  "story": "yan-er-dao-ling",
+  "generated": "2026-08-02",
+  "voice": {
+    "provider": "Gemini TTS",
+    "model": "gemini-3.1-flash-tts-preview",
+    "format": "wav_pcm_s16le_24000_mono",
+    "languages": ["zh-CN", "en-US", "id-ID"],
+    "linesPerLanguage": 12
+  },
+  "music": {
+    "provider": "ElevenLabs Music",
+    "model": "music_v2",
+    "format": "mp3_48000_192",
+    "cues": [
+      { "file": "music/opening-theme.mp3", "durationMs": 26000, "songId": "LQQgyhOhNGGLOzmaT69u" },
+      { "file": "music/courtyard-underscore.mp3", "durationMs": 42000, "songId": "9sZnGN7Gr7xXOWviwEW7" },
+      { "file": "music/ending-theme.mp3", "durationMs": 28000, "songId": "1x0lqKeIQ8jGQf0SYj2K" }
+    ]
+  },
+  "soundEffects": {
+    "provider": "ElevenLabs Sound Effects",
+    "model": "eleven_text_to_sound_v2",
+    "format": "mp3_44100_192",
+    "cues": [
+      { "file": "sfx/bronze-bell-strike.mp3", "durationSeconds": 6, "loop": false },
+      { "file": "sfx/courtyard-night.mp3", "durationSeconds": 24, "loop": true },
+      { "file": "sfx/villagers-approach.mp3", "durationSeconds": 4, "loop": false }
+    ]
+  }
+}

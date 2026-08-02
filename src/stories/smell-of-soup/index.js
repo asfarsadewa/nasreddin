@@ -1,4 +1,4 @@
-import './styles.css';
+import './interface.css';
 import { StoryAudio } from './audio.js';
 import { AUDIO_TRACKS, MUSIC_CUES, STORY_LINES, UI_COPY } from './story.js';
 import { StoryWorld } from './world.js';
@@ -6,6 +6,7 @@ import { StoryWorld } from './world.js';
 const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => [...document.querySelectorAll(selector)];
 const elements = {
+  experience: $('#experience'),
   stage: $('#canvas-stage'),
   opening: $('#opening'),
   openingEyebrow: $('#opening-eyebrow'),
@@ -43,6 +44,7 @@ const elements = {
   languageScrim: $('#language-scrim'),
   languagePanel: $('#language-panel'),
   languageClose: $('#language-close'),
+  collectionBacks: $$('[data-collection-back]'),
   languageEyebrow: $('#language-eyebrow'),
   languageTitle: $('#language-title'),
   languageIntro: $('#language-intro'),
@@ -144,6 +146,11 @@ function localizeInterface() {
   elements.subtitleIndonesian.textContent = currentCopy.indonesian;
   elements.subtitleOff.textContent = currentCopy.off;
   elements.languageClose.setAttribute('aria-label', currentCopy.close);
+  elements.collectionBacks.forEach((link) => {
+    const label = link.querySelector('span');
+    if (label) label.textContent = currentCopy.allStories;
+    link.setAttribute('aria-label', currentCopy.allStories);
+  });
 
   if (ready) {
     elements.beginLabel.textContent = currentCopy.begin;
@@ -237,6 +244,7 @@ function updateInterface(state) {
 
 async function beginStory() {
   if (!ready) return;
+  elements.experience.scrollTop = 0;
   await closeLanguagePanel(false);
   elements.begin.disabled = true;
   elements.opening.classList.add('is-gone');

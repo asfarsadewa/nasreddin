@@ -1,0 +1,97 @@
+{
+  "id": "yan_er_dao_ling_zh",
+  "language": "zh-CN",
+  "style": "一则古老的中国寓言，在月夜庭院中徐徐展开。普通话自然、清晰、电影感强，带一点克制的讽刺笑意，但不要低幼、夸张或像广告。每句结尾留出短暂呼吸。‘掩耳盗铃’四字要清楚、从容、有点题感。",
+  "mode": "per_line",
+  "speakers": [
+    {
+      "name": "旁白",
+      "voice": "Charon",
+      "style": "成熟沉稳的男声说书人，音色低而温暖，观察入微，幽默克制。"
+    },
+    {
+      "name": "偷钟人",
+      "voice": "Puck",
+      "style": "自以为聪明的年轻男子，行动鬼祟，反应鲜活，但不能演成滑稽卡通。"
+    },
+    {
+      "name": "邻人",
+      "voice": "Kore",
+      "style": "警觉而坚定的成年女子，从院墙外突然发问，简短有力。"
+    }
+  ],
+  "lines": [
+    {
+      "speaker": "旁白",
+      "text": "很久以前，有个人在一座安静的院子里，看见一口漂亮的青铜大钟。",
+      "direction": "平静引入月夜与古老庭院，‘青铜大钟’稍作强调。",
+      "file": "01_narrator_bell.wav"
+    },
+    {
+      "speaker": "偷钟人",
+      "text": "这么好的钟，应该归我。",
+      "direction": "压低声音，自私而笃定，像是已经说服了自己。",
+      "file": "02_thief_claims.wav"
+    },
+    {
+      "speaker": "旁白",
+      "text": "他使出浑身力气去搬，大钟却纹丝不动。",
+      "direction": "先有用力的节奏，再以一点干涩幽默落在‘纹丝不动’。",
+      "file": "03_narrator_heavy.wav"
+    },
+    {
+      "speaker": "偷钟人",
+      "text": "太重了……不如砸碎，再一块一块带走。",
+      "direction": "前半懊恼，停顿后突然为自己的坏主意感到得意。",
+      "file": "04_thief_plan.wav"
+    },
+    {
+      "speaker": "旁白",
+      "text": "他举起铁锤，狠狠砸了下去。",
+      "direction": "收紧节奏，结尾利落，为钟声留出空间。",
+      "file": "05_narrator_hammer.wav"
+    },
+    {
+      "speaker": "旁白",
+      "text": "钟声越过院墙，在夜色里远远传开。",
+      "direction": "声音舒展开来，‘远远传开’放慢并留有余韵。",
+      "file": "06_narrator_rings.wav"
+    },
+    {
+      "speaker": "偷钟人",
+      "text": "糟了！大家都会听见！",
+      "direction": "真正慌张，但保持自然，不要尖叫。",
+      "file": "07_thief_panics.wav"
+    },
+    {
+      "speaker": "旁白",
+      "text": "他慌忙用双手捂住耳朵。院子顿时安静了——至少，对他来说是这样。",
+      "direction": "前句紧张，破折号后带一丝明白真相的笑意。",
+      "file": "08_narrator_covers.wav"
+    },
+    {
+      "speaker": "偷钟人",
+      "text": "哈！我听不见，别人当然也听不见。",
+      "direction": "小声得意，逻辑荒谬却自信十足。",
+      "file": "09_thief_fools.wav"
+    },
+    {
+      "speaker": "旁白",
+      "text": "他得意地又砸了一锤。第二声，比第一声还要响亮。",
+      "direction": "克制的讽刺感；最后一句清楚有力。",
+      "file": "10_narrator_second.wav"
+    },
+    {
+      "speaker": "邻人",
+      "text": "谁在里面？",
+      "direction": "从院外传来，警觉、突然、直接。",
+      "file": "11_villager_calls.wav"
+    },
+    {
+      "speaker": "旁白",
+      "text": "邻人循声赶来，把他抓个正着。他骗得了自己的耳朵，却骗不了整个世界。这就是——掩耳盗铃。",
+      "direction": "结局明快而不说教；最后四字放慢、清晰、留有余韵。",
+      "file": "12_narrator_caught.wav"
+    }
+  ]
+}

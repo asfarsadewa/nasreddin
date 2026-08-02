@@ -165,6 +165,7 @@ export const UI_COPY = {
     indonesian: 'Bahasa Indonesia',
     off: 'Off',
     close: 'Close language options',
+    allStories: 'All stories',
   },
   id: {
     htmlLanguage: 'id',
@@ -210,6 +211,7 @@ export const UI_COPY = {
     indonesian: 'Bahasa Indonesia',
     off: 'Tanpa subtitle',
     close: 'Tutup pilihan bahasa',
+    allStories: 'Semua cerita',
   },
 };
 

@@ -17,6 +17,35 @@
   pointer-events: none;
 }
 
+.collection-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: rgba(243, 235, 213, 0.6);
+  font: 500 0.57rem/1 'IBM Plex Mono', monospace;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.25s ease;
+}
+
+.collection-back:hover { color: var(--saffron); }
+
+.collection-back svg {
+  width: 1rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.55;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.collection-back--opening {
+  position: absolute;
+  top: clamp(1.3rem, 3.5vw, 2.8rem);
+  left: clamp(1.3rem, 4vw, 4rem);
+}
+
 .opening__eyebrow,
 .ending > p {
   margin: 0 0 1.1rem;
@@ -220,6 +249,18 @@
   letter-spacing: 0.17em;
   text-transform: uppercase;
   color: rgba(243, 235, 213, 0.66);
+}
+
+.hud__identity {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.collection-back--hud {
+  padding-right: 1.2rem;
+  border-right: 1px solid rgba(243, 235, 213, 0.14);
 }
 
 .hud__mark i {
@@ -626,6 +667,15 @@
 
 .replay:hover { background: rgba(240, 196, 106, 0.16); }
 
+.ending__actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+}
+
+.collection-back--ending { padding: 0.8rem 0; }
+
 .letterbox {
   position: absolute;
   right: 0;
@@ -656,10 +706,13 @@
   .opening__deck { margin: 1.45rem 0; line-height: 1.55; }
   .opening__hint { display: none; }
   .language-launch--opening { top: 1.15rem; right: 1.15rem; }
+  .collection-back--opening { top: 1.15rem; left: 1.15rem; }
   .language-launch--hud { min-width: 5.7rem; padding-inline: 0.7rem; }
   .language-launch__pulse { display: none; }
-  .hud__mark span:last-child,
+  .hud__mark,
   .chapter { display: none; }
+  .collection-back--hud { padding-right: 0.6rem; border-right: 0; }
+  .collection-back--hud span { display: none; }
   .captions { bottom: 5.1rem; }
   .captions__line { font-size: clamp(1rem, 5vw, 1.35rem); }
   .timeline { bottom: 1.35rem; }
@@ -677,6 +730,15 @@
 
   .language-group__choices--subtitles { grid-template-columns: 1fr; }
   .language-group__choices--subtitles .language-choice { min-height: 3.35rem; }
+}
+
+@media (max-width: 480px) {
+  .hud { right: 0.8rem; left: 0.8rem; }
+  .hud__identity { gap: 0; }
+  .hud__actions { gap: 0.3rem; }
+  .language-launch--hud { min-width: 4.7rem; padding-inline: 0.5rem; }
+  .icon-button { width: 2.35rem; height: 2.35rem; }
+  .ending__actions { flex-direction: column; gap: 0.5rem; }
 }
 
 @media (max-height: 620px) and (orientation: landscape) {

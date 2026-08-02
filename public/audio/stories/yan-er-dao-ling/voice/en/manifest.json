@@ -1,0 +1,97 @@
+{
+  "id": "yan_er_dao_ling_en",
+  "language": "en-US",
+  "style": "An ancient Chinese fable unfolding in a moonlit courtyard. Natural, intimate cinematic delivery with restrained ironic warmth; never childish, broad, or commercial. Leave a small breath at the end of every line.",
+  "mode": "per_line",
+  "speakers": [
+    {
+      "name": "Narrator",
+      "voice": "Charon",
+      "style": "A mature storyteller with a low warm voice, precise observation, and very dry humor."
+    },
+    {
+      "name": "Thief",
+      "voice": "Puck",
+      "style": "A furtive young man who is far too pleased with his own cleverness; lively but never cartoonish."
+    },
+    {
+      "name": "Villager",
+      "voice": "Kore",
+      "style": "An alert adult woman calling firmly from beyond the courtyard wall."
+    }
+  ],
+  "lines": [
+    {
+      "speaker": "Narrator",
+      "text": "Long ago, a man found a magnificent bronze bell hanging in a quiet courtyard.",
+      "direction": "Invite the listener into the moonlit setting; give bronze bell quiet importance.",
+      "file": "01_narrator_bell.wav"
+    },
+    {
+      "speaker": "Thief",
+      "text": "A bell this fine ought to belong to me.",
+      "direction": "Hushed, selfish, and certain, as if the thought settles the matter.",
+      "file": "02_thief_claims.wav"
+    },
+    {
+      "speaker": "Narrator",
+      "text": "He pulled with all his strength. The bell did not move at all.",
+      "direction": "Build the effort, then land the second sentence with dry restraint.",
+      "file": "03_narrator_heavy.wav"
+    },
+    {
+      "speaker": "Thief",
+      "text": "Too heavy to carry... I'll break it apart and take it piece by piece.",
+      "direction": "Frustrated first; after the pause, delighted by his terrible idea.",
+      "file": "04_thief_plan.wav"
+    },
+    {
+      "speaker": "Narrator",
+      "text": "He lifted his hammer and struck.",
+      "direction": "Tighten the pace and end crisply, leaving room for the bell impact.",
+      "file": "05_narrator_hammer.wav"
+    },
+    {
+      "speaker": "Narrator",
+      "text": "The bell's voice leapt over the courtyard wall and rolled far into the night.",
+      "direction": "Open the voice outward; let far into the night carry a long resonance.",
+      "file": "06_narrator_rings.wav"
+    },
+    {
+      "speaker": "Thief",
+      "text": "Oh no! Everyone will hear it!",
+      "direction": "Genuinely alarmed but controlled; do not shriek.",
+      "file": "07_thief_panics.wav"
+    },
+    {
+      "speaker": "Narrator",
+      "text": "In a panic, he clapped both hands over his ears. The courtyard fell silent—at least, for him.",
+      "direction": "Urgent first sentence; a knowing trace of amusement after the dash.",
+      "file": "08_narrator_covers.wav"
+    },
+    {
+      "speaker": "Thief",
+      "text": "Ha! If I cannot hear it, no one else can either.",
+      "direction": "Quietly triumphant, completely confident in absurd logic.",
+      "file": "09_thief_fools.wav"
+    },
+    {
+      "speaker": "Narrator",
+      "text": "Pleased with his cleverness, he struck again. The second peal was louder than the first.",
+      "direction": "Understated irony; make the final sentence clean and emphatic.",
+      "file": "10_narrator_second.wav"
+    },
+    {
+      "speaker": "Villager",
+      "text": "Who's in there?",
+      "direction": "A sudden, firm call from outside the courtyard.",
+      "file": "11_villager_calls.wav"
+    },
+    {
+      "speaker": "Narrator",
+      "text": "The neighbors followed the sound and caught him beside the bell. He had fooled his own ears, but not the world. We remember it as covering one's ears while stealing a bell.",
+      "direction": "A swift satisfying resolution without lecturing; slow slightly over the final phrase.",
+      "file": "12_narrator_caught.wav"
+    }
+  ]
+}

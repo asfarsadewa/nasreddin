@@ -1,0 +1,97 @@
+{
+  "id": "yan_er_dao_ling_id",
+  "language": "id-ID",
+  "style": "Sebuah fabel Tiongkok kuno yang berlangsung di halaman rumah pada malam terang bulan. Bahasa Indonesia baku yang luwes, intim, sinematik, dengan humor ironis yang halus; jangan kekanak-kanakan, berlebihan, atau seperti iklan. Sisakan tarikan napas singkat pada akhir setiap kalimat.",
+  "mode": "per_line",
+  "speakers": [
+    {
+      "name": "Narator",
+      "voice": "Charon",
+      "style": "Pendongeng dewasa dengan suara rendah dan hangat, pengamatan yang tajam, serta humor yang sangat bersahaja."
+    },
+    {
+      "name": "Pencuri",
+      "voice": "Puck",
+      "style": "Pemuda yang bergerak diam-diam dan terlalu bangga akan kecerdikannya sendiri; hidup, tetapi tidak seperti tokoh kartun."
+    },
+    {
+      "name": "Penduduk",
+      "voice": "Kore",
+      "style": "Perempuan dewasa yang waspada, berseru tegas dari balik tembok halaman."
+    }
+  ],
+  "lines": [
+    {
+      "speaker": "Narator",
+      "text": "Dahulu kala, seorang lelaki melihat lonceng perunggu yang indah tergantung di sebuah halaman yang sunyi.",
+      "direction": "Ajak pendengar memasuki malam bercahaya bulan; beri bobot lembut pada lonceng perunggu.",
+      "file": "01_narrator_bell.wav"
+    },
+    {
+      "speaker": "Pencuri",
+      "text": "Lonceng sebagus ini seharusnya menjadi milikku.",
+      "direction": "Pelan, egois, dan yakin, seolah ucapannya langsung membuat benda itu menjadi miliknya.",
+      "file": "02_thief_claims.wav"
+    },
+    {
+      "speaker": "Narator",
+      "text": "Ia mengerahkan seluruh tenaganya. Lonceng itu sama sekali tidak bergerak.",
+      "direction": "Bangun irama upayanya, lalu jatuhkan kalimat kedua dengan humor kering.",
+      "file": "03_narrator_heavy.wav"
+    },
+    {
+      "speaker": "Pencuri",
+      "text": "Terlalu berat... Akan kuhancurkan, lalu kubawa sedikit demi sedikit.",
+      "direction": "Awalnya kesal; setelah jeda, bangga menemukan gagasan yang buruk.",
+      "file": "04_thief_plan.wav"
+    },
+    {
+      "speaker": "Narator",
+      "text": "Ia mengangkat palunya tinggi-tinggi, lalu menghantam.",
+      "direction": "Percepat ketegangan dan akhiri dengan tegas agar tersedia ruang untuk dentang.",
+      "file": "05_narrator_hammer.wav"
+    },
+    {
+      "speaker": "Narator",
+      "text": "Suara lonceng melompati tembok halaman dan bergema jauh menembus malam.",
+      "direction": "Bentangkan suara; perlambat dan beri gema pada jauh menembus malam.",
+      "file": "06_narrator_rings.wav"
+    },
+    {
+      "speaker": "Pencuri",
+      "text": "Celaka! Semua orang akan mendengarnya!",
+      "direction": "Benar-benar panik, tetapi tetap alami dan tidak menjerit.",
+      "file": "07_thief_panics.wav"
+    },
+    {
+      "speaker": "Narator",
+      "text": "Panik, ia menutup kedua telinganya. Halaman itu pun sunyi—setidaknya, bagi dirinya.",
+      "direction": "Kalimat pertama mendesak; setelah tanda pisah, hadirkan senyum tipis yang mengetahui kenyataan.",
+      "file": "08_narrator_covers.wav"
+    },
+    {
+      "speaker": "Pencuri",
+      "text": "Ha! Kalau aku tidak mendengarnya, orang lain pasti tidak mendengarnya juga.",
+      "direction": "Menang dengan suara pelan, sangat yakin pada logika yang tidak masuk akal.",
+      "file": "09_thief_fools.wav"
+    },
+    {
+      "speaker": "Narator",
+      "text": "Bangga akan kecerdikannya, ia menghantam sekali lagi. Dentang kedua bahkan lebih keras.",
+      "direction": "Ironi bersahaja; kalimat terakhir bersih dan tegas.",
+      "file": "10_narrator_second.wav"
+    },
+    {
+      "speaker": "Penduduk",
+      "text": "Siapa di dalam sana?",
+      "direction": "Seruan yang mendadak, waspada, dan tegas dari luar halaman.",
+      "file": "11_villager_calls.wav"
+    },
+    {
+      "speaker": "Narator",
+      "text": "Para tetangga mengikuti suara itu dan memergokinya di samping lonceng. Ia berhasil menipu telinganya sendiri, tetapi tidak seluruh dunia. Inilah kisah Menutup Telinga Saat Mencuri Lonceng.",
+      "direction": "Penutup yang cepat dan memuaskan tanpa menggurui; perlambat sedikit pada judul kisah.",
+      "file": "12_narrator_caught.wav"
+    }
+  ]
+}
