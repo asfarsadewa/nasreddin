@@ -114,6 +114,12 @@ export const AUDIO_TRACKS = {
   id: { label: 'Bahasa Indonesia', root: '/audio/story/id/' },
 };
 
+export const MUSIC_CUES = {
+  opening: '/audio/music/opening-theme.mp3',
+  ambience: '/audio/music/market-ambience.mp3',
+  ending: '/audio/music/ending-theme.mp3',
+};
+
 export const UI_COPY = {
   en: {
     htmlLanguage: 'en',
@@ -122,9 +128,9 @@ export const UI_COPY = {
     titleHtml: '<span>The smell</span><span class="opening__join">of soup <i>&amp;</i> the sound</span><span>of money</span>',
     deck: 'A poor traveler, an expensive aroma, and the only judgment that could balance them.',
     preparing: 'Preparing the story',
-    loading: 'Loading voices',
+    loading: 'Loading voices & score',
     begin: 'Begin the story',
-    ready: 'Sound on · subtitles on',
+    ready: 'Voices, music & subtitles on',
     headphones: 'Headphones recommended',
     taleMark: 'A Nasreddin tale',
     chapter: 'Chapter',
@@ -135,6 +141,10 @@ export const UI_COPY = {
     resume: 'Resume story',
     mute: 'Mute sound',
     unmute: 'Unmute sound',
+    muteMusic: 'Mute music',
+    unmuteMusic: 'Unmute music',
+    musicMuted: 'Music muted.',
+    musicPlaying: 'Music playing.',
     hideSubtitles: 'Hide subtitles',
     showSubtitles: 'Show subtitles',
     started: 'The story has begun.',
@@ -163,9 +173,9 @@ export const UI_COPY = {
     titleHtml: '<span>Aroma sup</span><span class="opening__join"><i>&amp;</i> gemerincing</span><span>uang</span>',
     deck: 'Seorang musafir miskin, aroma yang mahal, dan satu-satunya putusan yang mampu menyeimbangkan keduanya.',
     preparing: 'Menyiapkan kisah',
-    loading: 'Memuat para suara',
+    loading: 'Memuat suara & musik',
     begin: 'Mulai kisahnya',
-    ready: 'Suara aktif · subtitle aktif',
+    ready: 'Suara, musik & subtitle aktif',
     headphones: 'Disarankan memakai headphone',
     taleMark: 'Sebuah kisah Nasreddin',
     chapter: 'Bab',
@@ -176,6 +186,10 @@ export const UI_COPY = {
     resume: 'Lanjutkan kisah',
     mute: 'Bisukan suara',
     unmute: 'Nyalakan suara',
+    muteMusic: 'Bisukan musik',
+    unmuteMusic: 'Nyalakan musik',
+    musicMuted: 'Musik dibisukan.',
+    musicPlaying: 'Musik dinyalakan.',
     hideSubtitles: 'Sembunyikan subtitle',
     showSubtitles: 'Tampilkan subtitle',
     started: 'Kisah dimulai.',

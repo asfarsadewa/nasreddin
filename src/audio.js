@@ -3,19 +3,26 @@ const LEAD_SECONDS = 1.1;
 const TAIL_SECONDS = 2.8;
 
 export class StoryAudio {
-  constructor(lines, trackDefinitions, initialLanguage = 'en') {
+  constructor(lines, trackDefinitions, musicDefinitions, initialLanguage = 'en') {
     this.lines = lines;
     this.trackDefinitions = trackDefinitions;
+    this.musicDefinitions = musicDefinitions;
     this.language = initialLanguage;
     this.tracks = {};
+    this.musicBuffers = {};
     this.context = null;
     this.master = null;
     this.narration = null;
+    this.musicOutput = null;
+    this.musicDuck = null;
     this.sources = [];
+    this.musicSources = [];
     this.anchor = 0;
     this.started = false;
     this.paused = false;
     this.muted = false;
+    this.musicMuted = false;
+    this.narrationActive = false;
     this.ambientSource = null;
   }
 
@@ -40,21 +47,39 @@ export class StoryAudio {
     this.narration.gain.value = 1;
     this.narration.connect(this.master);
 
+    this.musicOutput = this.context.createGain();
+    this.musicOutput.gain.value = 1;
+    this.musicDuck = this.context.createGain();
+    this.musicDuck.gain.value = 1;
+    this.musicOutput.connect(this.musicDuck).connect(this.master);
+
     const definitions = Object.entries(this.trackDefinitions);
-    const totalFiles = definitions.length * this.lines.length;
+    const musicDefinitions = Object.entries(this.musicDefinitions);
+    const totalFiles = definitions.length * this.lines.length + musicDefinitions.length;
     let loaded = 0;
 
-    await Promise.all(definitions.map(async ([language, definition]) => {
-      const buffers = await Promise.all(this.lines.map(async (line) => {
-        const response = await fetch(`${definition.root}${line.file}`);
-        if (!response.ok) throw new Error(`Could not load ${language}/${line.file}`);
+    await Promise.all([
+      ...definitions.map(async ([language, definition]) => {
+        const buffers = await Promise.all(this.lines.map(async (line) => {
+          const response = await fetch(`${definition.root}${line.file}`);
+          if (!response.ok) throw new Error(`Could not load ${language}/${line.file}`);
+          const buffer = await this.context.decodeAudioData(await response.arrayBuffer());
+          loaded += 1;
+          onProgress(loaded / totalFiles);
+          return buffer;
+        }));
+        this.tracks[language] = this.createTrack(buffers);
+      }),
+      ...musicDefinitions.map(async ([name, source]) => {
+        const response = await fetch(source);
+        if (!response.ok) throw new Error(`Could not load music cue: ${name}`);
         const buffer = await this.context.decodeAudioData(await response.arrayBuffer());
+        this.musicBuffers[name] = buffer;
         loaded += 1;
         onProgress(loaded / totalFiles);
         return buffer;
-      }));
-      this.tracks[language] = this.createTrack(buffers);
-    }));
+      }),
+    ]);
 
     return this.totalDuration;
   }
@@ -86,6 +111,7 @@ export class StoryAudio {
     this.paused = false;
     this.anchor = this.context.currentTime - offset;
     this.scheduleFrom(offset);
+    this.scheduleMusicFrom(offset);
     if (!this.ambientSource) this.startAtmosphere();
   }
 
@@ -109,6 +135,103 @@ export class StoryAudio {
       try { source.stop(); } catch { /* already stopped */ }
     });
     this.sources = [];
+    this.musicSources.forEach((source) => {
+      try { source.stop(); } catch { /* already stopped */ }
+    });
+    this.musicSources = [];
+  }
+
+  scheduleMusicFrom(offset) {
+    const endingStart = Math.max(0, (this.activeTrack.schedule[10]?.start ?? this.totalDuration - 12) - 0.7);
+    const ambienceStart = 17;
+    const ambienceEnd = endingStart + 3.2;
+
+    this.scheduleMusicCue('opening', offset, {
+      start: 0,
+      stop: 26,
+      envelope: [
+        [0, 0],
+        [1.6, 0.23],
+        [16, 0.23],
+        [26, 0],
+      ],
+    });
+
+    this.scheduleMusicCue('ambience', offset, {
+      start: ambienceStart,
+      stop: ambienceEnd,
+      loop: true,
+      envelope: [
+        [0, 0],
+        [4, 0.1],
+        [Math.max(5, endingStart - ambienceStart - 2), 0.1],
+        [ambienceEnd - ambienceStart, 0],
+      ],
+    });
+
+    const endingDuration = this.musicBuffers.ending?.duration ?? 28;
+    this.scheduleMusicCue('ending', offset, {
+      start: endingStart,
+      envelope: [
+        [0, 0],
+        [1.4, 0.15],
+        [8, 0.17],
+        [18, 0.25],
+        [Math.max(19, endingDuration - 1.5), 0.18],
+        [endingDuration, 0],
+      ],
+    });
+  }
+
+  scheduleMusicCue(name, offset, { start, stop, loop = false, envelope }) {
+    const buffer = this.musicBuffers[name];
+    if (!buffer || (stop && offset >= stop) || (!loop && offset >= start + buffer.duration)) return;
+
+    const now = this.context.currentTime;
+    const source = this.context.createBufferSource();
+    const gain = this.context.createGain();
+    const cueOffset = Math.max(0, offset - start);
+    const bufferOffset = loop ? cueOffset % buffer.duration : cueOffset;
+    const when = Math.max(now + 0.035, this.anchor + start);
+
+    source.buffer = buffer;
+    source.loop = loop;
+    source.connect(gain).connect(this.musicOutput);
+    this.applyMusicEnvelope(gain.gain, start, offset, envelope);
+    source.start(when, bufferOffset);
+
+    if (stop) {
+      const stopAt = this.anchor + stop;
+      if (stopAt > now) source.stop(stopAt);
+    }
+
+    this.musicSources.push(source);
+  }
+
+  applyMusicEnvelope(parameter, cueStart, offset, envelope) {
+    const now = this.context.currentTime;
+    const relativeNow = Math.max(0, offset - cueStart);
+    let value = envelope[0][1];
+
+    for (let index = 1; index < envelope.length; index += 1) {
+      const [nextTime, nextValue] = envelope[index];
+      const [previousTime, previousValue] = envelope[index - 1];
+      if (relativeNow >= nextTime) {
+        value = nextValue;
+        continue;
+      }
+      if (relativeNow > previousTime) {
+        const progress = (relativeNow - previousTime) / (nextTime - previousTime);
+        value = previousValue + (nextValue - previousValue) * progress;
+      }
+      break;
+    }
+
+    parameter.setValueAtTime(value, now);
+    envelope.forEach(([time, target]) => {
+      if (time <= relativeNow) return;
+      parameter.linearRampToValueAtTime(target, this.anchor + cueStart + time);
+    });
   }
 
   async setLanguage(language) {
@@ -145,6 +268,19 @@ export class StoryAudio {
     this.muted = muted;
     const target = muted ? 0 : 0.92;
     this.master.gain.setTargetAtTime(target, this.context.currentTime, 0.035);
+  }
+
+  setMusicMuted(muted) {
+    this.musicMuted = muted;
+    const target = muted ? 0 : 1;
+    this.musicOutput.gain.setTargetAtTime(target, this.context.currentTime, 0.045);
+  }
+
+  setNarrationActive(active) {
+    if (!this.context || active === this.narrationActive) return;
+    this.narrationActive = active;
+    const target = active ? 0.42 : 1;
+    this.musicDuck.gain.setTargetAtTime(target, this.context.currentTime, active ? 0.08 : 0.28);
   }
 
   get elapsed() {
@@ -245,8 +381,8 @@ export class StoryAudio {
     source.loop = true;
     filter.type = 'lowpass';
     filter.frequency.value = 620;
-    gain.gain.value = 0.065;
-    source.connect(filter).connect(gain).connect(this.master);
+    gain.gain.value = 0.025;
+    source.connect(filter).connect(gain).connect(this.musicOutput);
     source.start();
     this.ambientSource = source;
   }

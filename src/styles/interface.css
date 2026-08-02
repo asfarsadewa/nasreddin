@@ -259,10 +259,13 @@
 }
 
 .sound-off,
+.music-off,
 .play-icon,
 .is-muted .sound-on,
+.is-music-muted .music-on,
 .is-paused .pause-icon { display: none; }
 .is-muted .sound-off,
+.is-music-muted .music-off,
 .is-paused .play-icon { display: block; }
 
 .chapter {

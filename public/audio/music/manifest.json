@@ -1,0 +1,26 @@
+{
+  "provider": "ElevenLabs Music",
+  "model": "music_v2",
+  "generated": "2026-08-02",
+  "outputFormat": "mp3_48000_192",
+  "cues": [
+    {
+      "file": "opening-theme.mp3",
+      "role": "opening",
+      "durationMs": 28000,
+      "songId": "O9jzFJq25rfkzuFL1m9I"
+    },
+    {
+      "file": "market-ambience.mp3",
+      "role": "looping ambience",
+      "durationMs": 42000,
+      "songId": "ipEXwT4HKKll8D3Qp1YU"
+    },
+    {
+      "file": "ending-theme.mp3",
+      "role": "ending",
+      "durationMs": 28000,
+      "songId": "D7rHdUFoDpJE1k8buyPH"
+    }
+  ]
+}

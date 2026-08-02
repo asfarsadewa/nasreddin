@@ -1,6 +1,6 @@
 import './styles.css';
 import { StoryAudio } from './audio.js';
-import { AUDIO_TRACKS, STORY_LINES, UI_COPY } from './story.js';
+import { AUDIO_TRACKS, MUSIC_CUES, STORY_LINES, UI_COPY } from './story.js';
 import { StoryWorld } from './world.js';
 
 const $ = (selector) => document.querySelector(selector);
@@ -18,6 +18,7 @@ const elements = {
   hud: $('#hud'),
   taleMark: $('#tale-mark'),
   captionToggle: $('#caption-toggle'),
+  musicToggle: $('#music-toggle'),
   soundToggle: $('#sound-toggle'),
   playToggle: $('#play-toggle'),
   chapter: $('#chapter'),
@@ -59,14 +60,15 @@ const elements = {
 };
 
 const world = new StoryWorld(elements.stage);
-const audio = new StoryAudio(STORY_LINES, AUDIO_TRACKS, 'en');
+const audio = new StoryAudio(STORY_LINES, AUDIO_TRACKS, MUSIC_CUES, 'en');
 const clock = { last: performance.now() / 1000 };
 
 let ready = false;
 let voiceLanguage = 'en';
-let subtitleLanguage = 'en';
-let lastSubtitleLanguage = 'en';
+let subtitleLanguage = 'id';
+let lastSubtitleLanguage = 'id';
 let muted = false;
+let musicMuted = false;
 let previousCaptionKey = '';
 let previousChapterKey = '';
 let endingShown = false;
@@ -111,6 +113,7 @@ function updatePlaybackControls() {
   elements.playToggle.setAttribute('aria-pressed', String(paused));
   elements.playToggle.setAttribute('aria-label', paused ? currentCopy.resume : currentCopy.pause);
   elements.soundToggle.setAttribute('aria-label', muted ? currentCopy.unmute : currentCopy.mute);
+  elements.musicToggle.setAttribute('aria-label', musicMuted ? currentCopy.unmuteMusic : currentCopy.muteMusic);
   const subtitlesOn = subtitleLanguage !== 'off';
   elements.captionToggle.setAttribute('aria-pressed', String(subtitlesOn));
   elements.captionToggle.setAttribute('aria-label', subtitlesOn ? currentCopy.hideSubtitles : currentCopy.showSubtitles);
@@ -191,6 +194,7 @@ function hideEnding() {
 }
 
 function updateInterface(state) {
+  audio.setNarrationActive(state.speaking && !state.paused);
   elements.timelineProgress.style.transform = `scaleX(${state.overallProgress})`;
   elements.currentTime.textContent = formatTime(state.elapsed);
   elements.totalTime.textContent = formatTime(state.total);
@@ -331,6 +335,15 @@ elements.soundToggle.addEventListener('click', () => {
   updatePlaybackControls();
 });
 
+elements.musicToggle.addEventListener('click', () => {
+  musicMuted = !musicMuted;
+  audio.setMusicMuted(musicMuted);
+  elements.musicToggle.classList.toggle('is-music-muted', musicMuted);
+  elements.musicToggle.setAttribute('aria-pressed', String(musicMuted));
+  elements.liveStatus.textContent = musicMuted ? copy().musicMuted : copy().musicPlaying;
+  updatePlaybackControls();
+});
+
 elements.captionToggle.addEventListener('click', () => {
   setSubtitleLanguage(subtitleLanguage === 'off' ? lastSubtitleLanguage : 'off', false);
 });
@@ -360,6 +373,7 @@ window.addEventListener('keydown', (event) => {
     togglePlayback();
   }
   if (event.key.toLowerCase() === 'm' && audio.started) elements.soundToggle.click();
+  if (event.key.toLowerCase() === 'b' && audio.started) elements.musicToggle.click();
   if (event.key.toLowerCase() === 'c' && audio.started) elements.captionToggle.click();
 });
 

@@ -26,7 +26,7 @@
       <section class="opening" id="opening" aria-labelledby="story-title">
         <button class="language-launch language-launch--opening" type="button" data-language-menu aria-haspopup="dialog" aria-controls="language-panel">
           <span class="language-launch__pulse" aria-hidden="true"></span>
-          <span data-language-summary>EN · CC EN</span>
+          <span data-language-summary>EN · CC ID</span>
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 10 4 4 4-4" /></svg>
         </button>
         <p class="opening__eyebrow" id="opening-eyebrow">An animated Nasreddin Hodja tale</p>
@@ -59,11 +59,15 @@
         <div class="hud__actions">
           <button class="language-launch language-launch--hud" type="button" data-language-menu aria-haspopup="dialog" aria-controls="language-panel">
             <span class="language-launch__pulse" aria-hidden="true"></span>
-            <span data-language-summary>EN · CC EN</span>
+            <span data-language-summary>EN · CC ID</span>
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 10 4 4 4-4" /></svg>
           </button>
           <button class="icon-button" id="caption-toggle" type="button" aria-label="Hide captions" aria-pressed="true">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v14H4zM8 10h2m4 0h2m-8 4h3m2 0h3" /></svg>
+          </button>
+          <button class="icon-button" id="music-toggle" type="button" aria-label="Mute music" aria-pressed="false">
+            <svg class="music-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18V7l10-2v11M9 18a3 3 0 1 1-3-3 3 3 0 0 1 3 3Zm10-2a3 3 0 1 1-3-3 3 3 0 0 1 3 3Z" /></svg>
+            <svg class="music-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 15.2V7l10-2v10.2M9 18a3 3 0 1 1-3-3m10.2-1.8A3 3 0 0 1 19 16M4 4l16 16" /></svg>
           </button>
           <button class="icon-button" id="sound-toggle" type="button" aria-label="Mute sound" aria-pressed="false">
             <svg class="sound-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9v6h4l5 4V5L9 9H5Zm12.5.5a4 4 0 0 1 0 5m2-7a7 7 0 0 1 0 9" /></svg>
@@ -131,11 +135,11 @@
             <small id="subtitle-help">Choose independently from the voice</small>
           </legend>
           <div class="language-group__choices language-group__choices--subtitles" role="radiogroup" aria-labelledby="subtitle-label">
-            <button class="language-choice" type="button" role="radio" aria-checked="true" data-subtitle="en">
+            <button class="language-choice" type="button" role="radio" aria-checked="false" data-subtitle="en">
               <span><b>CC</b><strong id="subtitle-english">English</strong></span>
               <i aria-hidden="true"></i>
             </button>
-            <button class="language-choice" type="button" role="radio" aria-checked="false" data-subtitle="id">
+            <button class="language-choice" type="button" role="radio" aria-checked="true" data-subtitle="id">
               <span><b>CC</b><strong id="subtitle-indonesian">Bahasa Indonesia</strong></span>
               <i aria-hidden="true"></i>
             </button>
