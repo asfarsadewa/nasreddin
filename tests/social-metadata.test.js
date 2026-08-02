@@ -22,7 +22,18 @@ test('every public route has canonical social metadata on the production origin'
     assert.equal(metadata.image, EXPECTED_IMAGE);
     assert.ok(metadata.canonical.startsWith('https://stories.asfar.family/'));
     assert.equal(metadata.type, configured.type);
+    assert.equal(metadata.status, 200);
+    assert.equal(metadata.robots, 'index, follow, max-image-preview:large');
   }
+});
+
+test('unknown HTML routes receive dedicated noindex metadata and a 404 status', () => {
+  const metadata = metadataForPath('/stories/not-on-the-shelf/');
+  assert.equal(metadata.status, 404);
+  assert.equal(metadata.robots, 'noindex, follow');
+  assert.equal(metadata.title, 'Story Not Found | Wisdom Short Stories');
+  assert.equal(metadata.canonical, 'https://stories.asfar.family/stories/not-on-the-shelf/');
+  assert.notEqual(metadata.description, SOCIAL_METADATA['/'].description);
 });
 
 test('the static document has complete Open Graph and Twitter fallbacks', async () => {
@@ -51,6 +62,6 @@ test('Wrangler binds static assets, rewrites navigations, and owns the custom do
   const config = JSON.parse(await readFile(join(ROOT, 'wrangler.jsonc'), 'utf8'));
   assert.equal(config.main, 'worker/index.js');
   assert.equal(config.assets.binding, 'ASSETS');
-  assert.deepEqual(config.assets.run_worker_first, ['/', '/stories/*']);
+  assert.deepEqual(config.assets.run_worker_first, ['/*', '!/assets/*', '!/audio/*', '!/social/*']);
   assert.deepEqual(config.routes, [{ pattern: 'stories.asfar.family', custom_domain: true }]);
 });

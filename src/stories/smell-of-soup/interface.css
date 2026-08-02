@@ -639,6 +639,32 @@ html[lang='zh-CN'] .language-choice strong {
   box-shadow: 0 0 0 3px rgba(240, 196, 106, 0.12);
 }
 
+.language-choice.is-loading {
+  cursor: wait;
+}
+
+.language-choice.is-loading::after {
+  content: attr(data-load-progress);
+  position: absolute;
+  right: 0.66rem;
+  bottom: 0.42rem;
+  color: var(--saffron);
+  font: 500 0.48rem/1 'IBM Plex Mono', monospace;
+  letter-spacing: 0.08em;
+}
+
+.language-choice.is-loading i {
+  border-color: rgba(240, 196, 106, 0.22);
+  border-top-color: var(--saffron);
+  background: transparent;
+  box-shadow: none;
+  animation: voice-loading-spin 0.75s linear infinite;
+}
+
+@keyframes voice-loading-spin {
+  to { transform: rotate(360deg); }
+}
+
 @keyframes language-panel-in {
   from { opacity: 0; transform: translateY(-10px) scale(0.985); }
   to { opacity: 1; transform: none; }

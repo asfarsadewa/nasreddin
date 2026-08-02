@@ -1,4 +1,4 @@
-import { COLLECTION_COPY, STORIES } from './catalog.js';
+import { COLLECTION_COPY, STORIES, formatStoryCount } from './catalog.js';
 
 function languageFromUrl() {
   const language = new URLSearchParams(window.location.search).get('lang');
@@ -73,6 +73,7 @@ function storyCard(story, language, copy) {
 
 function collectionTemplate(language) {
   const copy = COLLECTION_COPY[language];
+  const availableStories = STORIES.filter((story) => story.status === 'available');
   return `
     <main class="collection" id="collection">
       <div class="collection__grain" aria-hidden="true"></div>
@@ -100,9 +101,9 @@ function collectionTemplate(language) {
       <section class="story-shelf" aria-labelledby="shelf-title">
         <header class="story-shelf__header">
           <p id="shelf-title">${copy.showing}</p>
-          <span>${copy.storyCount}</span>
+          <span data-story-count>${formatStoryCount(language, availableStories.length)}</span>
         </header>
-        ${STORIES.filter((story) => story.status === 'available').map((story) => storyCard(story, language, copy)).join('')}
+        ${availableStories.map((story) => storyCard(story, language, copy)).join('')}
       </section>
 
       <aside class="future-shelf">
@@ -140,14 +141,17 @@ function notFoundTemplate(language) {
   `;
 }
 
-function mountLocalized(app, template) {
+function mountLocalized(app, template, {
+  titleKey = 'documentTitle',
+  descriptionKey = 'description',
+} = {}) {
   let language = languageFromUrl();
 
   const render = () => {
     const copy = COLLECTION_COPY[language];
     document.documentElement.lang = copy.htmlLanguage;
-    document.title = copy.documentTitle;
-    document.querySelector('meta[name="description"]')?.setAttribute('content', copy.description);
+    document.title = copy[titleKey];
+    document.querySelector('meta[name="description"]')?.setAttribute('content', copy[descriptionKey]);
     app.innerHTML = template(language);
     window.requestAnimationFrame(() => app.firstElementChild?.classList.add('is-ready'));
 
@@ -173,5 +177,8 @@ export function mountCollection(app) {
 }
 
 export function mountNotFound(app) {
-  mountLocalized(app, notFoundTemplate);
+  mountLocalized(app, notFoundTemplate, {
+    titleKey: 'notFoundDocumentTitle',
+    descriptionKey: 'notFoundDescription',
+  });
 }

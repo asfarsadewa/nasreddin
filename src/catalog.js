@@ -9,13 +9,14 @@ export const COLLECTION_COPY = {
     titleSecond: 'Short Stories',
     introduction: 'Old stories, retold as brief cinematic experiences—performed, subtitled, and made to linger.',
     showing: 'Now showing',
-    storyCount: '2 stories',
     viewStory: 'Watch the story',
     shelfEyebrow: 'The shelf is growing',
     shelfTitle: 'More wisdom, shortly.',
     shelfBody: 'New tales will arrive here, each with its own world, voice, and way of seeing.',
     footer: 'Made for a quiet minute. Remembered for longer.',
     notFoundEyebrow: 'Beyond the shelf',
+    notFoundDocumentTitle: 'Story Not Found | Wisdom Short Stories',
+    notFoundDescription: 'This story is not on the shelf. Browse the collection for a cinematic tale ready to be told.',
     notFoundTitle: 'That story is not here—yet.',
     notFoundBody: 'Return to the collection and choose a tale that is ready to be told.',
     backHome: 'Browse the collection',
@@ -30,13 +31,14 @@ export const COLLECTION_COPY = {
     titleSecond: 'Teladan',
     introduction: 'Kisah-kisah lama, dituturkan kembali sebagai pengalaman sinematik singkat—dengan suara, subtitle, dan makna yang tinggal lebih lama.',
     showing: 'Sedang tayang',
-    storyCount: '2 kisah',
     viewStory: 'Tonton kisahnya',
     shelfEyebrow: 'Rak ini terus bertambah',
     shelfTitle: 'Hikmah berikutnya segera hadir.',
     shelfBody: 'Kisah-kisah baru akan hadir di sini, masing-masing dengan dunia, suara, dan sudut pandangnya sendiri.',
     footer: 'Dibuat untuk satu menit yang tenang. Dikenang lebih lama.',
     notFoundEyebrow: 'Di luar rak',
+    notFoundDocumentTitle: 'Kisah Tidak Ditemukan | Kumpulan Kisah Teladan',
+    notFoundDescription: 'Kisah ini belum ada di rak. Jelajahi koleksi dan pilih kisah sinematik yang siap dituturkan.',
     notFoundTitle: 'Kisah itu belum ada di sini.',
     notFoundBody: 'Kembalilah ke koleksi dan pilih kisah yang sudah siap dituturkan.',
     backHome: 'Lihat koleksi',
@@ -51,13 +53,14 @@ export const COLLECTION_COPY = {
     titleSecond: '短篇',
     introduction: '古老的故事，以短小的电影体验重新讲述——有表演、有字幕，也有久久不散的余味。',
     showing: '正在上映',
-    storyCount: '2 则故事',
     viewStory: '观看故事',
     shelfEyebrow: '故事仍在增加',
     shelfTitle: '下一则智慧，即将到来。',
     shelfBody: '新的故事会陆续来到这里，各有自己的世界、声音与看见事物的方式。',
     footer: '一刻安静，回味更久。',
     notFoundEyebrow: '书阁之外',
+    notFoundDocumentTitle: '故事未找到 | Wisdom Short Stories · 智慧短篇',
+    notFoundDescription: '这则故事还不在书阁里。请浏览故事集，选择一则已经准备好开讲的电影化短篇。',
     notFoundTitle: '这则故事还没有来到这里。',
     notFoundBody: '回到故事集，选择一则已经准备好开讲的故事。',
     backHome: '浏览故事集',
@@ -142,4 +145,10 @@ export function normalizePath(pathname) {
 export function findStory(pathname) {
   const path = normalizePath(pathname);
   return STORIES.find((story) => story.path === path);
+}
+
+export function formatStoryCount(language, count) {
+  if (language === 'zh') return `${count} 则故事`;
+  if (language === 'id') return `${count} kisah`;
+  return `${count} ${count === 1 ? 'story' : 'stories'}`;
 }

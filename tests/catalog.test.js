@@ -5,6 +5,7 @@ import {
   COLLECTION_COPY,
   STORIES,
   findStory,
+  formatStoryCount,
   normalizePath,
 } from '../src/catalog.js';
 
@@ -30,6 +31,14 @@ test('collection copy is complete and structurally identical in EN, ZH, and ID',
   assert.equal(COLLECTION_COPY.id.documentTitle, 'Kumpulan Kisah Teladan');
   assert.equal(COLLECTION_COPY.id.titleFirst, 'Kumpulan Kisah');
   assert.equal(COLLECTION_COPY.id.titleSecond, 'Teladan');
+});
+
+test('story counts are derived from the catalog with localized grammar', () => {
+  assert.equal(formatStoryCount('en', 1), '1 story');
+  assert.equal(formatStoryCount('en', 3), '3 stories');
+  assert.equal(formatStoryCount('id', 3), '3 kisah');
+  assert.equal(formatStoryCount('zh', 3), '3 则故事');
+  for (const copy of Object.values(COLLECTION_COPY)) assert.equal('storyCount' in copy, false);
 });
 
 test('catalog entries have unique canonical routes and complete trilingual metadata', () => {

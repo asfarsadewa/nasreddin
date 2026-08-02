@@ -5,10 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:worker": "wrangler dev --local --port 4175",
     "build": "vite build",
     "preview": "vite preview",
     "test": "node --test --test-concurrency=1",
     "test:watch": "node --test --watch --test-concurrency=1",
+    "test:e2e": "npm run build && playwright test",
     "check": "npm test && npm run build",
     "audio:music": "npm run audio:music:smell-of-soup",
     "audio:music:smell-of-soup": "node scripts/stories/smell-of-soup/generate-music.mjs",
@@ -21,6 +23,7 @@
     "three": "^0.179.1"
   },
   "devDependencies": {
+    "@playwright/test": "^1.62.1",
     "vite": "^7.1.2",
     "wrangler": "^4.118.0"
   }

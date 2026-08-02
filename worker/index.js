@@ -1,5 +1,11 @@
 const SITE_ORIGIN = 'https://stories.asfar.family';
 const SOCIAL_IMAGE = `${SITE_ORIGIN}/social/wisdom-short-stories-og.png`;
+const INDEX_ROBOTS = 'index, follow, max-image-preview:large';
+const NOT_FOUND_METADATA = Object.freeze({
+  title: 'Story Not Found | Wisdom Short Stories',
+  description: 'This story is not on the shelf. Browse Wisdom Short Stories for cinematic folktales in English, Chinese, and Indonesian.',
+  type: 'website',
+});
 
 export const SOCIAL_METADATA = Object.freeze({
   '/': {
@@ -28,11 +34,18 @@ function normalizePath(pathname) {
 }
 
 export function metadataForPath(pathname) {
-  const metadata = SOCIAL_METADATA[normalizePath(pathname)] ?? SOCIAL_METADATA['/'];
+  const path = normalizePath(pathname);
+  const registered = SOCIAL_METADATA[path];
+  const metadata = registered ?? {
+    ...NOT_FOUND_METADATA,
+    canonicalPath: path === '/' ? '/' : `${path}/`,
+  };
   return {
     ...metadata,
     canonical: `${SITE_ORIGIN}${metadata.canonicalPath}`,
     image: SOCIAL_IMAGE,
+    robots: registered ? INDEX_ROBOTS : 'noindex, follow',
+    status: registered ? 200 : 404,
   };
 }
 
@@ -61,6 +74,7 @@ function rewriteMetadata(response, metadata) {
   return new HTMLRewriter()
     .on('title', new TextHandler(metadata.title))
     .on('meta[name="description"]', new AttributeHandler('content', metadata.description))
+    .on('meta[name="robots"]', new AttributeHandler('content', metadata.robots))
     .on('link[rel="canonical"]', new AttributeHandler('href', metadata.canonical))
     .on('meta[property="og:title"]', new AttributeHandler('content', metadata.title))
     .on('meta[property="og:description"]', new AttributeHandler('content', metadata.description))
@@ -75,6 +89,7 @@ function rewriteMetadata(response, metadata) {
 
 export default {
   async fetch(request, env) {
+    const metadata = metadataForPath(new URL(request.url).pathname);
     const response = await env.ASSETS.fetch(request);
     const contentType = response.headers.get('content-type') ?? '';
 
@@ -86,11 +101,13 @@ export default {
     headers.set('X-Content-Type-Options', 'nosniff');
 
     const htmlResponse = new Response(response.body, {
-      status: response.status,
-      statusText: response.statusText,
+      status: metadata.status,
       headers,
     });
 
-    return rewriteMetadata(htmlResponse, metadataForPath(new URL(request.url).pathname));
+    if (request.method === 'HEAD') {
+      return new Response(null, { status: metadata.status, headers });
+    }
+    return rewriteMetadata(htmlResponse, metadata);
   },
 };

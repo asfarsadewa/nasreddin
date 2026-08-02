@@ -49,9 +49,9 @@ src/stories/<slug>/
   entry.js       # exports mount(app); imports template, then lazy-loads runtime
   template.js    # accessible DOM shell and language dialog
   story.js       # lines, localized UI, asset roots, camera cue sheet
-  audio.js       # loading, schedules, language mapping, music/SFX mix
+  audio.js       # story-specific graph, envelopes, ambience, and SFX atop StoryAudioCore
   world.js       # Three.js scene, characters, semantic animation
-  index.js       # controller and input/accessibility wiring
+  index.js       # creates the shared controller and supplies semantic story hooks
   interface.css  # this story's visual language and responsive states
 
 public/audio/stories/<slug>/
@@ -67,11 +67,15 @@ scripts/stories/<slug>/
   generate-sfx.mjs
 ```
 
+Common player mechanics live in `src/shared/story-controller.js`; common timeline, playback, and progressive-loading mechanics live in `src/shared/story-audio.js`. Reuse those two seams. Do not move cameras, worlds, signature effects, story timing, or mix identity into them.
+
 Add one lazy registry record to `src/catalog.js`. Supply `zh`, `en`, and `id` for title, description, tradition, duration, and format. The `load` function must use a dynamic import.
 
 ## 4. Voice production with Gemini TTS
 
 Use one manifest for each required language (`en`, `zh`, and `id`) and keep character-to-voice casting stable across all lines. Current established casting for **掩耳盗铃** is Charon for narrator, Puck for thief, and Kore for the responding villager in all three languages.
+
+The committed WAVs and manifests are the repository contract. The local `gemini-tts` Codex skill is a maintainer convenience, not a runtime dependency and not something to vendor into this project. A contributor who is not regenerating voices needs no provider account or skill installation.
 
 First validate without spending generation quota:
 
@@ -104,6 +108,14 @@ Mix rules:
 - music mute controls score and bed ambience, not essential diegetic punctuation;
 - story-specific perceptual effects should preserve narration intelligibility;
 - test simultaneous narration, music, and the loudest SFX for clipping.
+
+Loading rules:
+
+- prepare only the intentional default/selected voice, score, and essential SFX before enabling Start;
+- begin idle-time prefetch of the other voices only after playback starts;
+- deduplicate on-demand and background requests through `StoryAudioCore.ensureLanguage()`;
+- show localized progress in the language panel only if a visitor requests a voice that is still loading;
+- a failed background prefetch must not interrupt current playback and an on-demand retry must remain possible.
 
 ## 6. Build the world and camera grammar
 
@@ -147,6 +159,7 @@ Static gates:
 npm test
 npm audit --audit-level=high
 npm run build
+npm run test:e2e
 npm run deploy:dry-run
 ```
 
@@ -163,9 +176,9 @@ Browser matrix:
 | Mid-story switch | correct line/progress retained; no doubled sources |
 | Mobile story | controls hit-test, captions clear scene, internal scroll starts at top |
 | Accessibility | keyboard, focus trap, focus-visible, live announcements, reduced motion |
-| Network/console | no failed assets, MIME issues, unhandled errors, or route refresh 404 |
+| Network/console | no failed assets, MIME issues, unhandled errors; registered routes refresh, unknown routes return authored 404s |
 
-Do not declare production ready based only on source inspection or a successful bundle. Watch the opening, the central turn, and the ending in a real browser, and verify at least one full playback.
+Do not declare production ready based only on source inspection or a successful bundle. The Playwright suite is the repeatable browser floor; still watch the opening, the central turn, and the ending in a real browser, and verify at least one full playback for a new production.
 
 ## 9. Release only on request
 
