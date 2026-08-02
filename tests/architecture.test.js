@@ -18,6 +18,10 @@ test('the collection entry remains free of eager Three.js and media imports', as
   const catalog = rootSources[1];
   assert.match(catalog, /load:\s*\(\)\s*=>\s*import\('\.\/stories\/smell-of-soup\/entry\.js'\)/);
   assert.match(catalog, /load:\s*\(\)\s*=>\s*import\('\.\/stories\/yan-er-dao-ling\/entry\.js'\)/);
+
+  const app = rootSources[0];
+  assert.match(app, /async function mountApplication\(\)/, 'story loading must run outside root-module evaluation');
+  assert.match(app, /mountApplication\(\)\.catch\(/, 'mount failures need a deterministic fallback');
 });
 
 test('story entry modules expose only the lazy mount boundary', async () => {
