@@ -142,6 +142,7 @@ Keyboard baseline:
 Static gates:
 
 ```powershell
+npm test
 npm audit --audit-level=high
 npm run build
 npm run deploy:dry-run

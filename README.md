@@ -17,6 +17,15 @@ npm install
 npm run dev
 ```
 
+Run the deterministic contract and media-integrity suite:
+
+```bash
+npm test
+npm run check
+```
+
+The suite uses Node's built-in test runner with concurrency fixed to one. It performs no network or provider calls and validates catalog routing, localization completeness, lazy-loading boundaries, story timelines, template defaults, voice-manifest/subtitle parity, WAV structure, MP3 assets, and generation provenance.
+
 Build or deploy the Cloudflare Worker with static assets:
 
 ```bash

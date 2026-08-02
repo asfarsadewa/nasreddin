@@ -55,6 +55,7 @@ Before changing a story, read:
 
 ## Definition of done
 
+- `npm test`
 - `npm audit --audit-level=high`
 - `npm run build`
 - `npm run deploy:dry-run`
