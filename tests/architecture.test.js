@@ -33,6 +33,25 @@ test('story entry modules expose only the lazy mount boundary', async () => {
   }
 });
 
+test('stories share only the player and audio timeline machinery', async () => {
+  const sharedAudio = await readSource('src/shared/story-audio.js');
+  const sharedController = await readSource('src/shared/story-controller.js');
+  assert.match(sharedAudio, /export class StoryAudioCore/);
+  assert.match(sharedController, /export function createStoryController/);
+  assert.match(sharedController, /prefetchLanguages/);
+  assert.match(sharedController, /ensureLanguage/);
+
+  for (const slug of ['smell-of-soup', 'yan-er-dao-ling']) {
+    const [audio, controller] = await Promise.all([
+      readSource(`src/stories/${slug}/audio.js`),
+      readSource(`src/stories/${slug}/index.js`),
+    ]);
+    assert.match(audio, /extends StoryAudioCore/);
+    assert.match(controller, /createStoryController\(/);
+    assert.match(controller, /onState\(/, `${slug} must retain local semantic story cues`);
+  }
+});
+
 test('the document shell points at the collection app and includes trilingual fonts', async () => {
   const html = await readSource('index.html');
   assert.match(html, /<script type="module" src="\/src\/app\.js"><\/script>/);
@@ -63,13 +82,16 @@ test('generation scripts use environment credentials and namespaced output paths
 
 test('cold-agent documentation carries the production and validation contracts', async () => {
   const [agents, pipeline] = await Promise.all([readSource('AGENTS.md'), readSource('docs/STORY_PRODUCTION.md')]);
-  for (const required of ['src/stories/<slug>/', 'public/audio/stories/<slug>/', 'npm run build', 'npm run deploy:dry-run']) {
+  for (const required of ['src/stories/<slug>/', 'src/shared/story-controller.js', 'src/shared/story-audio.js', 'public/audio/stories/<slug>/', 'npm run build', 'npm run test:e2e', 'npm run deploy:dry-run']) {
     assert.ok(agents.includes(required), `AGENTS.md is missing ${required}`);
   }
   for (const required of ['Gemini TTS', 'Music and sound design', 'Browser matrix', 'Release only on request']) {
     assert.ok(pipeline.includes(required), `production pipeline is missing ${required}`);
   }
   for (const required of ['English, Chinese, and Indonesian', 'No language may fall back silently']) {
+    assert.ok(agents.includes(required), `AGENTS.md is missing ${required}`);
+  }
+  for (const required of ['idle-prefetch', 'not a runtime dependency', 'HTTP status 404']) {
     assert.ok(agents.includes(required), `AGENTS.md is missing ${required}`);
   }
 });

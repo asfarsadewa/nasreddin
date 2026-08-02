@@ -110,7 +110,7 @@ export const UI_COPY = {
     hideSubtitles: '隐藏字幕', showSubtitles: '显示字幕', started: '故事开始了。', paused: '故事已暂停。', resumed: '故事继续。', ended: '故事结束了。',
     loadError: '音频加载失败', retry: '请刷新页面重试', optionsLabel: '语言与字幕',
     optionsEyebrow: '播放选项', optionsTitle: '选择你的听法', optionsIntro: '配音与屏幕字幕可以分别选择。',
-    voice: '配音', voiceHelp: '完整角色演绎', subtitles: '字幕', subtitlesHelp: '可与配音语言不同',
+    voice: '配音', voiceHelp: '完整角色演绎', voiceLoading: '正在加载{language}配音 · {progress}%', voiceLoadError: '{language}配音加载失败，请重试。', subtitles: '字幕', subtitlesHelp: '可与配音语言不同',
     off: '关闭', close: '关闭语言选项', allStories: '全部故事',
   },
   en: {
@@ -127,7 +127,7 @@ export const UI_COPY = {
     hideSubtitles: 'Hide subtitles', showSubtitles: 'Show subtitles', started: 'The story has begun.', paused: 'Story paused.', resumed: 'Story resumed.', ended: 'The story has ended.',
     loadError: 'The audio could not be loaded', retry: 'Refresh to try again', optionsLabel: 'Language and subtitles',
     optionsEyebrow: 'Listening options', optionsTitle: 'Hear it your way', optionsIntro: 'Choose the performed language and the words shown on screen independently.',
-    voice: 'Voice', voiceHelp: 'Fully acted narration', subtitles: 'Subtitles', subtitlesHelp: 'Choose independently from the voice',
+    voice: 'Voice', voiceHelp: 'Fully acted narration', voiceLoading: 'Loading {language} voice · {progress}%', voiceLoadError: 'Could not load {language}. Try again.', subtitles: 'Subtitles', subtitlesHelp: 'Choose independently from the voice',
     off: 'Off', close: 'Close language options', allStories: 'All stories',
   },
   id: {
@@ -144,7 +144,7 @@ export const UI_COPY = {
     hideSubtitles: 'Sembunyikan subtitle', showSubtitles: 'Tampilkan subtitle', started: 'Kisah dimulai.', paused: 'Kisah dijeda.', resumed: 'Kisah dilanjutkan.', ended: 'Kisah telah usai.',
     loadError: 'Audio tidak dapat dimuat', retry: 'Muat ulang halaman untuk mencoba lagi', optionsLabel: 'Bahasa dan subtitle',
     optionsEyebrow: 'Pilihan mendengarkan', optionsTitle: 'Nikmati dengan caramu', optionsIntro: 'Pilih bahasa suara dan tulisan di layar secara terpisah.',
-    voice: 'Suara', voiceHelp: 'Narasi dengan pemeran lengkap', subtitles: 'Subtitle', subtitlesHelp: 'Boleh berbeda dari bahasa suara',
+    voice: 'Suara', voiceHelp: 'Narasi dengan pemeran lengkap', voiceLoading: 'Memuat suara {language} · {progress}%', voiceLoadError: 'Suara {language} tidak dapat dimuat. Coba lagi.', subtitles: 'Subtitle', subtitlesHelp: 'Boleh berbeda dari bahasa suara',
     off: 'Tanpa subtitle', close: 'Tutup pilihan bahasa', allStories: 'Semua cerita',
   },
 };

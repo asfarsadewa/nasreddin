@@ -15,8 +15,11 @@ Before changing a story, read:
 - Story routes are `/stories/<slug>/` and are registered once in `src/catalog.js`.
 - `src/stories/<slug>/entry.js` exports `mount(app)` and lazy-loads the story runtime.
 - A story owns its `template.js`, `story.js`, `audio.js`, `world.js`, `index.js`, and `interface.css`.
+- `src/shared/story-controller.js` owns the common player UI, accessibility, localization, playback, caption, ending, and language-switch behavior.
+- `src/shared/story-audio.js` owns the common timeline, playback state, language remapping, progressive voice loading, and score-scheduling primitives.
+- Keep world construction, camera poses, semantic timing hooks, effects, audio graphs, music envelopes, and visual identity inside each story. Do not turn the shared runtime into a general framework.
 - Generated media belongs under `public/audio/stories/<slug>/`; generation scripts belong under `scripts/stories/<slug>/`.
-- Do not share mutable runtime state between stories. Reusable infrastructure may be extracted only after at least two stories genuinely need the same behavior.
+- Do not share mutable runtime state between stories. Both existing stories have earned the small shared player/audio core; extract anything further only after at least two stories genuinely need it.
 
 ## Language and copy
 
@@ -44,6 +47,8 @@ Before changing a story, read:
 - Verify all rendered WAVs exist, decode, and have plausible non-zero duration.
 - Music and SFX must be original/licensed for production use. Save generation metadata in `audio-manifest.json`; never commit or print API keys.
 - The mix must duck music under speech, keep the global mute separate from the music control, and avoid clipping on simultaneous cues.
+- Initial preparation must fetch only the selected/default voice plus music and essential effects. Enable Start at that point, idle-prefetch other voices during playback, deduplicate concurrent requests, and show localized progress only when a requested voice is not ready.
+- Generated media is committed and provider-independent at runtime. Each local Codex skill, such as `gemini-tts` or `sound-effects`, is a maintainer tool and not a runtime dependency; keep manifests, outputs, scripts, and provenance in the repo rather than vendoring the skills.
 
 ## Cinematic and runtime quality
 
@@ -58,6 +63,7 @@ Before changing a story, read:
 
 - Production lives at `https://stories.asfar.family/`; `wrangler.jsonc` owns that hostname as a Cloudflare Custom Domain.
 - Register each public story route in `worker/index.js` with a canonical URL, authored title, and substantial description. The Worker rewrites the static shell for social crawlers before JavaScript runs.
+- Unknown HTML routes must return the localized not-found application with dedicated metadata, `noindex, follow`, and HTTP status 404. Never allow the SPA fallback to become a soft 404.
 - Keep Open Graph and Twitter fallbacks in `index.html`, and keep the 1200×630 collection banner plus generation provenance under `public/social/`.
 - When adding a story, extend the deterministic social-metadata test so an unregistered route cannot ship silently.
 
@@ -66,6 +72,7 @@ Before changing a story, read:
 - `npm test`
 - `npm audit --audit-level=high`
 - `npm run build`
+- `npm run test:e2e`
 - `npm run deploy:dry-run`
 - Browser-check `/`, all three collection languages, the new story route, every voice and subtitle option, playback/pause/replay/mute/music, desktop, and mobile.
 - Confirm no browser console errors, failed media requests, clipped controls, or route refresh failures.
