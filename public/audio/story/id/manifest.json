@@ -1,0 +1,102 @@
+{
+  "id": "nasreddin_aroma_sup",
+  "language": "id",
+  "style": "Dongeng rakyat Anatolia yang diceritakan pada malam hari. Bahasa Indonesia baku yang luwes, hangat, sinematik, dan penuh jenaka halus. Lafalkan Aksehir sebagai Ak-sye-hir dan Nasreddin dengan jelas. Jangan terdengar seperti iklan atau sulih suara kartun. Sisakan tarikan napas singkat di akhir setiap dialog.",
+  "mode": "per_line",
+  "speakers": [
+    {
+      "name": "Narator",
+      "voice": "Charon",
+      "style": "Pendongeng pria sepuh dengan suara rendah bertekstur, akrab, tenang, dan artikulasi Indonesia yang jernih."
+    },
+    {
+      "name": "Juru Masak",
+      "voice": "Fenrir",
+      "style": "Pria pemilik kedai yang congkak dan teatrikal; berang, tetapi tetap manusiawi dan tidak berlebihan."
+    },
+    {
+      "name": "Musafir",
+      "voice": "Achird",
+      "style": "Pemuda yang letih namun jujur; santun, gugup, dan sedikit malu di hadapan kerumunan."
+    },
+    {
+      "name": "Nasreddin",
+      "voice": "Orus",
+      "style": "Lelaki sepuh dengan kehangatan yang bersahaja, wibawa yang tenang, dan senyum tipis yang terdengar dalam suaranya."
+    }
+  ],
+  "lines": [
+    {
+      "speaker": "Narator",
+      "text": "Pada suatu malam yang dingin di Aksehir, seorang musafir lapar berhenti di dekat kuali milik seorang juru masak.",
+      "direction": "Ajak pendengar memasuki suasana pasar malam dengan perlahan dan penuh kehangatan.",
+      "file": "01_narrator_evening.wav"
+    },
+    {
+      "speaker": "Narator",
+      "text": "Ia hanya punya sepotong roti kering. Maka, dihangatkannya roti itu di atas uap sup yang harum, lalu disantapnya.",
+      "direction": "Lembut dan penuh simpati kepada si musafir; beri jeda alami setelah kalimat pertama.",
+      "file": "02_narrator_bread.wav"
+    },
+    {
+      "speaker": "Juru Masak",
+      "text": "Pencuri! Kau menikmati aroma supku. Kau harus membayarnya!",
+      "direction": "Tuduhan yang mendadak, lantang, dan tersinggung; tekan kata membayarnya tanpa berteriak kasar.",
+      "file": "03_cook_accuses.wav"
+    },
+    {
+      "speaker": "Musafir",
+      "text": "Tapi aku tidak mengambil apa pun. Aku hanya menghangatkan roti dengan uapnya.",
+      "direction": "Terkejut, tulus, dan sedikit gentar karena orang-orang mulai berkerumun.",
+      "file": "04_traveler_answers.wav"
+    },
+    {
+      "speaker": "Narator",
+      "text": "Pertengkaran mereka mengundang kerumunan. Di tepinya, berdirilah Nasreddin Hodja.",
+      "direction": "Buat kehadiran Hodja terasa tenang namun penting; jeda tipis sebelum menyebut namanya.",
+      "file": "05_narrator_hodja.wav"
+    },
+    {
+      "speaker": "Nasreddin",
+      "text": "Juru masak yang baik, kau meminta bayaran untuk aroma sup?",
+      "direction": "Santun dan seolah sungguh-sungguh ingin tahu, sambil menyembunyikan kelakar yang akan datang.",
+      "file": "06_nasreddin_questions.wav"
+    },
+    {
+      "speaker": "Juru Masak",
+      "text": "Tentu saja! Setiap kenikmatan ada harganya.",
+      "direction": "Sangat yakin akan menang; ucapkan ada harganya dengan puas dan pongah.",
+      "file": "07_cook_insists.wav"
+    },
+    {
+      "speaker": "Nasreddin",
+      "text": "Kalau begitu, berikan kepadaku kantong uang si musafir.",
+      "direction": "Tenang dan tegas, seperti hakim yang hendak menjatuhkan putusan adil.",
+      "file": "08_nasreddin_purse.wav"
+    },
+    {
+      "speaker": "Narator",
+      "text": "Hodja mengangkat kantong itu ke telinga si juru masak, lalu mengguncangnya. Cring. Cring.",
+      "direction": "Bangun rasa penasaran, lalu ucapkan dua bunyi terakhir dengan ringan, renyah, dan terpisah.",
+      "file": "09_narrator_coins.wav"
+    },
+    {
+      "speaker": "Juru Masak",
+      "text": "Aku sudah mendengar uangnya. Sekarang serahkan kepadaku.",
+      "direction": "Tidak sabar dan serakah, seolah uang itu sudah menjadi miliknya.",
+      "file": "10_cook_demands.wav"
+    },
+    {
+      "speaker": "Nasreddin",
+      "text": "Bunyi uang adalah bayaran yang setimpal untuk aroma sup.",
+      "direction": "Sampaikan putusan dengan tenang, hangat, dan ketepatan komedi yang bersahaja; tekankan bunyi dan aroma.",
+      "file": "11_nasreddin_judgment.wav"
+    },
+    {
+      "speaker": "Narator",
+      "text": "Orang-orang pun tertawa. Uang si musafir tetap utuh, sementara sang juru masak hanya kebagian gema.",
+      "direction": "Akhiri dengan kegembiraan yang lembut; perlambat sedikit pada kata gema.",
+      "file": "12_narrator_ending.wav"
+    }
+  ]
+}

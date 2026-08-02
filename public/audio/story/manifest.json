@@ -1,0 +1,102 @@
+{
+  "id": "nasreddin_smell_of_soup",
+  "language": "en-US",
+  "style": "A warm, timeless Anatolian folktale told beside a fire at night. Natural phrasing, intimate cinematic delivery, gentle wit, never cartoonish. Leave a small breath at the end of each line.",
+  "mode": "per_line",
+  "speakers": [
+    {
+      "name": "Narrator",
+      "voice": "Charon",
+      "style": "An inviting older storyteller with a low, textured voice and unhurried clarity."
+    },
+    {
+      "name": "Cook",
+      "voice": "Fenrir",
+      "style": "A proud, theatrical market cook; indignant but believable."
+    },
+    {
+      "name": "Traveler",
+      "voice": "Achird",
+      "style": "A weary, decent young traveler, embarrassed and softly defensive."
+    },
+    {
+      "name": "Nasreddin",
+      "voice": "Orus",
+      "style": "An older man with dry warmth, patient authority, and a smile just audible in his voice."
+    }
+  ],
+  "lines": [
+    {
+      "speaker": "Narrator",
+      "text": "One cold evening in Aksehir, a hungry traveler stopped beside a cook's cauldron.",
+      "direction": "Quietly draw the listener into the scene.",
+      "file": "01_narrator_evening.wav"
+    },
+    {
+      "speaker": "Narrator",
+      "text": "He had only a piece of dry bread. So he held it over the fragrant steam, then ate it.",
+      "direction": "Tenderly, with sympathy for the traveler.",
+      "file": "02_narrator_bread.wav"
+    },
+    {
+      "speaker": "Cook",
+      "text": "Thief! You enjoyed the smell of my soup. You must pay me.",
+      "direction": "A sudden accusation, loud and offended.",
+      "file": "03_cook_accuses.wav"
+    },
+    {
+      "speaker": "Traveler",
+      "text": "But I took nothing. I only warmed my bread in the steam.",
+      "direction": "Startled, sincere, and a little afraid of the gathering crowd.",
+      "file": "04_traveler_answers.wav"
+    },
+    {
+      "speaker": "Narrator",
+      "text": "Their quarrel drew a crowd, and at its edge stood Nasreddin Hodja.",
+      "direction": "Let the arrival feel quietly important.",
+      "file": "05_narrator_hodja.wav"
+    },
+    {
+      "speaker": "Nasreddin",
+      "text": "Good cook, you ask payment for the smell of soup?",
+      "direction": "Courteous and genuinely curious, concealing the joke.",
+      "file": "06_nasreddin_questions.wav"
+    },
+    {
+      "speaker": "Cook",
+      "text": "Of course! A pleasure has its price.",
+      "direction": "Certain of victory, with smug emphasis on price.",
+      "file": "07_cook_insists.wav"
+    },
+    {
+      "speaker": "Nasreddin",
+      "text": "Then give me the traveler's coin purse.",
+      "direction": "Calm, decisive, as though issuing a fair judgment.",
+      "file": "08_nasreddin_purse.wav"
+    },
+    {
+      "speaker": "Narrator",
+      "text": "Hodja raised the purse beside the cook's ear and shook it. Chink. Chink.",
+      "direction": "Build gentle suspense, then make the two final words crisp and separate.",
+      "file": "09_narrator_coins.wav"
+    },
+    {
+      "speaker": "Cook",
+      "text": "I heard the money. Now hand it over.",
+      "direction": "Impatient and grasping.",
+      "file": "10_cook_demands.wav"
+    },
+    {
+      "speaker": "Nasreddin",
+      "text": "The sound of money is fair payment for the smell of soup.",
+      "direction": "Deliver the judgment with serene warmth and dry comic precision.",
+      "file": "11_nasreddin_judgment.wav"
+    },
+    {
+      "speaker": "Narrator",
+      "text": "The crowd laughed. The traveler kept his coins, and the cook was left holding only the echo.",
+      "direction": "A delighted, gentle ending; linger slightly on echo.",
+      "file": "12_narrator_ending.wav"
+    }
+  ]
+}
