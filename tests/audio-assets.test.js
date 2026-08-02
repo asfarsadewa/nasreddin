@@ -67,10 +67,10 @@ function assertMp3(buffer, label) {
 const VOICE_PRODUCTIONS = [
   {
     slug: 'smell-of-soup', lines: SOUP_LINES, tracks: SOUP_TRACKS,
-    manifests: {
-      en: join(ROOT, 'public/audio/story/manifest.json'),
-      id: join(ROOT, 'public/audio/story/id/manifest.json'),
-    },
+    manifests: Object.fromEntries(['en', 'zh', 'id'].map((language) => [
+      language,
+      join(ROOT, `public/audio/stories/smell-of-soup/voice/${language}/manifest.json`),
+    ])),
   },
   {
     slug: 'yan-er-dao-ling', lines: BELL_LINES, tracks: BELL_TRACKS,
@@ -121,10 +121,15 @@ test('all referenced score and effect cues are valid, non-trivial MP3 files', as
 });
 
 test('audio provenance manifests cover every generated score and effect cue', async () => {
-  const soupManifest = await readJson(join(ROOT, 'public/audio/music/manifest.json'));
-  assert.equal(soupManifest.provider, 'ElevenLabs Music');
-  assert.equal(soupManifest.model, 'music_v2');
-  assert.deepEqual(soupManifest.cues.map((cue) => cue.file).sort(), Object.values(SOUP_MUSIC).map((url) => url.split('/').at(-1)).sort());
+  const soupManifest = await readJson(join(ROOT, 'public/audio/stories/smell-of-soup/audio-manifest.json'));
+  assert.equal(soupManifest.voice.linesPerLanguage, SOUP_LINES.length);
+  assert.deepEqual(soupManifest.voice.languages.sort(), ['en-US', 'id-ID', 'zh-CN']);
+  assert.equal(soupManifest.music.provider, 'ElevenLabs Music');
+  assert.equal(soupManifest.music.model, 'music_v2');
+  assert.deepEqual(
+    soupManifest.music.cues.map((cue) => `/audio/stories/smell-of-soup/${cue.file}`).sort(),
+    Object.values(SOUP_MUSIC).sort(),
+  );
 
   const bellManifest = await readJson(join(ROOT, 'public/audio/stories/yan-er-dao-ling/audio-manifest.json'));
   assert.equal(bellManifest.voice.linesPerLanguage, BELL_LINES.length);

@@ -1,0 +1,102 @@
+{
+  "id": "nasreddin_smell_of_soup_zh",
+  "language": "zh-CN",
+  "style": "一则温暖、隽永的安纳托利亚民间故事，在冬夜火光旁娓娓道来。普通话自然、清晰、富有电影感，幽默克制而不低幼，不要夸张或像广告。阿克谢希尔、纳斯尔丁·霍加等名字要清楚从容。每句结尾留出短暂呼吸。",
+  "mode": "per_line",
+  "speakers": [
+    {
+      "name": "旁白",
+      "voice": "Charon",
+      "style": "成熟温暖的男声说书人，音色低而有质感，节奏从容，带一点不动声色的笑意。"
+    },
+    {
+      "name": "厨师",
+      "voice": "Fenrir",
+      "style": "骄傲而有戏剧性的市集厨师，愤愤不平但真实可信，不要演成卡通反派。"
+    },
+    {
+      "name": "旅人",
+      "voice": "Achird",
+      "style": "疲惫、善良的年轻旅人，窘迫而轻声辩解，始终保有尊严。"
+    },
+    {
+      "name": "纳斯尔丁",
+      "voice": "Orus",
+      "style": "年长男子，温厚睿智，权威来自耐心；说出判词时，声音里带着一丝笑意。"
+    }
+  ],
+  "lines": [
+    {
+      "speaker": "旁白",
+      "text": "一个寒冷的夜晚，在阿克谢希尔，一位饥肠辘辘的旅人停在了厨师的汤锅旁。",
+      "direction": "安静地把听众带入冬夜市集，地名清晰自然。",
+      "file": "01_narrator_evening.wav"
+    },
+    {
+      "speaker": "旁白",
+      "text": "他只有一块干面包。于是，他把面包放在香气四溢的热气上烘了烘，然后吃了下去。",
+      "direction": "带着对旅人的体恤，‘香气四溢’稍作舒展。",
+      "file": "02_narrator_bread.wav"
+    },
+    {
+      "speaker": "厨师",
+      "text": "小偷！你闻了我的汤香，就得付钱！",
+      "direction": "突然发难，响亮而恼火，但保持可信。",
+      "file": "03_cook_accuses.wav"
+    },
+    {
+      "speaker": "旅人",
+      "text": "可我什么也没拿。我只是用热气暖了暖面包。",
+      "direction": "疲惫、窘迫，真诚地为自己辩解。",
+      "file": "04_traveler_answers.wav"
+    },
+    {
+      "speaker": "旁白",
+      "text": "争吵引来了一群人。人群边上，站着纳斯尔丁·霍加。",
+      "direction": "先铺开围观人群，再让名字稳稳落下，暗示转机。",
+      "file": "05_narrator_hodja.wav"
+    },
+    {
+      "speaker": "纳斯尔丁",
+      "text": "好厨师，你是在向他索取闻汤香的钱吗？",
+      "direction": "礼貌、耐心，问题里藏着一点若有若无的机锋。",
+      "file": "06_nasreddin_questions.wav"
+    },
+    {
+      "speaker": "厨师",
+      "text": "当然！享受就该付出代价。",
+      "direction": "理直气壮，确信自己占理。",
+      "file": "07_cook_insists.wav"
+    },
+    {
+      "speaker": "纳斯尔丁",
+      "text": "那么，把这位旅人的钱袋给我。",
+      "direction": "平静而明确，像是已经想好了判决。",
+      "file": "08_nasreddin_purse.wav"
+    },
+    {
+      "speaker": "旁白",
+      "text": "霍加把钱袋举到厨师耳边，轻轻摇了摇。叮当。叮当。",
+      "direction": "克制地营造悬念，两声‘叮当’分开、清脆，为音效留出空间。",
+      "file": "09_narrator_coins.wav"
+    },
+    {
+      "speaker": "厨师",
+      "text": "我听见钱响了。现在，把钱给我。",
+      "direction": "急切、贪心，还没有听懂霍加的用意。",
+      "file": "10_cook_demands.wav"
+    },
+    {
+      "speaker": "纳斯尔丁",
+      "text": "钱币的响声，正好偿付汤的香气。",
+      "direction": "从容、清楚、温和而权威；在逗号处稍停，让对称的判词落稳。",
+      "file": "11_nasreddin_judgment.wav"
+    },
+    {
+      "speaker": "旁白",
+      "text": "人群笑了。旅人保住了钱币，厨师得到的，只有一缕回声。",
+      "direction": "温暖收束，最后一句带一点干涩幽默，并在‘回声’后留白。",
+      "file": "12_narrator_ending.wav"
+    }
+  ]
+}

@@ -52,10 +52,7 @@ const elements = {
   voiceHelp: $('#voice-help'),
   subtitleLabel: $('#subtitle-label'),
   subtitleHelp: $('#subtitle-help'),
-  voiceEnglish: $('#voice-english'),
-  voiceIndonesian: $('#voice-indonesian'),
-  subtitleEnglish: $('#subtitle-english'),
-  subtitleIndonesian: $('#subtitle-indonesian'),
+  languageNames: $$('[data-language-name]'),
   subtitleOff: $('#subtitle-off'),
   voiceChoices: $$('[data-voice]'),
   subtitleChoices: $$('[data-subtitle]'),
@@ -64,6 +61,7 @@ const elements = {
 const world = new StoryWorld(elements.stage);
 const audio = new StoryAudio(STORY_LINES, AUDIO_TRACKS, MUSIC_CUES, 'en');
 const clock = { last: performance.now() / 1000 };
+const LANGUAGE_COPY_KEYS = { en: 'english', zh: 'chinese', id: 'indonesian' };
 
 let ready = false;
 let voiceLanguage = 'en';
@@ -140,10 +138,9 @@ function localizeInterface() {
   elements.voiceHelp.textContent = currentCopy.voiceHelp;
   elements.subtitleLabel.textContent = currentCopy.subtitles;
   elements.subtitleHelp.textContent = currentCopy.subtitlesHelp;
-  elements.voiceEnglish.textContent = currentCopy.english;
-  elements.voiceIndonesian.textContent = currentCopy.indonesian;
-  elements.subtitleEnglish.textContent = currentCopy.english;
-  elements.subtitleIndonesian.textContent = currentCopy.indonesian;
+  elements.languageNames.forEach((element) => {
+    element.textContent = currentCopy[element.dataset.languageName];
+  });
   elements.subtitleOff.textContent = currentCopy.off;
   elements.languageClose.setAttribute('aria-label', currentCopy.close);
   elements.collectionBacks.forEach((link) => {
@@ -313,7 +310,7 @@ function setSubtitleLanguage(language, announce = true) {
   if (audio.started) updateInterface(audio.getState());
   if (announce) elements.liveStatus.textContent = language === 'off'
     ? copy().hideSubtitles
-    : `${copy().subtitles}: ${language === 'en' ? copy().english : copy().indonesian}`;
+    : `${copy().subtitles}: ${copy()[LANGUAGE_COPY_KEYS[language]]}`;
 }
 
 elements.begin.addEventListener('click', beginStory);

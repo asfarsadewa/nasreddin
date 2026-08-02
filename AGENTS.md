@@ -21,7 +21,8 @@ Before changing a story, read:
 ## Language and copy
 
 - The collection interface and every catalog record must have complete `en`, `zh`, and `id` copy. No language may fall back silently to another.
-- Each story declares the languages it supports. Voice and subtitles are independent controls, including an `off` subtitle choice.
+- Every story must ship complete English, Chinese, and Indonesian (`en`, `zh`, `id`) voice acting, subtitles, chapters, speaker names, and interface copy. No partial language release is allowed.
+- Voice and subtitles are independent controls, including an `off` subtitle choice.
 - Put all spoken text, speaker names, chapter names, and interface copy in `story.js`; do not scatter user-facing strings through controllers.
 - Subtitles in a given language must exactly match that language's recorded manifest.
 - Set and document an intentional default voice and subtitle combination for every story.
@@ -52,6 +53,13 @@ Before changing a story, read:
 - Keep the collection fast: story code, Three.js, voices, score, and SFX load only after navigation to the story route.
 - Support desktop and narrow mobile layouts, keyboard controls, reduced motion, focus trapping in dialogs, live text announcements, and independent captions.
 - Do not add raster imagery when a procedural world communicates the story better. If imagery is required, record its provenance and optimization in the story notes.
+
+## Publishing and social metadata
+
+- Production lives at `https://stories.asfar.family/`; `wrangler.jsonc` owns that hostname as a Cloudflare Custom Domain.
+- Register each public story route in `worker/index.js` with a canonical URL, authored title, and substantial description. The Worker rewrites the static shell for social crawlers before JavaScript runs.
+- Keep Open Graph and Twitter fallbacks in `index.html`, and keep the 1200×630 collection banner plus generation provenance under `public/social/`.
+- When adding a story, extend the deterministic social-metadata test so an unregistered route cannot ship silently.
 
 ## Definition of done
 

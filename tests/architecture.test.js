@@ -51,6 +51,8 @@ test('generation scripts use environment credentials and namespaced output paths
 
   const bellMusic = await readSource(scripts[1]);
   const bellSfx = await readSource(scripts[2]);
+  const soupMusic = await readSource(scripts[0]);
+  assert.ok(soupMusic.includes('public/audio/stories/smell-of-soup/music'));
   assert.ok(bellMusic.includes('public/audio/stories/yan-er-dao-ling/music'));
   assert.ok(bellSfx.includes('public/audio/stories/yan-er-dao-ling/sfx'));
 });
@@ -62,5 +64,8 @@ test('cold-agent documentation carries the production and validation contracts',
   }
   for (const required of ['Gemini TTS', 'Music and sound design', 'Browser matrix', 'Release only on request']) {
     assert.ok(pipeline.includes(required), `production pipeline is missing ${required}`);
+  }
+  for (const required of ['English, Chinese, and Indonesian', 'No language may fall back silently']) {
+    assert.ok(agents.includes(required), `AGENTS.md is missing ${required}`);
   }
 });

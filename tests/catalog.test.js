@@ -26,6 +26,10 @@ test('collection copy is complete and structurally identical in EN, ZH, and ID',
       assertNonEmptyString(value, `COLLECTION_COPY.${language}.${key}`);
     }
   }
+
+  assert.equal(COLLECTION_COPY.id.documentTitle, 'Kumpulan Kisah Teladan');
+  assert.equal(COLLECTION_COPY.id.titleFirst, 'Kumpulan Kisah');
+  assert.equal(COLLECTION_COPY.id.titleSecond, 'Teladan');
 });
 
 test('catalog entries have unique canonical routes and complete trilingual metadata', () => {
@@ -40,7 +44,7 @@ test('catalog entries have unique canonical routes and complete trilingual metad
     assert.match(story.sequence, /^\d{2}$/, `${story.slug} sequence must contain two digits`);
     assert.equal(story.status, 'available');
     assert.equal(typeof story.load, 'function');
-    assertNonEmptyString(story.languages, `${story.slug}.languages`);
+    assert.equal(story.languages, '中文 · EN · ID', `${story.slug} must advertise the collection language contract`);
 
     for (const field of LOCALIZED_STORY_FIELDS) {
       assert.deepEqual(Object.keys(story[field]).sort(), [...COLLECTION_LANGUAGES].sort(), `${story.slug}.${field} must be trilingual`);
@@ -48,6 +52,28 @@ test('catalog entries have unique canonical routes and complete trilingual metad
         assertNonEmptyString(story[field][language], `${story.slug}.${field}.${language}`);
       }
     }
+  }
+});
+
+test('every catalog story implements the complete EN, ZH, and ID runtime contract', async () => {
+  for (const story of STORIES) {
+    const storyModule = await import(`../src/stories/${story.slug}/story.js`);
+    const templateModule = await import(`../src/stories/${story.slug}/template.js`);
+    assert.deepEqual(Object.keys(storyModule.AUDIO_TRACKS).sort(), [...COLLECTION_LANGUAGES].sort());
+    assert.deepEqual(Object.keys(storyModule.UI_COPY).sort(), [...COLLECTION_LANGUAGES].sort());
+
+    for (const [index, line] of storyModule.STORY_LINES.entries()) {
+      for (const field of [line.speaker, line.text, line.chapter[1]]) {
+        assert.deepEqual(Object.keys(field).sort(), [...COLLECTION_LANGUAGES].sort(), `${story.slug} line ${index + 1} is not trilingual`);
+      }
+    }
+
+    const template = templateModule.createStoryTemplate();
+    for (const language of COLLECTION_LANGUAGES) {
+      assert.match(template, new RegExp(`data-voice="${language}"`));
+      assert.match(template, new RegExp(`data-subtitle="${language}"`));
+    }
+    assert.match(template, /data-subtitle="off"/);
   }
 });
 

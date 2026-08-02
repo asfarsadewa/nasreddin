@@ -30,7 +30,7 @@ For every beat define:
 
 | Field | Purpose |
 |---|---|
-| speaker | Stable role name in every supported language |
+| speaker | Stable role name in English, Chinese, and Indonesian |
 | text | Natural spoken copy, not a literal translation |
 | direction | Acting intention, pace, and emotional turn |
 | chapter | Roman numeral plus localized chapter name |
@@ -38,7 +38,7 @@ For every beat define:
 | camera | Authored position, target, and field of view |
 | sound event | Music transition, ambience, or one-shot SFX |
 
-Read every language aloud. Favor clean breath groups and leave silence for visual or sound punctuation. Subtitle text must later remain identical to the recorded text.
+Every story is trilingual by contract: natural English, Chinese, and Indonesian voice acting and subtitles are release requirements, not optional per-story capabilities. Read every language aloud. Favor clean breath groups and leave silence for visual or sound punctuation. Subtitle text must later remain identical to the recorded text; no language may fall back to another.
 
 ## 3. Create the story module
 
@@ -71,7 +71,7 @@ Add one lazy registry record to `src/catalog.js`. Supply `zh`, `en`, and `id` fo
 
 ## 4. Voice production with Gemini TTS
 
-Use one manifest per language and keep character-to-voice casting stable across all lines. Current established casting for **掩耳盗铃** is Charon for narrator, Puck for thief, and Kore for the responding villager in all three languages.
+Use one manifest for each required language (`en`, `zh`, and `id`) and keep character-to-voice casting stable across all lines. Current established casting for **掩耳盗铃** is Charon for narrator, Puck for thief, and Kore for the responding villager in all three languages.
 
 First validate without spending generation quota:
 
@@ -81,6 +81,8 @@ python C:/Users/asfar/.codex/skills/gemini-tts/scripts/gemini_tts.py manifest pu
 ```
 
 Then render each language with `--overwrite` only when regeneration is intended. Never place the API key in a command, manifest, log, or tracked file.
+
+Repeat the dry run and render for `voice/en/manifest.json`, `voice/zh/manifest.json`, and `voice/id/manifest.json`. A story is incomplete until all three directories contain one decodable WAV per scripted beat.
 
 After generation, inspect every file with an audio decoder such as `ffprobe`. Confirm file count, codec, duration, and non-trivial size. Listen to the opening, emotional turn, comic or dramatic pivot, and final line in every language. Regenerate a weak line rather than hiding it beneath music.
 
@@ -120,7 +122,7 @@ For **掩耳盗铃**, the signature device is split perception: covering the thi
 
 ## 7. Interface and language behavior
 
-Voice and subtitle selectors must be separate radio groups. Include every supported language and subtitles off. The visible summary should always show both choices.
+Voice and subtitle selectors must be separate radio groups. Include English, Chinese, Indonesian, and subtitles off. The visible summary should always show both choices.
 
 Default combinations are deliberate product decisions:
 
@@ -172,8 +174,10 @@ When the user asks to push and deploy:
 1. inspect the diff and preserve unrelated work;
 2. run the full validation gates;
 3. commit intentionally and push the requested branch;
-4. deploy with `npm run deploy`;
-5. verify `/`, the new story route, a direct asset request, and route refresh on the live Worker;
-6. report the commit, remote repository, Worker URL, and concrete smoke results.
+4. add route-specific title, description, canonical URL, Open Graph, and Twitter metadata in `worker/index.js`;
+5. update the 1200×630 sharing banner and its `public/social/manifest.json` provenance only when the collection artwork needs to change;
+6. deploy with `npm run deploy`;
+7. verify `/`, the new story route, a direct asset request, route refresh, raw crawler metadata, and the social image on `https://stories.asfar.family/`;
+8. report the commit, remote repository, Worker URL, custom domain, and concrete smoke results.
 
 Never describe local files as deployed, and never expose provider credentials in release output.

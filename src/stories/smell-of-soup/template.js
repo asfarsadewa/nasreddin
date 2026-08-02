@@ -110,13 +110,17 @@ export function createStoryTemplate() {
             <span id="voice-label">Voice</span>
             <small id="voice-help">Fully acted narration</small>
           </legend>
-          <div class="language-group__choices" role="radiogroup" aria-labelledby="voice-label">
+          <div class="language-group__choices language-group__choices--three" role="radiogroup" aria-labelledby="voice-label">
             <button class="language-choice" type="button" role="radio" aria-checked="true" data-voice="en">
-              <span><b>EN</b><strong id="voice-english">English</strong></span>
+              <span><b>EN</b><strong data-language-name="english">English</strong></span>
+              <i aria-hidden="true"></i>
+            </button>
+            <button class="language-choice" type="button" role="radio" aria-checked="false" data-voice="zh">
+              <span><b>中</b><strong data-language-name="chinese">中文</strong></span>
               <i aria-hidden="true"></i>
             </button>
             <button class="language-choice" type="button" role="radio" aria-checked="false" data-voice="id">
-              <span><b>ID</b><strong id="voice-indonesian">Bahasa Indonesia</strong></span>
+              <span><b>ID</b><strong data-language-name="indonesian">Bahasa Indonesia</strong></span>
               <i aria-hidden="true"></i>
             </button>
           </div>
@@ -127,13 +131,17 @@ export function createStoryTemplate() {
             <span id="subtitle-label">Subtitles</span>
             <small id="subtitle-help">Choose independently from the voice</small>
           </legend>
-          <div class="language-group__choices language-group__choices--subtitles" role="radiogroup" aria-labelledby="subtitle-label">
+          <div class="language-group__choices language-group__choices--subtitles language-group__choices--four" role="radiogroup" aria-labelledby="subtitle-label">
             <button class="language-choice" type="button" role="radio" aria-checked="false" data-subtitle="en">
-              <span><b>CC</b><strong id="subtitle-english">English</strong></span>
+              <span><b>CC</b><strong data-language-name="english">English</strong></span>
+              <i aria-hidden="true"></i>
+            </button>
+            <button class="language-choice" type="button" role="radio" aria-checked="false" data-subtitle="zh">
+              <span><b>CC</b><strong data-language-name="chinese">中文</strong></span>
               <i aria-hidden="true"></i>
             </button>
             <button class="language-choice" type="button" role="radio" aria-checked="true" data-subtitle="id">
-              <span><b>CC</b><strong id="subtitle-indonesian">Bahasa Indonesia</strong></span>
+              <span><b>CC</b><strong data-language-name="indonesian">Bahasa Indonesia</strong></span>
               <i aria-hidden="true"></i>
             </button>
             <button class="language-choice" type="button" role="radio" aria-checked="false" data-subtitle="off">

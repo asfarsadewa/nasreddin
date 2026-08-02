@@ -1,0 +1,21 @@
+{
+  "story": "smell-of-soup",
+  "generated": "2026-08-02",
+  "voice": {
+    "provider": "Gemini TTS",
+    "model": "gemini-3.1-flash-tts-preview",
+    "format": "wav_pcm_s16le_24000_mono",
+    "languages": ["en-US", "zh-CN", "id-ID"],
+    "linesPerLanguage": 12
+  },
+  "music": {
+    "provider": "ElevenLabs Music",
+    "model": "music_v2",
+    "format": "mp3_48000_192",
+    "cues": [
+      { "file": "music/opening-theme.mp3", "durationMs": 28000, "songId": "O9jzFJq25rfkzuFL1m9I" },
+      { "file": "music/market-ambience.mp3", "durationMs": 42000, "songId": "ipEXwT4HKKll8D3Qp1YU" },
+      { "file": "music/ending-theme.mp3", "durationMs": 28000, "songId": "D7rHdUFoDpJE1k8buyPH" }
+    ]
+  }
+}

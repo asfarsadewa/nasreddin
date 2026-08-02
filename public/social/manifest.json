@@ -1,0 +1,11 @@
+{
+  "asset": "wisdom-short-stories-og.png",
+  "generated": "2026-08-02",
+  "provider": "OpenAI",
+  "model": "gpt-image-2",
+  "purpose": "Open Graph and Twitter collection banner",
+  "promptSummary": "A cinematic twilight diptych joining an Anatolian soup cauldron and an ancient Chinese bronze bell, with steam becoming sound waves; painterly low-poly materials in ink navy, jade, copper, saffron, and cinnabar; no text or logos.",
+  "sourceDimensions": "1731x909",
+  "publishedDimensions": "1200x630",
+  "optimization": "High-quality bicubic downsample to the standard 1.91:1 social-card canvas."
+}

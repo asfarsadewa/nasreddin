@@ -32,7 +32,7 @@ const STORIES = [
   {
     slug: 'smell-of-soup', lines: SOUP_LINES, tracks: SOUP_AUDIO_TRACKS,
     cameras: SOUP_CAMERA_POSES, ui: SOUP_UI_COPY, music: SOUP_MUSIC_CUES,
-    languages: ['en', 'id'], createTemplate: createSoupTemplate,
+    languages: ['en', 'zh', 'id'], createTemplate: createSoupTemplate,
     createAudio: () => new SoupAudio(SOUP_LINES, SOUP_AUDIO_TRACKS, SOUP_MUSIC_CUES, 'en'),
     timing: { lead: 1.1, gap: 0.48, tail: 2.8 }, defaults: { voice: 'en', subtitle: 'id' },
   },

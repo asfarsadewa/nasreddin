@@ -90,6 +90,19 @@
   vertical-align: 0.12em;
 }
 
+html[lang='zh-CN'] .opening h1 {
+  max-width: 720px;
+  font-family: 'Noto Serif SC', 'Eczar', serif;
+  font-size: clamp(3.7rem, 8vw, 8rem);
+  line-height: 0.95;
+  letter-spacing: 0.03em;
+}
+
+html[lang='zh-CN'] .captions__line,
+html[lang='zh-CN'] .language-choice strong {
+  font-family: 'Noto Sans SC', 'Manrope', sans-serif;
+}
+
 .opening__deck {
   max-width: 480px;
   margin: 2.1rem 0 1.8rem;
@@ -558,6 +571,14 @@
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.language-group__choices--three {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.language-group__choices--four {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
 .language-choice {
   position: relative;
   display: flex;
@@ -728,7 +749,8 @@
     padding: 1.2rem;
   }
 
-  .language-group__choices--subtitles { grid-template-columns: 1fr; }
+  .language-group__choices--three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .language-group__choices--four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .language-group__choices--subtitles .language-choice { min-height: 3.35rem; }
 }
 
@@ -739,6 +761,8 @@
   .language-launch--hud { min-width: 4.7rem; padding-inline: 0.5rem; }
   .icon-button { width: 2.35rem; height: 2.35rem; }
   .ending__actions { flex-direction: column; gap: 0.5rem; }
+  .language-group__choices--three { grid-template-columns: 1fr; }
+  .language-group__choices--three .language-choice { min-height: 3.15rem; }
 }
 
 @media (max-height: 620px) and (orientation: landscape) {

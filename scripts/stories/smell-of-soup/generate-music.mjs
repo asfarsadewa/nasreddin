@@ -24,7 +24,7 @@ const cues = [
   },
 ];
 
-const outputDirectory = resolve('public/audio/music');
+const outputDirectory = resolve('public/audio/stories/smell-of-soup/music');
 await mkdir(outputDirectory, { recursive: true });
 
 for (const cue of cues) {
