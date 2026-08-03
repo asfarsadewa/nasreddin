@@ -1,0 +1,26 @@
+{
+  "id": "tiger_and_dried_persimmon_id",
+  "language": "id-ID",
+  "style": "Cerita rakyat Korea klasik yang berlangsung pada malam dingin di desa pegunungan. Bahasa Indonesia baku yang luwes, hangat, dan sinematik, dengan humor bersahaja serta tempo yang meningkat seiring membesarnya kesalahpahaman. Jangan kekanak-kanakan, berlebihan, teatrikal, atau seperti iklan. Sisakan napas alami singkat pada akhir setiap baris. Ucapkan gotgam sebagai got-gam, sebutan Korea untuk kesemek kering.",
+  "mode": "per_line",
+  "speakers": [
+    { "name": "Narator", "voice": "Charon", "style": "Pendongeng dewasa yang hangat, tenang, dan tajam mengamati, dengan kelucuan yang sangat halus tanpa menyimpulkan moral." },
+    { "name": "Ibu", "voice": "Kore", "style": "Seorang ibu yang lelah tetapi penuh kasih sedang menenangkan bayi pada malam hari; lembut, praktis, dan tidak cemas." },
+    { "name": "Pencuri Sapi", "voice": "Puck", "style": "Pemuda yang berbisik kepada dirinya sendiri dalam gelap, berhati-hati tetapi senang karena merasa sedang beruntung." },
+    { "name": "Harimau", "voice": "Orus", "style": "Harimau besar dengan suara berat yang mendadak pecah oleh ketakutan sungguhan; mendesak tetapi tidak mengaum." }
+  ],
+  "lines": [
+    { "speaker": "Narator", "text": "Pada suatu malam yang dingin, seekor harimau lapar turun dari gunung dan menyelinap ke sebuah desa.", "direction": "Buka dengan tenang dan luas; beri bobot pada malam dingin dan harimau lapar tanpa terdengar mengancam.", "file": "01_narrator_descends.wav" },
+    { "speaker": "Narator", "text": "Dari bawah atap sebuah rumah, ia mendengar bayi menangis lalu mendekati jendela kertas yang bercahaya hangat.", "direction": "Arahkan pendengar dari gunung yang luas menuju jendela hangat; percepat sedikit pada bagian mendekati.", "file": "02_narrator_cry.wav" },
+    { "speaker": "Ibu", "text": "Sudahlah, jangan menangis. Nanti harimau mendengarmu lalu datang.", "direction": "Rendah dan menenangkan, seperti peringatan tidur yang biasa; tanpa rasa takut atau drama.", "file": "03_mother_tiger.wav" },
+    { "speaker": "Narator", "text": "Tangis bayi itu malah semakin keras. Sang harimau tertegun. Anak sekecil ini sungguh tidak takut kepadanya?", "direction": "Jatuhkan dua kalimat pertama dengan humor kering, lalu hadirkan rasa tidak percaya yang melukai harga diri harimau.", "file": "04_narrator_unafraid.wav" },
+    { "speaker": "Ibu", "text": "Nah, lihat. Kesemek kering.", "direction": "Lembut dan wajar, seperti menawarkan makanan kecil yang akrab bagi anak.", "file": "05_mother_persimmon.wav" },
+    { "speaker": "Narator", "text": "Tangis itu langsung berhenti. Sang harimau gemetar. Makhluk bernama gotgam ini pasti lebih mengerikan daripada harimau!", "direction": "Mulai dengan kejutan yang tajam, lalu besarkan kalimat terakhir menjadi rasa takjub yang sungguh-sungguh dan lucu, tanpa berteriak.", "file": "06_narrator_gotgam.wav" },
+    { "speaker": "Narator", "text": "Pada malam yang sama, seorang pencuri sapi menyelinap ke kandang, meraba-raba dalam gelap mencari sapi terkuat.", "direction": "Kembali ke suasana pelan dan diam-diam; buat kegelapan terasa nyata dan sisakan sedikit kelucuan yang mengetahui apa yang akan terjadi.", "file": "07_narrator_thief.wav" },
+    { "speaker": "Pencuri Sapi", "text": "Yang ini! Bulunya agak lebat... tetapi kuat.", "direction": "Kepuasan dalam bisikan, keraguan pada bulunya agak lebat, lalu meyakinkan diri pada akhir kalimat.", "file": "08_thief_cow.wav" },
+    { "speaker": "Narator", "text": "Ia naik ke punggung harimau. Yang satu mengira telah menemukan sapi; yang lain mengira gotgam telah menangkapnya.", "direction": "Jelas dan seimbang; perlakukan dua pikiran keliru itu sebagai pasangan kelucuan yang setara.", "file": "09_narrator_mounts.wav" },
+    { "speaker": "Harimau", "text": "Gotgam menangkapku! Lari!", "direction": "Suara berat yang tiba-tiba ketakutan, mendesak dan terengah; lari adalah perintah kepada dirinya sendiri.", "file": "10_tiger_caught.wav" },
+    { "speaker": "Narator", "text": "Harimau melesat ke hutan, sementara si pencuri berpegangan erat—yang satu takut pada makhluk di atasnya, yang lain pada harimau di bawahnya.", "direction": "Irama kejaran yang cepat dan bersih; perlambat sedikit setelah tanda pisah agar ketakutan yang saling berkaca terasa.", "file": "11_narrator_race.wav" },
+    { "speaker": "Narator", "text": "Saat fajar, si pencuri melihat belang lalu melompat ke pohon pinus. Harimau lari ke arah lain. Keduanya tidak menoleh. Kesemek kering itu tetap hanya santapan si bayi.", "direction": "Selesaikan dengan cepat, lalu lembutkan dan perlambat kalimat terakhir dengan kehangatan yang bersahaja; jangan menggurui.", "file": "12_narrator_dawn.wav" }
+  ]
+}

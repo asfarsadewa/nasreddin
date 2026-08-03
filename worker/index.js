@@ -26,6 +26,12 @@ export const SOCIAL_METADATA = Object.freeze({
     canonicalPath: '/stories/yan-er-dao-ling/',
     type: 'article',
   },
+  '/stories/tiger-and-dried-persimmon': {
+    title: 'The Tiger and the Dried Persimmon | Wisdom Short Stories',
+    description: 'A classic Korean folktale about a crying child, a cattle thief, and the tiny dried persimmon that sends a tiger running—cinematically told in English, Chinese, and Indonesian.',
+    canonicalPath: '/stories/tiger-and-dried-persimmon/',
+    type: 'article',
+  },
 });
 
 function normalizePath(pathname) {

@@ -5,10 +5,11 @@ A multilingual collection of timeless tales retold as short cinematic web experi
 - [Open the collection](https://stories.asfar.family/)
 - [Watch Story 01: The Smell of Soup & The Sound of Money](https://stories.asfar.family/stories/smell-of-soup/)
 - [Watch Story 02: 掩耳盗铃](https://stories.asfar.family/stories/yan-er-dao-ling/)
+- Story 03 is in local production: The Tiger and the Dried Persimmon
 
-The first story is a Three.js retelling of the Nasreddin Hodja folktale with fully acted English, Mandarin, and Indonesian performances. The second retells the Chinese fable 掩耳盗铃 with the same three-language voice-and-subtitle contract, a moonlit bronze-bell courtyard, a perceptual muffling sequence, original music, and authored cinematic cameras.
+The first story is a Three.js retelling of the Nasreddin Hodja folktale with fully acted English, Mandarin, and Indonesian performances. The second retells the Chinese fable 掩耳盗铃 with the same three-language voice-and-subtitle contract, a moonlit bronze-bell courtyard, a perceptual muffling sequence, original music, and authored cinematic cameras. The third brings the Korean folktale 호랑이와 곶감 into an ink-and-hanji mountain night built around instanced persimmons, pines, roof tiles, and tiger stripes.
 
-Default playback is English voice + Indonesian subtitles for Story 01, and Mandarin voice + English subtitles for Story 02.
+Default playback is English voice + Indonesian subtitles for Story 01, Mandarin voice + English subtitles for Story 02, and Indonesian voice + Chinese subtitles for Story 03.
 
 ## Run it
 
@@ -79,19 +80,18 @@ Read [AGENTS.md](AGENTS.md) for the repository contract and [docs/STORY_PRODUCTI
 
 All production WAVs are committed. A contributor can run, test, and extend the application without Gemini, ElevenLabs, provider keys, or any Codex skill installed.
 
-The narration scripts, Gemini voices, and performance directions for each story live under `public/audio/stories/<slug>/voice/{en,zh,id}/manifest.json`. Maintainers generated them with the locally installed `gemini-tts` Codex skill. The skill is intentionally not vendored: it is generation tooling with its own release cycle, while this repository keeps the durable inputs, outputs, filenames, and provenance. To regenerate Story 01, install that skill locally, set `GEMINI_API_KEY`, dry-run each manifest first, then run:
+The narration scripts, Gemini voices, and performance directions for each story live under `public/audio/stories/<slug>/voice/{en,zh,id}/manifest.json`. Maintainers generated them with the optional, locally installed `gemini-tts` Codex skill. That skill is maintainer-local tooling: it is not part of this repository, is not required to run or test the site, and may live at a different path on every machine. The repository owns the durable manifests, generated WAVs, filenames, and provenance. To regenerate a voice, install the skill locally, set `GEMINI_API_KEY`, dry-run first, and substitute your own local skill path:
 
 ```bash
-python C:/Users/asfar/.codex/skills/gemini-tts/scripts/gemini_tts.py manifest public/audio/stories/smell-of-soup/voice/en/manifest.json --out-dir public/audio/stories/smell-of-soup/voice/en --overwrite
-python C:/Users/asfar/.codex/skills/gemini-tts/scripts/gemini_tts.py manifest public/audio/stories/smell-of-soup/voice/zh/manifest.json --out-dir public/audio/stories/smell-of-soup/voice/zh --overwrite
-python C:/Users/asfar/.codex/skills/gemini-tts/scripts/gemini_tts.py manifest public/audio/stories/smell-of-soup/voice/id/manifest.json --out-dir public/audio/stories/smell-of-soup/voice/id --overwrite
+python <path-to-local-gemini-tts-skill>/scripts/gemini_tts.py manifest public/audio/stories/<slug>/voice/<lang>/manifest.json --out-dir public/audio/stories/<slug>/voice/<lang> --dry-run
+python <path-to-local-gemini-tts-skill>/scripts/gemini_tts.py manifest public/audio/stories/<slug>/voice/<lang>/manifest.json --out-dir public/audio/stories/<slug>/voice/<lang> --overwrite
 ```
 
 Each story records combined generation provenance in its namespaced `audio-manifest.json`.
 
 ## Music assets
 
-The opening theme, looping market ambience, and ending theme are original instrumental cues generated with ElevenLabs Music v2. Sound effects were designed with the local `sound-effects` skill and captured in repo-owned generation scripts and manifests. Those skills are not runtime dependencies and are not vendored. Story 01 metadata lives under `public/audio/stories/smell-of-soup/`, and its executable generator is namespaced under `scripts/stories/smell-of-soup/`. To regenerate the MP3 files, set `ELEVENLABS_API_KEY`, then run:
+The original instrumental cues were generated with ElevenLabs Music v2. Sound effects were prompt-designed with the optional, locally installed `sound-effects` Codex skill. Both are maintainer-local production tools, not runtime dependencies. Unlike the local skills, the executable ElevenLabs generation scripts and complete prompts are repository-owned and namespaced under `scripts/stories/<slug>/`; generated metadata lives under `public/audio/stories/<slug>/`. To regenerate MP3 files, no Codex skill path is needed: set `ELEVENLABS_API_KEY`, then run the relevant repository script.
 
 ```bash
 npm run audio:music
@@ -104,4 +104,11 @@ Story 02's namespaced music and effects can be regenerated with:
 ```bash
 npm run audio:music:yan-er-dao-ling
 npm run audio:sfx:yan-er-dao-ling
+```
+
+Story 03 uses the same repository-owned boundary:
+
+```bash
+npm run audio:music:tiger-and-dried-persimmon
+npm run audio:sfx:tiger-and-dried-persimmon
 ```

@@ -19,6 +19,19 @@ function languageControl(language, copy) {
 }
 
 function storyVisual(story) {
+  if (story.cover === 'persimmon') {
+    return `
+      <div class="story-card__visual story-card__visual--persimmon" aria-hidden="true">
+        <span class="story-card__number">${story.sequence}</span>
+        <div class="story-card__persimmon-moon"></div>
+        <div class="story-card__pine"><i></i><i></i><i></i></div>
+        <div class="story-card__tiger"><i></i><i></i><i></i><b></b></div>
+        <div class="story-card__persimmons"><i></i><i></i><i></i><i></i><i></i></div>
+        <span class="story-card__hangul">호랑이와<br>곶감</span>
+      </div>
+    `;
+  }
+
   if (story.cover === 'bell') {
     return `
       <div class="story-card__visual story-card__visual--bell" aria-hidden="true">

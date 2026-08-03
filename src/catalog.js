@@ -135,6 +135,40 @@ export const STORIES = [
     languages: '中文 · EN · ID',
     load: () => import('./stories/yan-er-dao-ling/entry.js'),
   },
+  {
+    slug: 'tiger-and-dried-persimmon',
+    path: '/stories/tiger-and-dried-persimmon',
+    sequence: '03',
+    status: 'available',
+    cover: 'persimmon',
+    title: {
+      en: 'The Tiger and the Dried Persimmon',
+      id: 'Harimau dan Kesemek Kering',
+      zh: '老虎与柿饼',
+    },
+    description: {
+      en: 'A crying child, one small dried persimmon, and two strangers racing through the dark in mutual terror.',
+      id: 'Seorang anak yang menangis, sebutir kesemek kering, dan dua sosok yang berlari dalam gelap karena sama-sama ketakutan.',
+      zh: '一个哭闹的孩子、一枚小小的柿饼，以及两个在黑夜里彼此吓得狂奔的陌生人。',
+    },
+    tradition: {
+      en: 'A Korean folktale',
+      id: 'Cerita rakyat Korea',
+      zh: '韩国民间故事',
+    },
+    duration: {
+      en: 'About 2 minutes',
+      id: 'Sekitar 2 menit',
+      zh: '约 2 分钟',
+    },
+    format: {
+      en: '3D animation · Trilingual voice',
+      id: 'Animasi 3D · Suara trilingual',
+      zh: '3D 动画 · 三语配音',
+    },
+    languages: '中文 · EN · ID',
+    load: () => import('./stories/tiger-and-dried-persimmon/entry.js'),
+  },
 ];
 
 export function normalizePath(pathname) {

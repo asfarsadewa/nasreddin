@@ -15,6 +15,12 @@ import {
   SFX_CUES as BELL_SFX,
   STORY_LINES as BELL_LINES,
 } from '../src/stories/yan-er-dao-ling/story.js';
+import {
+  AUDIO_TRACKS as TIGER_TRACKS,
+  MUSIC_CUES as TIGER_MUSIC,
+  SFX_CUES as TIGER_SFX,
+  STORY_LINES as TIGER_LINES,
+} from '../src/stories/tiger-and-dried-persimmon/story.js';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const fromPublicUrl = (url) => join(ROOT, 'public', ...url.replace(/^\//, '').split('/'));
@@ -79,6 +85,13 @@ const VOICE_PRODUCTIONS = [
       join(ROOT, `public/audio/stories/yan-er-dao-ling/voice/${language}/manifest.json`),
     ])),
   },
+  {
+    slug: 'tiger-and-dried-persimmon', lines: TIGER_LINES, tracks: TIGER_TRACKS,
+    manifests: Object.fromEntries(['en', 'zh', 'id'].map((language) => [
+      language,
+      join(ROOT, `public/audio/stories/tiger-and-dried-persimmon/voice/${language}/manifest.json`),
+    ])),
+  },
 ];
 
 for (const production of VOICE_PRODUCTIONS) {
@@ -115,6 +128,8 @@ test('all referenced score and effect cues are valid, non-trivial MP3 files', as
     ...Object.fromEntries(Object.entries(SOUP_MUSIC).map(([name, url]) => [`soup:${name}`, url])),
     ...Object.fromEntries(Object.entries(BELL_MUSIC).map(([name, url]) => [`bell:music:${name}`, url])),
     ...Object.fromEntries(Object.entries(BELL_SFX).map(([name, url]) => [`bell:sfx:${name}`, url])),
+    ...Object.fromEntries(Object.entries(TIGER_MUSIC).map(([name, url]) => [`tiger:music:${name}`, url])),
+    ...Object.fromEntries(Object.entries(TIGER_SFX).map(([name, url]) => [`tiger:sfx:${name}`, url])),
   };
   assert.equal(new Set(Object.values(cues)).size, Object.values(cues).length, 'each score/effect cue should have its own public asset');
   for (const [name, url] of Object.entries(cues)) assertMp3(await readFile(fromPublicUrl(url)), name);
@@ -141,5 +156,17 @@ test('audio provenance manifests cover every generated score and effect cue', as
   assert.deepEqual(
     bellManifest.soundEffects.cues.map((cue) => `/audio/stories/yan-er-dao-ling/${cue.file}`).sort(),
     Object.values(BELL_SFX).sort(),
+  );
+
+  const tigerManifest = await readJson(join(ROOT, 'public/audio/stories/tiger-and-dried-persimmon/audio-manifest.json'));
+  assert.equal(tigerManifest.voice.linesPerLanguage, TIGER_LINES.length);
+  assert.deepEqual(tigerManifest.voice.languages.sort(), ['en-US', 'id-ID', 'zh-CN']);
+  assert.deepEqual(
+    tigerManifest.music.cues.map((cue) => `/audio/stories/tiger-and-dried-persimmon/${cue.file}`).sort(),
+    Object.values(TIGER_MUSIC).sort(),
+  );
+  assert.deepEqual(
+    tigerManifest.soundEffects.cues.map((cue) => `/audio/stories/tiger-and-dried-persimmon/${cue.file}`).sort(),
+    Object.values(TIGER_SFX).sort(),
   );
 });

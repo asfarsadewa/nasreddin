@@ -20,6 +20,16 @@ import {
   UI_COPY as BELL_UI_COPY,
 } from '../src/stories/yan-er-dao-ling/story.js';
 import { createStoryTemplate as createBellTemplate } from '../src/stories/yan-er-dao-ling/template.js';
+import { StoryAudio as TigerAudio } from '../src/stories/tiger-and-dried-persimmon/audio.js';
+import {
+  AUDIO_TRACKS as TIGER_AUDIO_TRACKS,
+  CAMERA_POSES as TIGER_CAMERA_POSES,
+  MUSIC_CUES as TIGER_MUSIC_CUES,
+  SFX_CUES as TIGER_SFX_CUES,
+  STORY_LINES as TIGER_LINES,
+  UI_COPY as TIGER_UI_COPY,
+} from '../src/stories/tiger-and-dried-persimmon/story.js';
+import { createStoryTemplate as createTigerTemplate } from '../src/stories/tiger-and-dried-persimmon/template.js';
 
 const REQUIRED_TEMPLATE_IDS = [
   'experience', 'canvas-stage', 'opening', 'story-title', 'begin', 'load-status',
@@ -42,6 +52,13 @@ const STORIES = [
     languages: ['zh', 'en', 'id'], createTemplate: createBellTemplate,
     createAudio: () => new BellAudio(BELL_LINES, BELL_AUDIO_TRACKS, BELL_MUSIC_CUES, BELL_SFX_CUES, 'zh'),
     timing: { lead: 1.2, gap: 0.5, tail: 3.2 }, defaults: { voice: 'zh', subtitle: 'en' },
+  },
+  {
+    slug: 'tiger-and-dried-persimmon', lines: TIGER_LINES, tracks: TIGER_AUDIO_TRACKS,
+    cameras: TIGER_CAMERA_POSES, ui: TIGER_UI_COPY, music: TIGER_MUSIC_CUES, sfx: TIGER_SFX_CUES,
+    languages: ['en', 'zh', 'id'], createTemplate: createTigerTemplate,
+    createAudio: () => new TigerAudio(TIGER_LINES, TIGER_AUDIO_TRACKS, TIGER_MUSIC_CUES, TIGER_SFX_CUES, 'id'),
+    timing: { lead: 1.15, gap: 0.52, tail: 3.4 }, defaults: { voice: 'id', subtitle: 'zh' },
   },
 ];
 

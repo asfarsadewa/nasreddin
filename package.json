@@ -16,6 +16,8 @@
     "audio:music:smell-of-soup": "node scripts/stories/smell-of-soup/generate-music.mjs",
     "audio:music:yan-er-dao-ling": "node scripts/stories/yan-er-dao-ling/generate-music.mjs",
     "audio:sfx:yan-er-dao-ling": "node scripts/stories/yan-er-dao-ling/generate-sfx.mjs",
+    "audio:music:tiger-and-dried-persimmon": "node scripts/stories/tiger-and-dried-persimmon/generate-music.mjs",
+    "audio:sfx:tiger-and-dried-persimmon": "node scripts/stories/tiger-and-dried-persimmon/generate-sfx.mjs",
     "deploy:dry-run": "npm run build && wrangler deploy --dry-run",
     "deploy": "npm run build && wrangler deploy"
   },

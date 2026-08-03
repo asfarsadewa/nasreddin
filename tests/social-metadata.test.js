@@ -12,6 +12,7 @@ test('every public route has canonical social metadata on the production origin'
   assert.deepEqual(Object.keys(SOCIAL_METADATA).sort(), [
     '/',
     '/stories/smell-of-soup',
+    '/stories/tiger-and-dried-persimmon',
     '/stories/yan-er-dao-ling',
   ]);
 

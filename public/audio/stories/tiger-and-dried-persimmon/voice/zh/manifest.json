@@ -1,0 +1,26 @@
+{
+  "id": "tiger_and_dried_persimmon_zh",
+  "language": "zh-CN",
+  "style": "一则发生在寒冷山村夜色中的韩国经典民间故事。普通话自然、清晰、亲切，有电影感；误会越滚越大时节奏随之加快，幽默克制而不低幼、不夸张、不像广告。每句结尾留出短暂自然呼吸。‘gotgam’可按中文台词直接读作‘柿饼’。",
+  "mode": "per_line",
+  "speakers": [
+    { "name": "旁白", "voice": "Charon", "style": "成熟温暖的说书人，观察细致，从容而带一点不动声色的笑意，不替故事总结道理。" },
+    { "name": "母亲", "voice": "Kore", "style": "夜里哄孩子的母亲，略有倦意却温柔踏实，语气平常，不惊慌。" },
+    { "name": "偷牛贼", "voice": "Puck", "style": "在黑暗里自言自语的年轻男子，小心翼翼，又为自以为走运而暗自得意。" },
+    { "name": "老虎", "voice": "Orus", "style": "体形威猛、声音低沉的老虎，却突然被真心实意的恐惧击中，急迫但不要咆哮。" }
+  ],
+  "lines": [
+    { "speaker": "旁白", "text": "寒冷的夜里，一只饥饿的老虎从山上下来，悄悄走进一个村庄。", "direction": "安静、开阔地引入寒夜与饥饿的老虎，不要渲染凶险。", "file": "01_narrator_descends.wav" },
+    { "speaker": "旁白", "text": "它伏在一户人家的屋檐下，听见屋里有个孩子哭个不停，便靠近那扇透着暖光的纸窗。", "direction": "从山村全景收进温暖纸窗，后半句略微加快，带出老虎靠近的动作。", "file": "02_narrator_cry.wav" },
+    { "speaker": "母亲", "text": "别哭了，老虎听见就会来。", "direction": "声音轻柔，是寻常的哄睡话，不要真的害怕。", "file": "03_mother_tiger.wav" },
+    { "speaker": "旁白", "text": "孩子反而哭得更响。老虎愣住了：这么小的孩子，居然不怕我？", "direction": "前两处落点干净，冒号后带出老虎自尊受挫的难以置信。", "file": "04_narrator_unafraid.wav" },
+    { "speaker": "母亲", "text": "来，看，一枚柿饼。", "direction": "温柔、平常，像递出孩子熟悉的小点心。", "file": "05_mother_persimmon.wav" },
+    { "speaker": "旁白", "text": "哭声立刻停了。老虎浑身一颤：原来这个叫“柿饼”的家伙，比老虎还可怕！", "direction": "先以短句制造意外，再把最后一句舒展开，带真诚而滑稽的敬畏，不要喊叫。", "file": "06_narrator_gotgam.wav" },
+    { "speaker": "旁白", "text": "同一夜，一个偷牛贼溜进牛棚，摸黑寻找最壮的牛。", "direction": "重新压低声音，动作鬼祟，‘摸黑’要有空间感，留一点知道误会将至的笑意。", "file": "07_narrator_thief.wav" },
+    { "speaker": "偷牛贼", "text": "就这头！毛是多了点……倒挺结实。", "direction": "压低声音暗自高兴，‘毛是多了点’疑惑停顿，最后自我说服。", "file": "08_thief_cow.wav" },
+    { "speaker": "旁白", "text": "他翻身骑上老虎。一个以为找到了牛，另一个以为被柿饼抓住了。", "direction": "句式清楚对称，把两边的误会落成同一组笑点。", "file": "09_narrator_mounts.wav" },
+    { "speaker": "老虎", "text": "不好！柿饼抓住我了！快跑！", "direction": "低沉嗓音突然真心害怕，急促喘息；‘快跑’是催自己逃命。", "file": "10_tiger_caught.wav" },
+    { "speaker": "旁白", "text": "老虎冲进山林，贼死死抱住；一个怕背上的怪物，另一个怕身下的老虎。", "direction": "节奏快速清楚，分号后略放慢，让两份相反的恐惧同时落地。", "file": "11_narrator_race.wav" },
+    { "speaker": "旁白", "text": "天亮时，贼看清虎纹，纵身跳上松树；老虎也朝另一边逃去。谁都没回头。那枚柿饼，仍只是孩子的点心。", "direction": "结局明快，最后一句放慢、温暖、干净，只有余味，不要说教。", "file": "12_narrator_dawn.wav" }
+  ]
+}

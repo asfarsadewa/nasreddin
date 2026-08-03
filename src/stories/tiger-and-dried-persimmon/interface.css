@@ -1,0 +1,248 @@
+@import '../smell-of-soup/interface.css';
+
+.persimmon-story {
+  --night: #07141d;
+  --lapis: #18334a;
+  --copper: #9e3b22;
+  --saffron: #e4612d;
+  --ivory: #eee2c6;
+  --turquoise: #3f654f;
+  --muted: rgba(238, 226, 198, 0.66);
+  font-family: 'Manrope', 'Noto Sans SC', sans-serif;
+  background: #07141d;
+}
+
+.persimmon-wash {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 22% 23%, rgba(228, 97, 45, 0.16), transparent 18%),
+    linear-gradient(112deg, rgba(238, 226, 198, 0.025), transparent 38%, rgba(24, 51, 74, 0.16));
+  mix-blend-mode: screen;
+  transition: opacity 0.7s ease, filter 0.7s ease;
+}
+
+.persimmon-story.is-feared .persimmon-wash {
+  opacity: 0.9;
+  filter: saturate(1.5) contrast(1.08);
+  background:
+    radial-gradient(circle at 44% 47%, rgba(228, 97, 45, 0.34), transparent 15%),
+    radial-gradient(circle at 66% 28%, rgba(228, 97, 45, 0.17), transparent 12%),
+    linear-gradient(112deg, rgba(238, 226, 198, 0.02), transparent 42%);
+}
+
+.persimmon-story.is-running .persimmon-wash {
+  background: repeating-linear-gradient(104deg, transparent 0 8%, rgba(238, 226, 198, 0.045) 8.4% 8.7%, transparent 9.1% 16%);
+}
+
+.persimmon-story .opening {
+  overflow: hidden;
+  background:
+    linear-gradient(90deg, rgba(5, 14, 22, 0.98) 0%, rgba(5, 14, 22, 0.79) 43%, rgba(5, 14, 22, 0.07) 78%, transparent),
+    linear-gradient(180deg, rgba(24, 51, 74, 0.1), transparent 62%);
+}
+
+.persimmon-story .opening::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: clamp(1.2rem, 5vw, 5rem);
+  width: 1px;
+  background: repeating-linear-gradient(180deg, transparent 0 7px, rgba(238, 226, 198, 0.2) 8px 9px);
+  opacity: 0.56;
+}
+
+.persimmon-story .opening__eyebrow,
+.persimmon-story .ending > p,
+.persimmon-story .chapter small,
+.persimmon-story .hud__mark,
+.persimmon-story .captions__speaker {
+  color: #ef7b42;
+}
+
+.opening__hangul {
+  margin: 0 0 0.9rem;
+  color: rgba(238, 226, 198, 0.48);
+  font: 600 clamp(0.66rem, 1vw, 0.78rem)/1 'Noto Sans SC', sans-serif;
+  letter-spacing: 0.26em;
+}
+
+.persimmon-story .opening h1,
+.persimmon-story .ending h2 {
+  font-family: 'Eczar', 'Noto Serif SC', serif;
+}
+
+.persimmon-story .opening h1 {
+  max-width: min(940px, 75vw);
+  font-size: clamp(4.2rem, 9vw, 9.4rem);
+  line-height: 0.78;
+  letter-spacing: -0.065em;
+}
+
+.persimmon-story .opening h1 .opening__join {
+  margin: 0.23em 0 0 0.1em;
+  font-size: 0.53em;
+  letter-spacing: -0.025em;
+  color: rgba(238, 226, 198, 0.9);
+}
+
+.persimmon-story .opening__join i {
+  display: inline;
+  width: auto;
+  height: auto;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  color: #ef7b42;
+  font-size: 1em;
+  transform: none;
+}
+
+html[lang='zh-CN'] .persimmon-story .opening h1 {
+  max-width: 720px;
+  font-family: 'Noto Serif SC', 'Eczar', serif;
+  font-size: clamp(5.4rem, 12vw, 11.5rem);
+  line-height: 0.78;
+  letter-spacing: 0.02em;
+}
+
+html[lang='zh-CN'] .persimmon-story .opening h1 .opening__join {
+  margin-left: 0.72em;
+  font-size: 0.78em;
+}
+
+.persimmon-story .opening__deck {
+  max-width: 560px;
+  font-size: clamp(0.95rem, 1.35vw, 1.13rem);
+}
+
+.opening__fruit {
+  position: absolute;
+  right: clamp(3rem, 10vw, 10rem);
+  bottom: clamp(3rem, 11vh, 8rem);
+  width: clamp(4rem, 7vw, 6.2rem);
+  aspect-ratio: 1.06;
+  border-radius: 44% 44% 52% 52%;
+  background: rgba(228, 97, 45, 0.82);
+  box-shadow: inset 0.8rem -0.8rem rgba(91, 28, 17, 0.22), 0 1.6rem 4rem rgba(0, 0, 0, 0.26);
+  transform: rotate(5deg);
+}
+
+.opening__fruit::before {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  width: 1px;
+  height: 22vh;
+  background: linear-gradient(transparent, rgba(238, 226, 198, 0.58));
+}
+
+.opening__fruit i,
+.opening__fruit i::before,
+.opening__fruit i::after {
+  position: absolute;
+  width: 42%;
+  height: 19%;
+  border-radius: 100% 0;
+  background: #3f654f;
+}
+
+.opening__fruit i { top: -7%; left: 29%; transform: rotate(45deg); }
+.opening__fruit i::before,
+.opening__fruit i::after { content: ''; width: 100%; height: 100%; }
+.opening__fruit i::before { transform: rotate(88deg); }
+.opening__fruit i::after { transform: rotate(-88deg); }
+
+.persimmon-story .begin__disc,
+.persimmon-story .language-choice[aria-checked='true'],
+.persimmon-story .replay {
+  border-color: rgba(239, 123, 66, 0.72);
+}
+
+.persimmon-story .language-launch__pulse,
+.persimmon-story .language-choice[aria-checked='true'] i {
+  background: #e4612d;
+  box-shadow: 0 0 0 3px rgba(228, 97, 45, 0.14);
+}
+
+.persimmon-story .language-panel {
+  border-color: rgba(239, 123, 66, 0.28);
+  border-radius: 0.28rem 1.2rem 0.28rem 1.2rem;
+  background:
+    repeating-linear-gradient(96deg, rgba(238, 226, 198, 0.012) 0 6px, transparent 7px 14px),
+    rgba(7, 20, 29, 0.97);
+  box-shadow: 0 30px 100px rgba(0, 0, 0, 0.64), inset 0 1px rgba(238, 226, 198, 0.06);
+}
+
+.persimmon-story .language-panel::before {
+  background: linear-gradient(90deg, transparent, #e4612d, transparent);
+}
+
+.persimmon-story .language-panel h2,
+.persimmon-story .language-choice strong,
+.persimmon-story .captions__line {
+  font-family: 'Noto Sans SC', 'Manrope', sans-serif;
+}
+
+.persimmon-story .captions__line {
+  max-width: min(920px, calc(100vw - 3rem));
+  text-shadow: 0 3px 18px rgba(0, 0, 0, 0.92);
+}
+
+.persimmon-story .timeline__track i {
+  background: linear-gradient(90deg, #783324, #e4612d, #f0a264);
+}
+
+.persimmon-story .ending {
+  background:
+    radial-gradient(circle at 50% 45%, rgba(228, 97, 45, 0.15), transparent 27%),
+    linear-gradient(rgba(7, 20, 29, 0.7), rgba(7, 20, 29, 0.96));
+}
+
+.persimmon-story .ending::before {
+  content: '호랑이와 곶감';
+  position: absolute;
+  color: rgba(238, 226, 198, 0.045);
+  font: 700 clamp(5rem, 15vw, 15rem)/1 'Noto Serif SC', serif;
+  letter-spacing: -0.08em;
+  white-space: nowrap;
+}
+
+.persimmon-story .ending > * { position: relative; z-index: 1; }
+
+@media (max-width: 700px) {
+  .persimmon-story .opening {
+    background: linear-gradient(0deg, rgba(5, 14, 22, 0.98) 0%, rgba(5, 14, 22, 0.76) 53%, rgba(5, 14, 22, 0.04) 86%);
+  }
+
+  .persimmon-story .opening::before,
+  .opening__fruit { display: none; }
+
+  .opening__hangul { margin-bottom: 0.65rem; }
+
+  .persimmon-story .opening h1 {
+    max-width: 96vw;
+    font-size: clamp(3.15rem, 15vw, 5rem);
+  }
+
+  html[lang='zh-CN'] .persimmon-story .opening h1 {
+    font-size: clamp(4.3rem, 21vw, 6.4rem);
+  }
+
+  .language-group__choices--three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .language-group__choices--four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .persimmon-story .language-group__choices--subtitles .language-choice { min-height: 3.5rem; }
+}
+
+@media (max-width: 430px) {
+  .language-group__choices--three { grid-template-columns: 1fr; }
+  .persimmon-story .language-group__choices--three .language-choice { min-height: 3.15rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .persimmon-wash { transition: none; }
+}

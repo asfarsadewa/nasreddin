@@ -22,11 +22,16 @@ function watchApplicationFailures(page) {
 test('the collection count follows the catalogue and the Indonesian identity is first-class', async ({ page }) => {
   const failures = watchApplicationFailures(page);
   await page.goto('/');
-  await expect(page.locator('.story-card')).toHaveCount(2);
-  await expect(page.locator('[data-story-count]')).toHaveText('2 stories');
+  await expect(page.locator('.story-card')).toHaveCount(3);
+  await expect(page.locator('[data-story-count]')).toHaveText('3 stories');
   await page.locator('[data-site-language="id"]').click();
   await expect(page.locator('#collection-title')).toContainText('Kumpulan KisahTeladan');
-  await expect(page.locator('[data-story-count]')).toHaveText('2 kisah');
+  await expect(page.locator('[data-story-count]')).toHaveText('3 kisah');
+  await page.locator('[data-site-language="zh"]').click();
+  await expect(page.locator('#collection-title')).toContainText('智慧短篇');
+  await expect(page.locator('[data-story-count]')).toHaveText('3 则故事');
+  await page.locator('[data-site-language="en"]').click();
+  await expect(page.locator('[data-story-count]')).toHaveText('3 stories');
   expect(failures).toEqual([]);
 });
 
@@ -42,6 +47,12 @@ const stories = [
     path: '/stories/yan-er-dao-ling/',
     initialVoice: 'zh',
     switchVoice: 'en',
+  },
+  {
+    name: 'The Tiger and the Dried Persimmon',
+    path: '/stories/tiger-and-dried-persimmon/',
+    initialVoice: 'id',
+    switchVoice: 'zh',
   },
 ];
 
@@ -81,6 +92,53 @@ for (const story of stories) {
     expect(failures).toEqual([]);
   });
 }
+
+test('The Tiger and the Dried Persimmon keeps every voice, subtitle, and playback control independent', async ({ page }) => {
+  const failures = watchApplicationFailures(page);
+  await page.goto('/stories/tiger-and-dried-persimmon/');
+  await expect(page.locator('#begin')).toBeEnabled({ timeout: 30_000 });
+  await page.locator('.language-launch--opening').click();
+
+  for (const language of ['en', 'zh', 'id']) {
+    const choice = page.locator(`[data-voice="${language}"]`);
+    if (await choice.getAttribute('aria-checked') !== 'true') await choice.click();
+    await expect(choice).toHaveAttribute('aria-checked', 'true', { timeout: 30_000 });
+    await expect(choice).toHaveAttribute('data-audio-ready', 'true');
+  }
+
+  for (const language of ['en', 'zh', 'id', 'off']) {
+    const choice = page.locator(`[data-subtitle="${language}"]`);
+    await choice.click();
+    await expect(choice).toHaveAttribute('aria-checked', 'true');
+  }
+  await page.locator('[data-subtitle="zh"]').click();
+  await page.keyboard.press('Escape');
+  await expect(page.locator('#language-panel')).toBeHidden();
+
+  await page.locator('#begin').click();
+  await expect(page.locator('#opening')).toHaveAttribute('aria-hidden', 'true');
+
+  await page.locator('#sound-toggle').click();
+  await expect(page.locator('#sound-toggle')).toHaveAttribute('aria-pressed', 'true');
+  await page.locator('#sound-toggle').click();
+  await expect(page.locator('#sound-toggle')).toHaveAttribute('aria-pressed', 'false');
+
+  await page.locator('#music-toggle').click();
+  await expect(page.locator('#music-toggle')).toHaveAttribute('aria-pressed', 'true');
+  await page.locator('#music-toggle').click();
+  await expect(page.locator('#music-toggle')).toHaveAttribute('aria-pressed', 'false');
+
+  await page.locator('#caption-toggle').click();
+  await expect(page.locator('#caption-toggle')).toHaveAttribute('aria-pressed', 'false');
+  await page.locator('#caption-toggle').click();
+  await expect(page.locator('#caption-toggle')).toHaveAttribute('aria-pressed', 'true');
+
+  await page.locator('#play-toggle').click();
+  await expect(page.locator('#play-toggle')).toHaveAttribute('aria-pressed', 'true');
+  await page.locator('#play-toggle').click();
+  await expect(page.locator('#play-toggle')).toHaveAttribute('aria-pressed', 'false');
+  expect(failures).toEqual([]);
+});
 
 test('an unregistered HTML route is a crawler-safe 404', async ({ page }) => {
   const response = await page.goto('/stories/not-on-the-shelf/');

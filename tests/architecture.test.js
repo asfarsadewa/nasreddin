@@ -18,6 +18,7 @@ test('the collection entry remains free of eager Three.js and media imports', as
   const catalog = rootSources[1];
   assert.match(catalog, /load:\s*\(\)\s*=>\s*import\('\.\/stories\/smell-of-soup\/entry\.js'\)/);
   assert.match(catalog, /load:\s*\(\)\s*=>\s*import\('\.\/stories\/yan-er-dao-ling\/entry\.js'\)/);
+  assert.match(catalog, /load:\s*\(\)\s*=>\s*import\('\.\/stories\/tiger-and-dried-persimmon\/entry\.js'\)/);
 
   const app = rootSources[0];
   assert.match(app, /async function mountApplication\(\)/, 'story loading must run outside root-module evaluation');
@@ -25,7 +26,7 @@ test('the collection entry remains free of eager Three.js and media imports', as
 });
 
 test('story entry modules expose only the lazy mount boundary', async () => {
-  for (const slug of ['smell-of-soup', 'yan-er-dao-ling']) {
+  for (const slug of ['smell-of-soup', 'yan-er-dao-ling', 'tiger-and-dried-persimmon']) {
     const entry = await readSource(`src/stories/${slug}/entry.js`);
     assert.match(entry, /export async function mount\(app\)/);
     assert.match(entry, /await import\('\.\/index\.js'\)/);
@@ -41,7 +42,7 @@ test('stories share only the player and audio timeline machinery', async () => {
   assert.match(sharedController, /prefetchLanguages/);
   assert.match(sharedController, /ensureLanguage/);
 
-  for (const slug of ['smell-of-soup', 'yan-er-dao-ling']) {
+  for (const slug of ['smell-of-soup', 'yan-er-dao-ling', 'tiger-and-dried-persimmon']) {
     const [audio, controller] = await Promise.all([
       readSource(`src/stories/${slug}/audio.js`),
       readSource(`src/stories/${slug}/index.js`),
@@ -65,6 +66,8 @@ test('generation scripts use environment credentials and namespaced output paths
     'scripts/stories/smell-of-soup/generate-music.mjs',
     'scripts/stories/yan-er-dao-ling/generate-music.mjs',
     'scripts/stories/yan-er-dao-ling/generate-sfx.mjs',
+    'scripts/stories/tiger-and-dried-persimmon/generate-music.mjs',
+    'scripts/stories/tiger-and-dried-persimmon/generate-sfx.mjs',
   ];
   for (const path of scripts) {
     const source = await readSource(path);
@@ -75,9 +78,22 @@ test('generation scripts use environment credentials and namespaced output paths
   const bellMusic = await readSource(scripts[1]);
   const bellSfx = await readSource(scripts[2]);
   const soupMusic = await readSource(scripts[0]);
+  const tigerMusic = await readSource(scripts[3]);
+  const tigerSfx = await readSource(scripts[4]);
   assert.ok(soupMusic.includes('public/audio/stories/smell-of-soup/music'));
   assert.ok(bellMusic.includes('public/audio/stories/yan-er-dao-ling/music'));
   assert.ok(bellSfx.includes('public/audio/stories/yan-er-dao-ling/sfx'));
+  assert.ok(tigerMusic.includes('public/audio/stories/tiger-and-dried-persimmon/music'));
+  assert.ok(tigerSfx.includes('public/audio/stories/tiger-and-dried-persimmon/sfx'));
+});
+
+test('the persimmon world uses explicit GPU instancing for its repeated visual grammar', async () => {
+  const world = await readSource('src/stories/tiger-and-dried-persimmon/world.js');
+  const instancedConstructions = world.match(/new THREE\.InstancedMesh\(/g) ?? [];
+  assert.ok(instancedConstructions.length >= 5, 'persimmons, pines, roof tiles, and tiger stripes should remain instanced');
+  assert.match(world, /DynamicDrawUsage/);
+  assert.match(world, /instanceMatrix\.needsUpdate\s*=\s*true/);
+  assert.match(world, /setMatrixAt\(/);
 });
 
 test('cold-agent documentation carries the production and validation contracts', async () => {

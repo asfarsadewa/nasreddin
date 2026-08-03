@@ -75,13 +75,13 @@ Add one lazy registry record to `src/catalog.js`. Supply `zh`, `en`, and `id` fo
 
 Use one manifest for each required language (`en`, `zh`, and `id`) and keep character-to-voice casting stable across all lines. Current established casting for **掩耳盗铃** is Charon for narrator, Puck for thief, and Kore for the responding villager in all three languages.
 
-The committed WAVs and manifests are the repository contract. The local `gemini-tts` Codex skill is a maintainer convenience, not a runtime dependency and not something to vendor into this project. A contributor who is not regenerating voices needs no provider account or skill installation.
+The committed WAVs and manifests are the repository contract. The optional `gemini-tts` Codex skill is maintainer-local tooling, not a runtime dependency and not something to vendor into this project. Its installation path is machine-specific. A contributor who is not regenerating voices needs no provider account or skill installation.
 
 First validate without spending generation quota:
 
 ```powershell
 $env:PYTHONUTF8='1'
-python C:/Users/asfar/.codex/skills/gemini-tts/scripts/gemini_tts.py manifest public/audio/stories/<slug>/voice/zh/manifest.json --out-dir public/audio/stories/<slug>/voice/zh --dry-run
+python <path-to-local-gemini-tts-skill>/scripts/gemini_tts.py manifest public/audio/stories/<slug>/voice/zh/manifest.json --out-dir public/audio/stories/<slug>/voice/zh --dry-run
 ```
 
 Then render each language with `--overwrite` only when regeneration is intended. Never place the API key in a command, manifest, log, or tracked file.
@@ -140,6 +140,7 @@ Default combinations are deliberate product decisions:
 
 - Story 01, `smell-of-soup`: English voice + Indonesian subtitles.
 - Story 02, `yan-er-dao-ling`: Mandarin voice + English subtitles.
+- Story 03, `tiger-and-dried-persimmon`: Indonesian voice + Chinese subtitles.
 
 Localize title, deck, button states, loading/error messages, chapters, speaker names, ending copy, accessibility labels, and live announcements. Update `<html lang>`, page title, and description where relevant.
 

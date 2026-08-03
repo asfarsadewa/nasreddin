@@ -1,0 +1,36 @@
+{
+  "story": "tiger-and-dried-persimmon",
+  "generated": "2026-08-03",
+  "sourceNote": "docs/stories/tiger-and-dried-persimmon.md",
+  "voice": {
+    "provider": "Gemini TTS",
+    "model": "gemini-3.1-flash-tts-preview",
+    "format": "wav_pcm_s16le_24000_mono",
+    "languages": ["en-US", "zh-CN", "id-ID"],
+    "linesPerLanguage": 12
+  },
+  "music": {
+    "provider": "ElevenLabs Music",
+    "model": "music_v2",
+    "format": "mp3_48000_192",
+    "license": "Generated for this production under the maintainer's ElevenLabs account terms.",
+    "cues": [
+      { "file": "music/ink-moon-opening.mp3", "durationMs": 28000, "songId": "OFHLMnAWtQWrwwoFwbBt", "promptSummary": "Sparse gayageum, daegeum, and buk opening with a tactile ink-on-hanji motif and restrained comic mystery." },
+      { "file": "music/mountain-night-underscore.mp3", "durationMs": 44000, "songId": "pI5d3q91sMSqCCew5wmd", "promptSummary": "Loop-safe Korean nocturnal underscore with gayageum harmonics, bowed texture, daegeum breath, and a quiet chase pulse." },
+      { "file": "music/dawn-ending.mp3", "durationMs": 28000, "songId": "Q8Ze3lx1N6yPWJO70VDv", "promptSummary": "Warm dawn reprise for gayageum and daegeum that settles the chase with a humane, lightly amused cadence." }
+    ]
+  },
+  "soundEffects": {
+    "provider": "ElevenLabs Sound Effects",
+    "model": "eleven_text_to_sound_v2",
+    "format": "mp3_44100_192",
+    "license": "Generated for this production under the maintainer's ElevenLabs account terms.",
+    "cues": [
+      { "file": "sfx/winter-village-night.mp3", "durationSeconds": 22, "loop": true, "requestId": null, "promptSummary": "Looping cold village air, eaves, sparse leaves, and settling timber without voices or animals." },
+      { "file": "sfx/baby-cry-behind-wall.mp3", "durationSeconds": 6, "loop": false, "requestId": null, "promptSummary": "Natural infant cries heard softly through a closed paper-and-wood wall." },
+      { "file": "sfx/persimmon-offered.mp3", "durationSeconds": 3, "loop": false, "requestId": null, "promptSummary": "Cloth sleeve, dry fruit, and gentle wooden tray contact in close indoor Foley." },
+      { "file": "sfx/cattle-shed-rustle.mp3", "durationSeconds": 4, "loop": false, "requestId": null, "promptSummary": "Quiet latch, straw, cloth shoes, fur, and timber in a dark cattle shed." },
+      { "file": "sfx/tiger-forest-run.mp3", "durationSeconds": 7, "loop": false, "requestId": null, "promptSummary": "Powerful four-beat tiger paws, branches, rider cloth, and breath racing through pine forest." }
+    ]
+  }
+}

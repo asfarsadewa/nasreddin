@@ -1,0 +1,26 @@
+{
+  "id": "tiger_and_dried_persimmon_en",
+  "language": "en-US",
+  "style": "A classic Korean folktale told on a cold mountain-village night. Intimate cinematic delivery with humane, dry comedy and a mounting rhythm of mistaken fear. Never sound childish, broad, theatrical, or commercial. Leave a short natural breath after every line. Pronounce gotgam as got-gahm, the Korean word for dried persimmon.",
+  "mode": "per_line",
+  "speakers": [
+    { "name": "Narrator", "voice": "Charon", "style": "A warm mature storyteller, observant and unhurried, with understated amusement rather than a performed moral." },
+    { "name": "Mother", "voice": "Kore", "style": "A tired but affectionate mother soothing a baby at night; soft, practical, and never alarmed." },
+    { "name": "Cattle thief", "voice": "Puck", "style": "A cautious young man whispering to himself in the dark, pleased with what he thinks is a lucky find." },
+    { "name": "Tiger", "voice": "Orus", "style": "A large proud tiger whose deep voice suddenly cracks with sincere, urgent fear." }
+  ],
+  "lines": [
+    { "speaker": "Narrator", "text": "On a cold night, a hungry tiger came down from the mountain and slipped into a village.", "direction": "Open quietly and visually; give cold night and hungry tiger weight without menace.", "file": "01_narrator_descends.wav" },
+    { "speaker": "Narrator", "text": "Beneath one roof, he heard a baby crying and crept closer to the warm paper window.", "direction": "Draw the listener from the wide mountain into the warm, intimate window; lightly quicken on crept closer.", "file": "02_narrator_cry.wav" },
+    { "speaker": "Mother", "text": "Hush now. A tiger will hear you and come.", "direction": "Low and soothing, an ordinary bedtime warning; no fear or melodrama.", "file": "03_mother_tiger.wav" },
+    { "speaker": "Narrator", "text": "The baby cried even louder. The tiger blinked. Was this tiny child truly not afraid of him?", "direction": "Land the first two sentences dryly, then let the final question carry the tiger's wounded disbelief.", "file": "04_narrator_unafraid.wav" },
+    { "speaker": "Mother", "text": "Here, look. A dried persimmon.", "direction": "Gentle and matter-of-fact, as if offering a familiar small treat.", "file": "05_mother_persimmon.wav" },
+    { "speaker": "Narrator", "text": "The crying stopped at once. The tiger trembled. This thing called gotgam must be more terrible than a tiger!", "direction": "Begin with crisp surprise; expand the final sentence into sincere comic awe, never a shout.", "file": "06_narrator_gotgam.wav" },
+    { "speaker": "Narrator", "text": "That same night, a cattle thief slipped into the shed, feeling through the darkness for the strongest cow.", "direction": "Reset into furtive quiet and make the darkness spatial; retain a trace of knowing amusement.", "file": "07_narrator_thief.wav" },
+    { "speaker": "Cattle thief", "text": "This one! A little too hairy... but strong.", "direction": "Whispered satisfaction, then puzzled hesitation at hairy, finishing with self-reassurance.", "file": "08_thief_cow.wav" },
+    { "speaker": "Narrator", "text": "He climbed onto the tiger. One thought he had found a cow; the other thought gotgam had caught him.", "direction": "Clear and balanced; treat the two mistaken thoughts as a matched comic pair.", "file": "09_narrator_mounts.wav" },
+    { "speaker": "Tiger", "text": "The gotgam has me! Run!", "direction": "Deep but suddenly terrified, urgent and breathless; run is a private command to himself.", "file": "10_tiger_caught.wav" },
+    { "speaker": "Narrator", "text": "The tiger raced into the forest while the thief clung tight—one afraid of the thing above, the other of the tiger below.", "direction": "Fast, clean chase rhythm; slow just enough after the dash for the mirrored fear to register.", "file": "11_narrator_race.wav" },
+    { "speaker": "Narrator", "text": "At dawn, the thief saw stripes and leapt into a pine. The tiger fled the other way. Neither looked back. The dried persimmon was still only the baby’s supper.", "direction": "Resolve swiftly, then soften and slow the final sentence with warm, dry clarity; do not preach.", "file": "12_narrator_dawn.wav" }
+  ]
+}
