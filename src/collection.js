@@ -38,7 +38,7 @@ function storyVisual(story) {
         <span class="story-card__number">${story.sequence}</span>
         <div class="story-card__bell-moon"></div>
         <div class="story-card__bell-frame"><i></i><i></i><b></b></div>
-        <div class="story-card__bell"><i></i></div>
+        <div class="story-card__bell"><b></b><i></i></div>
         <div class="story-card__bell-rings"><i></i><i></i><i></i></div>
         <span class="story-card__seal">寓</span>
       </div>

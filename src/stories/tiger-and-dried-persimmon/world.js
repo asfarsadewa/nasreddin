@@ -64,7 +64,7 @@ function createPerson({ robe = C.thief, hat = C.ink } = {}) {
 
 function createTiger() {
   const group = new THREE.Group();
-  const orange = mat(C.tiger);
+  const orange = mat(C.tiger, { emissive: 0x351006, emissiveIntensity: 0.16 });
   const pale = mat(C.cream);
   const black = mat(C.ink);
   const body = mesh(new THREE.SphereGeometry(0.88, 14, 10), orange);
@@ -141,7 +141,7 @@ function createTiger() {
   }
   finishInstances(stripes);
   group.add(stripes);
-  group.userData = { body, head, muzzle, ears, eyes, legs, tail, stripes };
+  group.userData = { body, head, muzzle, ears, eyes, legs, tail, stripes, orangeMaterial: orange };
   return group;
 }
 
@@ -363,6 +363,8 @@ export class StoryWorld {
     this.tiger.position.set(3.8, 0, 0.45);
     this.tiger.rotation.y = 0.08;
     this.scene.add(this.tiger);
+    this.tigerKeyLight = new THREE.PointLight(0xff8a45, 0, 7, 1.7);
+    this.scene.add(this.tigerKeyLight);
   }
 
   buildThief() {
@@ -481,11 +483,15 @@ export class StoryWorld {
     let running = 0;
     if (started && index >= 9) {
       running = index === 9 ? ease(progress) * 0.45 : index === 10 ? 0.45 + ease(progress) * 0.45 : 0.9 + ease(progress) * 0.1;
-      tigerX = THREE.MathUtils.lerp(1.2, -6.1, running);
-      tigerZ = THREE.MathUtils.lerp(0.45, -2.1, running);
+      const escapeX = this.camera.aspect < 0.75 ? 0.2 : -6.1;
+      tigerX = THREE.MathUtils.lerp(1.2, escapeX, running);
+      tigerZ = THREE.MathUtils.lerp(0.45, 1.7, running);
       tigerY = !this.reducedMotion && index <= 10 ? Math.abs(Math.sin(now * 10.5)) * 0.11 : 0;
     }
     this.tiger.position.set(tigerX, tigerY, tigerZ);
+    this.tigerKeyLight.position.set(tigerX + 0.4, tigerY + 2.45, tigerZ + 1.35);
+    this.tigerKeyLight.intensity = running * 6.5 + dawn * 1.2;
+    this.tiger.userData.orangeMaterial.emissiveIntensity = 0.16 + running * 0.2 + dawn * 0.08;
     this.tiger.rotation.y = started && index >= 9 ? -0.12 : 0.08;
     this.tiger.rotation.z = this.fear * Math.sin(now * 18) * 0.018;
     const eyeScale = 1 + this.fear * 0.65 + (started && index === 8 ? ease(progress) * 0.35 : 0);
