@@ -6,7 +6,7 @@ A multilingual collection of timeless tales retold as short cinematic web experi
 - [Watch Story 01: The Smell of Soup & The Sound of Money](https://stories.asfar.family/stories/smell-of-soup/)
 - [Watch Story 02: 掩耳盗铃](https://stories.asfar.family/stories/yan-er-dao-ling/)
 - [Watch Story 03: The Tiger and the Dried Persimmon](https://stories.asfar.family/stories/tiger-and-dried-persimmon/)
-- Story 04 is ready in this source tree at `/stories/anansi-and-the-pot/`: Anansi and the Pot
+- [Watch Story 04: Anansi and the Pot](https://stories.asfar.family/stories/anansi-and-the-pot/)
 
 The first story is a Three.js retelling of the Nasreddin Hodja folktale with fully acted English, Mandarin, and Indonesian performances. The second retells the Chinese fable 掩耳盗铃 with the same three-language voice-and-subtitle contract, a moonlit bronze-bell courtyard, a perceptual muffling sequence, original music, and authored cinematic cameras. The third brings the Korean folktale 호랑이와 곶감 into an ink-and-hanji mountain night built around instanced persimmons, pines, roof tiles, and tiger stripes. The fourth follows an Akan account of Kwaku Ananse, Ntikuma, and a gourd of gathered wisdom, staged around a towering tree and a luminous field that changes from hoard to shared web.
 

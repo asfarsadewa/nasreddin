@@ -103,11 +103,18 @@ test('the persimmon world uses explicit GPU instancing for its repeated visual g
   assert.match(world, /setMatrixAt\(/);
 });
 
-test('the Anansi world makes gathered and scattered wisdom one instanced semantic field', async () => {
+test('the Anansi world instances repeated wisdom and articulated spider anatomy', async () => {
   const world = await readSource('src/stories/anansi-and-the-pot/world.js');
   const instancedConstructions = world.match(/new THREE\.InstancedMesh\(/g) ?? [];
-  assert.ok(instancedConstructions.length >= 5, 'wisdom, leaves, forest, and ground motifs should remain instanced');
+  assert.ok(instancedConstructions.length >= 8, 'wisdom, forest motifs, eyes, and repeated leg segments should remain instanced');
   assert.match(world, /wisdomRelease/);
+  assert.match(world, /upperLegs/);
+  assert.match(world, /lowerLegs/);
+  assert.match(world, /syncSpiderLegs/);
+  assert.match(world, /showChild\s*=\s*started\s*&&\s*index\s*>=\s*5/);
+  assert.match(world, /group\.scale\.setScalar\(0\.64\)/);
+  assert.match(world, /cameraPath\.getPoint\(/);
+  assert.doesNotMatch(world, /cameraPath\.getPointAt\(/);
   assert.match(world, /DynamicDrawUsage/);
   assert.match(world, /instanceMatrix\.needsUpdate\s*=\s*true/);
   assert.match(world, /setMatrixAt\(/);

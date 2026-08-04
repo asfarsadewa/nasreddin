@@ -19,8 +19,6 @@ const C = {
   wisdomGold: 0xf1bd59,
   bark: 0x3b2822,
   barkLight: 0x684133,
-  spider: 0x21151a,
-  spiderWarm: 0x6e2d2a,
   eye: 0xf2d69b,
 };
 
@@ -58,31 +56,70 @@ function cylinderBetween(start, end, radius, material, sides = 8) {
   return result;
 }
 
+function syncSpiderLegs(spider) {
+  const {
+    legs, upperLegs, lowerLegs, upperOffset, lowerOffset, legMatrix,
+  } = spider.userData;
+  legs.forEach((leg, index) => {
+    leg.pivot.updateMatrix();
+    leg.knee.updateMatrix();
+    legMatrix.copy(leg.pivot.matrix).multiply(upperOffset);
+    upperLegs.setMatrixAt(index, legMatrix);
+    legMatrix.copy(leg.pivot.matrix).multiply(leg.knee.matrix).multiply(lowerOffset);
+    lowerLegs.setMatrixAt(index, legMatrix);
+  });
+  upperLegs.instanceMatrix.needsUpdate = true;
+  lowerLegs.instanceMatrix.needsUpdate = true;
+}
+
 function createSpider({ small = false } = {}) {
   const group = new THREE.Group();
-  const shell = mat(small ? C.spiderWarm : C.spider, { emissive: small ? 0x210907 : 0x0b0507, emissiveIntensity: 0.18 });
-  const marking = mat(C.laterite, { emissive: 0x2a0905, emissiveIntensity: 0.12 });
-  const abdomen = mesh(new THREE.IcosahedronGeometry(0.68, 2), shell);
-  abdomen.scale.set(1.08, 0.88, 1.2);
-  abdomen.position.set(0, 0.78, 0.3);
-  const thorax = mesh(new THREE.IcosahedronGeometry(0.47, 2), shell);
+  const shell = mat(small ? 0x9a4336 : 0x553038, {
+    emissive: small ? 0x40140f : 0x2a1118,
+    emissiveIntensity: small ? 0.36 : 0.32,
+  });
+  const marking = mat(small ? 0xd66f3f : C.laterite, { emissive: 0x3b100a, emissiveIntensity: 0.24 });
+  const abdomen = mesh(new THREE.IcosahedronGeometry(0.58, 2), shell);
+  abdomen.scale.set(1.12, 0.78, 1.24);
+  abdomen.position.set(0, 0.72, 0.2);
+  const thorax = mesh(new THREE.IcosahedronGeometry(0.5, 2), shell);
   thorax.position.set(0, 0.75, -0.48);
-  const head = mesh(new THREE.IcosahedronGeometry(0.34, 2), shell);
-  head.position.set(0, 0.84, -0.93);
-  const backMark = mesh(new THREE.TorusGeometry(0.3, 0.055, 7, 12), marking);
+  const head = mesh(new THREE.IcosahedronGeometry(0.39, 2), shell);
+  head.position.set(0, 0.84, -0.96);
+  const backMark = mesh(new THREE.TorusGeometry(0.255, 0.05, 7, 12), marking);
   backMark.rotation.x = Math.PI / 2;
-  backMark.position.set(0, 1.4, 0.3);
-  backMark.scale.y = 1.2;
+  backMark.position.set(0, 1.18, 0.2);
+  backMark.scale.y = 1.25;
   group.add(abdomen, thorax, head, backMark);
 
-  const eyes = [-1, 1].map((side) => {
-    const eye = mesh(new THREE.SphereGeometry(0.09, 8, 6), mat(C.eye, { emissive: 0x7a4a1c, emissiveIntensity: 0.5 }), false, false);
-    eye.position.set(side * 0.17, 0.93, -1.2);
-    eye.scale.set(1, 1.18, 0.72);
-    group.add(eye);
-    return eye;
+  const eyes = new THREE.InstancedMesh(
+    new THREE.SphereGeometry(0.1, 8, 6),
+    mat(C.eye, { emissive: 0x9b6723, emissiveIntensity: 0.82 }),
+    4,
+  );
+  const eyeDummy = new THREE.Object3D();
+  [
+    [-0.18, 0.94, -1.27, 1.15], [0.18, 0.94, -1.27, 1.15],
+    [-0.08, 1.06, -1.23, 0.62], [0.08, 1.06, -1.23, 0.62],
+  ].forEach(([x, y, z, scale], index) => {
+    eyeDummy.position.set(x, y, z);
+    eyeDummy.scale.set(scale, scale * 1.14, scale * 0.72);
+    eyeDummy.updateMatrix();
+    eyes.setMatrixAt(index, eyeDummy.matrix);
   });
+  finishInstances(eyes);
+  eyes.castShadow = false;
+  eyes.receiveShadow = false;
+  group.add(eyes);
 
+  const upperLegs = finishInstances(new THREE.InstancedMesh(
+    new THREE.CylinderGeometry(0.055, 0.075, 1.02, 7), shell, 8,
+  ), true);
+  const lowerLegs = finishInstances(new THREE.InstancedMesh(
+    new THREE.CylinderGeometry(0.035, 0.052, 0.96, 7), shell, 8,
+  ), true);
+  const upperOffset = new THREE.Matrix4().makeTranslation(0, -0.49, 0);
+  const lowerOffset = new THREE.Matrix4().makeTranslation(0, -0.46, 0);
   const legs = [];
   for (const side of [-1, 1]) {
     for (let legIndex = 0; legIndex < 4; legIndex += 1) {
@@ -90,22 +127,36 @@ function createSpider({ small = false } = {}) {
       pivot.position.set(side * 0.28, 0.72, -0.45 + legIndex * 0.29);
       pivot.rotation.y = (legIndex - 1.5) * 0.18;
       pivot.rotation.z = side * (-1.02 - Math.abs(legIndex - 1.5) * 0.12);
-      const upper = mesh(new THREE.CylinderGeometry(0.045, 0.065, 0.88, 7), shell);
-      upper.position.y = -0.42;
       const knee = new THREE.Group();
-      knee.position.y = -0.84;
+      knee.position.y = -0.98;
       knee.rotation.z = side * 0.72;
-      const lower = mesh(new THREE.CylinderGeometry(0.028, 0.045, 0.82, 7), shell);
-      lower.position.y = -0.39;
-      knee.add(lower);
-      pivot.add(upper, knee);
-      group.add(pivot);
-      legs.push({ pivot, knee, side, legIndex });
+      legs.push({
+        pivot,
+        knee,
+        side,
+        legIndex,
+        basePivotZ: pivot.rotation.z,
+        baseKneeZ: knee.rotation.z,
+      });
     }
   }
+  group.add(upperLegs, lowerLegs);
 
-  group.userData = { abdomen, thorax, head, eyes, legs, shell };
-  if (small) group.scale.setScalar(0.47);
+  group.userData = {
+    abdomen,
+    thorax,
+    head,
+    eyes,
+    legs,
+    shell,
+    upperLegs,
+    lowerLegs,
+    upperOffset,
+    lowerOffset,
+    legMatrix: new THREE.Matrix4(),
+  };
+  syncSpiderLegs(group);
+  if (small) group.scale.setScalar(0.64);
   return group;
 }
 
@@ -159,7 +210,7 @@ export class StoryWorld {
     this.lookMatrix = new THREE.Matrix4();
     this.targetQuaternion = new THREE.Quaternion();
     this.dummy = new THREE.Object3D();
-    this.gourdPosition = new THREE.Vector3(-0.25, 1.42, 1.25);
+    this.gourdPosition = new THREE.Vector3(-0.72, 1.24, 1.68);
     this.wisdomRelease = 0;
     this.build();
     this.resize();
@@ -288,16 +339,17 @@ export class StoryWorld {
     this.anansi = createSpider();
     this.anansi.position.set(-0.35, 0.12, 1.02);
     this.anansi.rotation.x = -0.08;
+    this.anansi.scale.setScalar(1.08);
     this.scene.add(this.anansi);
 
     this.ntikuma = createSpider({ small: true });
-    this.ntikuma.position.set(1.75, 0.1, 1.45);
-    this.ntikuma.rotation.y = -0.7;
+    this.ntikuma.position.set(2.15, 0.1, 1.55);
+    this.ntikuma.rotation.y = 1.15;
     this.ntikuma.visible = false;
     this.scene.add(this.ntikuma);
 
     this.gourd = createGourd();
-    this.gourd.scale.setScalar(0.76);
+    this.gourd.scale.setScalar(0.52);
     this.gourd.position.copy(this.gourdPosition);
     this.scene.add(this.gourd);
 
@@ -307,12 +359,12 @@ export class StoryWorld {
       new THREE.Vector3(0.4, 1.65, 0), new THREE.Vector3(0.85, 1.0, 0),
     ]);
     this.rope = new THREE.Line(ropeGeometry, ropeMaterial);
-    this.rope.scale.setScalar(0.78);
+    this.rope.scale.setScalar(0.68);
     this.scene.add(this.rope);
 
     this.shards = new THREE.Group();
     for (let index = 0; index < 6; index += 1) {
-      const shard = mesh(new THREE.TetrahedronGeometry(0.28 + seeded(index) * 0.22, 0), mat(index % 2 ? C.gourd : C.gourdDark));
+      const shard = mesh(new THREE.TetrahedronGeometry(0.18 + seeded(index) * 0.16, 0), mat(index % 2 ? C.gourd : C.gourdDark));
       shard.visible = false;
       this.shards.add(shard);
     }
@@ -328,9 +380,9 @@ export class StoryWorld {
         origin: new THREE.Vector3(Math.cos(angle) * radius, 0.3 + seeded(index + 80) * 5.4, Math.sin(angle) * radius - 1.2),
         scatter: new THREE.Vector3((seeded(index + 120) - 0.5) * 26, 0.35 + seeded(index + 160) * 9.5, (seeded(index + 200) - 0.5) * 20 - 1),
         angle,
-        radius: 0.1 + seeded(index + 240) * 0.42,
+        radius: 0.06 + seeded(index + 240) * 0.24,
         phase: seeded(index + 280) * Math.PI * 2,
-        scale: 0.1 + seeded(index + 320) * 0.16,
+        scale: 0.07 + seeded(index + 320) * 0.09,
       };
     });
     const material = mat(0xffffff, {
@@ -411,16 +463,24 @@ export class StoryWorld {
     this.anansi.position.set(-0.35, 0.12 + climb, 1.02);
     this.anansi.rotation.x = climb > 0.35 ? -0.25 : -0.08;
     this.anansi.rotation.z = started && index === 8 ? Math.sin(progress * Math.PI) * -0.16 : 0;
+    let conversationTurn = 0;
+    if (started && index <= 2) conversationTurn = -2.15;
+    else if (started && index === 3) conversationTurn = THREE.MathUtils.lerp(-2.15, 0, ease(progress));
+    else if (started && index === 5) conversationTurn = THREE.MathUtils.lerp(0, -1.08, ease((progress - 0.58) / 0.42));
+    else if (started && index >= 6 && index <= 7) conversationTurn = -1.08;
+    else if (started && index === 8) conversationTurn = THREE.MathUtils.lerp(-1.08, 0, ease(progress));
+    this.anansi.rotation.y = conversationTurn;
     const crawl = climb > 0.35 && !this.reducedMotion ? now * (index === 9 ? 11 : 7) : 0;
     this.anansi.userData.legs.forEach((leg, legIndex) => {
       const phase = Math.sin(crawl + legIndex * 1.7) * (climb > 0.35 ? 0.24 : 0.035);
-      leg.pivot.rotation.z = leg.side * (-1.02 - Math.abs(leg.legIndex - 1.5) * 0.12) + phase;
-      leg.knee.rotation.z = leg.side * (0.72 - phase * 0.6);
+      leg.pivot.rotation.z = leg.basePivotZ + phase;
+      leg.knee.rotation.z = leg.baseKneeZ - leg.side * phase * 0.6;
     });
+    syncSpiderLegs(this.anansi);
 
     const turn = started && index === 8 ? ease(progress) : started && index >= 9 ? 1 : 0;
-    const front = new THREE.Vector3(-0.25, 1.36 + climb, 1.93);
-    const back = new THREE.Vector3(-0.2, 1.42 + climb, 0.25);
+    const front = new THREE.Vector3(-0.72, 1.24 + climb, 1.68);
+    const back = new THREE.Vector3(-0.18, 1.35 + climb, 0.22);
     this.gourdPosition.copy(front).lerp(back, turn);
     let throwProgress = 0;
     if (started && index === 11) {
@@ -436,17 +496,27 @@ export class StoryWorld {
     this.wisdomLight.position.copy(this.gourdPosition);
 
     this.rope.visible = intact && (!started || index >= 3);
-    this.rope.position.set(-0.35, 0.52 + climb, turn ? 0.08 : 1.0);
+    this.rope.position.set(THREE.MathUtils.lerp(-0.58, -0.34, turn), 0.5 + climb, turn ? 0.08 : 0.92);
     this.rope.rotation.y = turn * Math.PI;
 
-    const showChild = started && index >= 6;
+    const showChild = started && index >= 5;
     this.ntikuma.visible = showChild;
     if (showChild) {
+      const arrival = index === 5 ? ease((progress - 0.28) / 0.5) : 1;
+      this.ntikuma.position.x = THREE.MathUtils.lerp(3.35, 2.15, arrival);
       this.ntikuma.position.y = 0.1 + Math.sin(now * 2.1) * (this.reducedMotion ? 0 : 0.015);
-      this.ntikuma.rotation.y = index >= 9 ? -0.15 : -0.7;
+      this.ntikuma.position.z = THREE.MathUtils.lerp(2.85, 1.55, arrival);
+      this.ntikuma.rotation.y = index >= 9 ? 0.55 : 1.15;
       const pointing = index === 6 ? ease(progress) : index >= 7 && index <= 8 ? 1 - progress * 0.35 : 0;
-      const pointingLeg = this.ntikuma.userData.legs[0];
-      pointingLeg.pivot.rotation.z = pointingLeg.side * (1.02 + pointing * 0.85);
+      this.ntikuma.userData.legs.forEach((leg, legIndex) => {
+        const idle = this.reducedMotion ? 0 : Math.sin(now * 1.8 + legIndex * 0.9) * 0.018;
+        leg.pivot.rotation.z = leg.basePivotZ + idle;
+        leg.knee.rotation.z = leg.baseKneeZ - leg.side * idle * 0.4;
+      });
+      const pointingLeg = this.ntikuma.userData.legs[4];
+      pointingLeg.pivot.rotation.z = pointingLeg.basePivotZ - pointing * 0.78;
+      pointingLeg.knee.rotation.z = pointingLeg.baseKneeZ + pointing * 0.28;
+      syncSpiderLegs(this.ntikuma);
     }
 
     this.shards.visible = !intact;
@@ -501,10 +571,12 @@ export class StoryWorld {
     this.updateWisdom(now, index, progress, started);
     this.updateLeaves(now);
 
-    let cameraProgress = started ? state.poseProgress : 0;
+    let cameraProgress = started
+      ? (index + ease((progress - 0.58) / 0.42)) / (CAMERA_POSES.length - 1)
+      : 0;
     if (!started) cameraProgress = clamp01(0.01 + Math.sin(now * 0.05) * 0.006);
-    const position = this.cameraPath.getPointAt(clamp01(cameraProgress));
-    const target = this.targetPath.getPointAt(clamp01(cameraProgress));
+    const position = this.cameraPath.getPoint(clamp01(cameraProgress));
+    const target = this.targetPath.getPoint(clamp01(cameraProgress));
     if (!this.reducedMotion) {
       position.x += Math.sin(now * 0.12) * 0.045;
       position.y += Math.sin(now * 0.1 + 1) * 0.032;
