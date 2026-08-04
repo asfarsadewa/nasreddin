@@ -1,0 +1,25 @@
+{
+  "id": "anansi_and_the_pot_en",
+  "language": "en-US",
+  "style": "An intimate cinematic telling of an Akan Anansesem, grounded in oral-storytelling rhythm and dry, humane wit. Clear natural English, never childish, grandiose, theatrical, or like an advertisement. Preserve the names Kwaku Ananse and Ntikuma. Pronounce Ananse as ah-NAHN-seh and Ntikuma as en-tee-KOO-mah. Speak the recorded climbing and scattering sounds as living story sounds rather than literal English words. Leave a short natural breath after every line.",
+  "mode": "per_line",
+  "speakers": [
+    { "name": "Narrator", "voice": "Charon", "style": "A warm mature storyteller with spacious phrasing, attentive to physical comedy and the story's turn without announcing a moral." },
+    { "name": "Kwaku Ananse", "voice": "Puck", "style": "Quick, proud, inventive, and certain of himself; frustration should sharpen his wit without turning him into a cartoon villain." },
+    { "name": "Ntikuma", "voice": "Leda", "style": "A small, observant child speaking simply and respectfully, with no smugness and no exaggerated child voice." }
+  ],
+  "lines": [
+    { "speaker": "Narrator", "text": "Long ago, Kwaku Ananse swept together every scrap of wisdom he could find on earth.", "direction": "Open with an old-story cadence and a wide sense of the world; lightly energize swept together.", "file": "01_narrator_gathers.wav" },
+    { "speaker": "Narrator", "text": "He packed it all into a gourd pot—every answer, every secret, every clever thought.", "direction": "Draw close to the gourd; make the three final items tactile and increasingly compressed.", "file": "02_narrator_gourd.wav" },
+    { "speaker": "Kwaku Ananse", "text": "At last, all wisdom is mine. I shall hang it where no one else can reach it.", "direction": "Quiet triumph and absolute self-satisfaction; savor mine, then make the plan sound flawless.", "file": "03_anansi_mine.wav" },
+    { "speaker": "Narrator", "text": "He tied the gourd in front of him and came to the foot of a tall tree.", "direction": "Move from close rope work into the vertical scale of the tree; unhurried and visual.", "file": "04_narrator_tree.wav" },
+    { "speaker": "Narrator", "text": "Ananse climbed. The pot struck the trunk, caught his legs, and dragged him down.", "direction": "Use clean physical beats with a dry final drop; do not oversell the comedy.", "file": "05_narrator_strikes.wav" },
+    { "speaker": "Narrator", "text": "He tried again, and again. Each time, the wisdom at his belly kept him from rising.", "direction": "Let the repetition carry effort; slow slightly on the contradiction in the final phrase.", "file": "06_narrator_again.wav" },
+    { "speaker": "Ntikuma", "text": "Father, why not turn the gourd around and carry it on your back? Then you can climb.", "direction": "A sincere practical suggestion from below, respectful and obvious rather than clever or teasing.", "file": "07_ntikuma_back.wav" },
+    { "speaker": "Kwaku Ananse", "text": "Away with you and your old-fashioned sayings!", "direction": "A quick defensive snap from wounded pride; energetic but not shouted.", "file": "08_anansi_away.wav" },
+    { "speaker": "Narrator", "text": "But after one more useless attempt, Ananse stopped. He turned the gourd behind him.", "direction": "Land stopped in a small pocket of silence; make the turn deliberate and reluctant.", "file": "09_narrator_turns.wav" },
+    { "speaker": "Narrator", "text": "Up he went—kra, kra, kra—swiftly to the place where the branches spread.", "direction": "Brighten and accelerate through the climbing sound, then open the final phrase into the canopy.", "file": "10_narrator_climbs.wav" },
+    { "speaker": "Kwaku Ananse", "text": "I gathered all wisdom, yet my little child has shown me what I could not see.", "direction": "A genuine stunned realization edged with embarrassment; quieter and slower than his earlier boast.", "file": "11_anansi_missed.wav" },
+    { "speaker": "Narrator", "text": "He tore the gourd free and hurled it down. Tintini! Tesee! Wisdom scattered below, beyond Ananse’s keeping.", "direction": "Build through the throw, give the two Akan sound words crisp musical force, then widen and soften the last sentence.", "file": "12_narrator_scatters.wav" }
+  ]
+}

@@ -104,6 +104,8 @@ Mix rules:
 
 - narration connects clearly to the master bus;
 - music ducks under active narration and releases smoothly;
+- score presence is a release requirement, not an asset-presence checkbox: during a full playback, toggle music off and on at the opening, middle underscore, and ending, and confirm each change is plainly audible on ordinary speakers without masking speech;
+- inspect the effective signal path—source loudness, cue envelope, narration duck, story filter, and master gain together—because individually valid settings can multiply into an inaudible mix;
 - global sound mute controls every bus;
 - music mute controls score and bed ambience, not essential diegetic punctuation;
 - story-specific perceptual effects should preserve narration intelligibility;
@@ -141,6 +143,7 @@ Default combinations are deliberate product decisions:
 - Story 01, `smell-of-soup`: English voice + Indonesian subtitles.
 - Story 02, `yan-er-dao-ling`: Mandarin voice + English subtitles.
 - Story 03, `tiger-and-dried-persimmon`: Indonesian voice + Chinese subtitles.
+- Story 04, `anansi-and-the-pot`: English voice + Indonesian subtitles.
 
 Localize title, deck, button states, loading/error messages, chapters, speaker names, ending copy, accessibility labels, and live announcements. Update `<html lang>`, page title, and description where relevant.
 
@@ -168,12 +171,12 @@ Browser matrix:
 
 | Surface | Checks |
 |---|---|
-| Collection desktop | EN/ZH/ID copy, both cards, hover/focus, lazy loading |
+| Collection desktop | EN/ZH/ID copy, all cards, hover/focus, lazy loading |
 | Collection mobile | no clipping, language control usable, cards readable |
 | Story opening | canvas fills viewport, copy fits, load reaches ready |
 | Playback | first frame, every chapter, camera continuity, ending/replay |
 | Languages | all voices play; all subtitle languages display exact script |
-| Controls | pause, global mute, music mute, captions, language dialog |
+| Controls | pause, global mute, music mute, captions, language dialog; music off/on is plainly audible at opening, middle, and ending |
 | Mid-story switch | correct line/progress retained; no doubled sources |
 | Mobile story | controls hit-test, captions clear scene, internal scroll starts at top |
 | Accessibility | keyboard, focus trap, focus-visible, live announcements, reduced motion |

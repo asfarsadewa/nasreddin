@@ -169,6 +169,40 @@ export const STORIES = [
     languages: '中文 · EN · ID',
     load: () => import('./stories/tiger-and-dried-persimmon/entry.js'),
   },
+  {
+    slug: 'anansi-and-the-pot',
+    path: '/stories/anansi-and-the-pot',
+    sequence: '04',
+    status: 'available',
+    cover: 'anansi',
+    title: {
+      en: 'Anansi and the Pot',
+      id: 'Anansi dan Tempayan Kebijaksanaan',
+      zh: '安纳西与智慧罐',
+    },
+    description: {
+      en: 'Kwaku Ananse gathers every scrap of wisdom into one gourd—then a small voice beneath the tree reveals what he missed.',
+      id: 'Kwaku Ananse mengumpulkan seluruh kebijaksanaan ke dalam satu tempayan labu—lalu suara kecil di bawah pohon menunjukkan apa yang luput darinya.',
+      zh: '克瓦库·安纳西把所有智慧收进一只葫芦——树下一个小小的声音，却指出了他遗漏的事。',
+    },
+    tradition: {
+      en: 'An Akan Anansesem',
+      id: 'Anansesem dari suku Akan',
+      zh: '阿肯族安纳西故事',
+    },
+    duration: {
+      en: 'About 2 minutes',
+      id: 'Sekitar 2 menit',
+      zh: '约 2 分钟',
+    },
+    format: {
+      en: '3D animation · Trilingual voice',
+      id: 'Animasi 3D · Suara trilingual',
+      zh: '3D 动画 · 三语配音',
+    },
+    languages: '中文 · EN · ID',
+    load: () => import('./stories/anansi-and-the-pot/entry.js'),
+  },
 ];
 
 export function normalizePath(pathname) {

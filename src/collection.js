@@ -19,6 +19,21 @@ function languageControl(language, copy) {
 }
 
 function storyVisual(story) {
+  if (story.cover === 'anansi') {
+    return `
+      <div class="story-card__visual story-card__visual--anansi" aria-hidden="true">
+        <span class="story-card__number">${story.sequence}</span>
+        <div class="story-card__anansi-sun"></div>
+        <div class="story-card__anansi-tree"><i></i><i></i><b></b></div>
+        <div class="story-card__anansi-web"><i></i><i></i><i></i></div>
+        <div class="story-card__anansi-spider"><b></b><i></i><i></i><i></i><i></i></div>
+        <div class="story-card__anansi-gourd"><i></i><b></b></div>
+        <div class="story-card__anansi-wisdom"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <span class="story-card__anansi-name">ANANSESEM</span>
+      </div>
+    `;
+  }
+
   if (story.cover === 'persimmon') {
     return `
       <div class="story-card__visual story-card__visual--persimmon" aria-hidden="true">

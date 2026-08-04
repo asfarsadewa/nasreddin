@@ -12,6 +12,7 @@ export class StoryAudio extends StoryAudioCore {
       masterGain: 0.88,
     });
     this.fearActive = false;
+    this.narrationDuckGain = 0.62;
   }
 
   setupAudioGraph() {
@@ -31,7 +32,7 @@ export class StoryAudio extends StoryAudioCore {
     this.musicOutput.connect(this.musicDuck).connect(this.fearFilter).connect(this.master);
 
     this.sfxOutput = this.context.createGain();
-    this.sfxOutput.gain.value = 0.86;
+    this.sfxOutput.gain.value = 0.44;
     this.sfxOutput.connect(this.master);
   }
 
@@ -42,19 +43,29 @@ export class StoryAudio extends StoryAudioCore {
     this.scheduleMusicCue('opening', offset, {
       start: 0,
       stop: 29,
-      envelope: [[0, 0], [1.8, 0.24], [15, 0.21], [29, 0]],
+      envelope: [[0, 0], [1.8, 0.36], [15, 0.32], [29, 0]],
     });
     this.scheduleMusicCue('ambience', offset, {
       start: underscoreStart,
       stop: endingStart + 3.2,
       loop: true,
-      envelope: [[0, 0], [3.2, 0.12], [Math.max(4, underscoreDuration - 4.5), 0.13], [underscoreDuration, 0]],
+      envelope: [[0, 0], [3.2, 0.42], [Math.max(4, underscoreDuration - 4.5), 0.44], [underscoreDuration, 0]],
     });
     const endingDuration = this.musicBuffers.ending?.duration ?? 28;
     this.scheduleMusicCue('ending', offset, {
       start: endingStart,
-      envelope: [[0, 0], [1.8, 0.17], [9, 0.2], [18, 0.27], [endingDuration, 0]],
+      envelope: [[0, 0], [1.8, 0.28], [9, 0.31], [18, 0.38], [endingDuration, 0]],
     });
+  }
+
+  setNarrationActive(active) {
+    if (!this.context || active === this.narrationActive) return;
+    this.narrationActive = active;
+    this.musicDuck.gain.setTargetAtTime(
+      active ? this.narrationDuckGain : 1,
+      this.context.currentTime,
+      active ? 0.08 : 0.2,
+    );
   }
 
   startAmbient() {

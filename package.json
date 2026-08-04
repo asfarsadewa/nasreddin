@@ -18,6 +18,8 @@
     "audio:sfx:yan-er-dao-ling": "node scripts/stories/yan-er-dao-ling/generate-sfx.mjs",
     "audio:music:tiger-and-dried-persimmon": "node scripts/stories/tiger-and-dried-persimmon/generate-music.mjs",
     "audio:sfx:tiger-and-dried-persimmon": "node scripts/stories/tiger-and-dried-persimmon/generate-sfx.mjs",
+    "audio:music:anansi-and-the-pot": "node scripts/stories/anansi-and-the-pot/generate-music.mjs",
+    "audio:sfx:anansi-and-the-pot": "node scripts/stories/anansi-and-the-pot/generate-sfx.mjs",
     "deploy:dry-run": "npm run build && wrangler deploy --dry-run",
     "deploy": "npm run build && wrangler deploy"
   },
@@ -28,5 +30,8 @@
     "@playwright/test": "^1.62.1",
     "vite": "^7.1.2",
     "wrangler": "^4.118.0"
+  },
+  "overrides": {
+    "undici": "8.10.0"
   }
 }

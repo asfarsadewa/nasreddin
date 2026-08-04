@@ -32,6 +32,12 @@ export const SOCIAL_METADATA = Object.freeze({
     canonicalPath: '/stories/tiger-and-dried-persimmon/',
     type: 'article',
   },
+  '/stories/anansi-and-the-pot': {
+    title: 'Anansi and the Pot | Wisdom Short Stories',
+    description: 'An Akan Anansesem about Kwaku Ananse, a gourd filled with wisdom, and the small child whose simple idea reveals what the trickster missed—cinematically told in English, Chinese, and Indonesian.',
+    canonicalPath: '/stories/anansi-and-the-pot/',
+    type: 'article',
+  },
 });
 
 function normalizePath(pathname) {

@@ -21,6 +21,14 @@ import {
   SFX_CUES as TIGER_SFX,
   STORY_LINES as TIGER_LINES,
 } from '../src/stories/tiger-and-dried-persimmon/story.js';
+import {
+  AUDIO_TRACKS as ANANSI_TRACKS,
+  MUSIC_CUES as ANANSI_MUSIC,
+  SFX_CUES as ANANSI_SFX,
+  STORY_LINES as ANANSI_LINES,
+} from '../src/stories/anansi-and-the-pot/story.js';
+import { StoryAudio as TigerStoryAudio } from '../src/stories/tiger-and-dried-persimmon/audio.js';
+import { StoryAudio as AnansiStoryAudio } from '../src/stories/anansi-and-the-pot/audio.js';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const fromPublicUrl = (url) => join(ROOT, 'public', ...url.replace(/^\//, '').split('/'));
@@ -70,6 +78,18 @@ function assertMp3(buffer, label) {
   assert.ok(buffer.length > 50000, `${label} is implausibly small`);
 }
 
+function inspectMusicPlan(audio, language) {
+  audio.tracks[language] = {
+    schedule: Array.from({ length: 12 }, (_, index) => ({ start: index * 10 })),
+    totalDuration: 124,
+  };
+  audio.musicBuffers.ending = { duration: 30 };
+  const cues = [];
+  audio.scheduleMusicCue = (name, offset, options) => cues.push({ name, offset, ...options });
+  audio.scheduleMusic(0);
+  return Object.fromEntries(cues.map((cue) => [cue.name, cue]));
+}
+
 const VOICE_PRODUCTIONS = [
   {
     slug: 'smell-of-soup', lines: SOUP_LINES, tracks: SOUP_TRACKS,
@@ -90,6 +110,13 @@ const VOICE_PRODUCTIONS = [
     manifests: Object.fromEntries(['en', 'zh', 'id'].map((language) => [
       language,
       join(ROOT, `public/audio/stories/tiger-and-dried-persimmon/voice/${language}/manifest.json`),
+    ])),
+  },
+  {
+    slug: 'anansi-and-the-pot', lines: ANANSI_LINES, tracks: ANANSI_TRACKS,
+    manifests: Object.fromEntries(['en', 'zh', 'id'].map((language) => [
+      language,
+      join(ROOT, `public/audio/stories/anansi-and-the-pot/voice/${language}/manifest.json`),
     ])),
   },
 ];
@@ -130,9 +157,36 @@ test('all referenced score and effect cues are valid, non-trivial MP3 files', as
     ...Object.fromEntries(Object.entries(BELL_SFX).map(([name, url]) => [`bell:sfx:${name}`, url])),
     ...Object.fromEntries(Object.entries(TIGER_MUSIC).map(([name, url]) => [`tiger:music:${name}`, url])),
     ...Object.fromEntries(Object.entries(TIGER_SFX).map(([name, url]) => [`tiger:sfx:${name}`, url])),
+    ...Object.fromEntries(Object.entries(ANANSI_MUSIC).map(([name, url]) => [`anansi:music:${name}`, url])),
+    ...Object.fromEntries(Object.entries(ANANSI_SFX).map(([name, url]) => [`anansi:sfx:${name}`, url])),
   };
   assert.equal(new Set(Object.values(cues)).size, Object.values(cues).length, 'each score/effect cue should have its own public asset');
   for (const [name, url] of Object.entries(cues)) assertMp3(await readFile(fromPublicUrl(url)), name);
+});
+
+test('story 03 and 04 mix plans keep opening, middle, and ending score audible under narration', () => {
+  const productions = [
+    {
+      slug: 'tiger-and-dried-persimmon',
+      audio: new TigerStoryAudio(TIGER_LINES, TIGER_TRACKS, TIGER_MUSIC, TIGER_SFX, 'id'),
+      language: 'id',
+    },
+    {
+      slug: 'anansi-and-the-pot',
+      audio: new AnansiStoryAudio(ANANSI_LINES, ANANSI_TRACKS, ANANSI_MUSIC, ANANSI_SFX, 'en'),
+      language: 'en',
+    },
+  ];
+
+  for (const production of productions) {
+    const plan = inspectMusicPlan(production.audio, production.language);
+    assert.deepEqual(Object.keys(plan).sort(), ['ambience', 'ending', 'opening']);
+    assert.ok(production.audio.narrationDuckGain >= 0.6, `${production.slug} over-ducks its score`);
+    assert.ok(Math.max(...plan.opening.envelope.map((point) => point[1])) >= 0.3, `${production.slug} opening score is too low`);
+    assert.ok(Math.max(...plan.ambience.envelope.map((point) => point[1])) >= 0.28, `${production.slug} middle score is too low`);
+    assert.ok(Math.max(...plan.ending.envelope.map((point) => point[1])) >= 0.3, `${production.slug} ending score is too low`);
+    assert.ok(plan.ambience.loop, `${production.slug} middle score must sustain across the narrative`);
+  }
 });
 
 test('audio provenance manifests cover every generated score and effect cue', async () => {
@@ -168,5 +222,17 @@ test('audio provenance manifests cover every generated score and effect cue', as
   assert.deepEqual(
     tigerManifest.soundEffects.cues.map((cue) => `/audio/stories/tiger-and-dried-persimmon/${cue.file}`).sort(),
     Object.values(TIGER_SFX).sort(),
+  );
+
+  const anansiManifest = await readJson(join(ROOT, 'public/audio/stories/anansi-and-the-pot/audio-manifest.json'));
+  assert.equal(anansiManifest.voice.linesPerLanguage, ANANSI_LINES.length);
+  assert.deepEqual(anansiManifest.voice.languages.sort(), ['en-US', 'id-ID', 'zh-CN']);
+  assert.deepEqual(
+    anansiManifest.music.cues.map((cue) => `/audio/stories/anansi-and-the-pot/${cue.file}`).sort(),
+    Object.values(ANANSI_MUSIC).sort(),
+  );
+  assert.deepEqual(
+    anansiManifest.soundEffects.cues.map((cue) => `/audio/stories/anansi-and-the-pot/${cue.file}`).sort(),
+    Object.values(ANANSI_SFX).sort(),
   );
 });

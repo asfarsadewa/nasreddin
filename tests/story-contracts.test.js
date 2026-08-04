@@ -30,6 +30,16 @@ import {
   UI_COPY as TIGER_UI_COPY,
 } from '../src/stories/tiger-and-dried-persimmon/story.js';
 import { createStoryTemplate as createTigerTemplate } from '../src/stories/tiger-and-dried-persimmon/template.js';
+import { StoryAudio as AnansiAudio } from '../src/stories/anansi-and-the-pot/audio.js';
+import {
+  AUDIO_TRACKS as ANANSI_AUDIO_TRACKS,
+  CAMERA_POSES as ANANSI_CAMERA_POSES,
+  MUSIC_CUES as ANANSI_MUSIC_CUES,
+  SFX_CUES as ANANSI_SFX_CUES,
+  STORY_LINES as ANANSI_LINES,
+  UI_COPY as ANANSI_UI_COPY,
+} from '../src/stories/anansi-and-the-pot/story.js';
+import { createStoryTemplate as createAnansiTemplate } from '../src/stories/anansi-and-the-pot/template.js';
 
 const REQUIRED_TEMPLATE_IDS = [
   'experience', 'canvas-stage', 'opening', 'story-title', 'begin', 'load-status',
@@ -59,6 +69,13 @@ const STORIES = [
     languages: ['en', 'zh', 'id'], createTemplate: createTigerTemplate,
     createAudio: () => new TigerAudio(TIGER_LINES, TIGER_AUDIO_TRACKS, TIGER_MUSIC_CUES, TIGER_SFX_CUES, 'id'),
     timing: { lead: 1.15, gap: 0.52, tail: 3.4 }, defaults: { voice: 'id', subtitle: 'zh' },
+  },
+  {
+    slug: 'anansi-and-the-pot', lines: ANANSI_LINES, tracks: ANANSI_AUDIO_TRACKS,
+    cameras: ANANSI_CAMERA_POSES, ui: ANANSI_UI_COPY, music: ANANSI_MUSIC_CUES, sfx: ANANSI_SFX_CUES,
+    languages: ['en', 'zh', 'id'], createTemplate: createAnansiTemplate,
+    createAudio: () => new AnansiAudio(ANANSI_LINES, ANANSI_AUDIO_TRACKS, ANANSI_MUSIC_CUES, ANANSI_SFX_CUES, 'en'),
+    timing: { lead: 1.15, gap: 0.5, tail: 3.8 }, defaults: { voice: 'en', subtitle: 'id' },
   },
 ];
 

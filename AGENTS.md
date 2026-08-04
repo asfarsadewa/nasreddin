@@ -46,7 +46,7 @@ Before changing a story, read:
 - Run Gemini TTS manifests in dry-run mode before rendering. On Windows, use `$env:PYTHONUTF8='1'` for Chinese output.
 - Verify all rendered WAVs exist, decode, and have plausible non-zero duration.
 - Music and SFX must be original/licensed for production use. Save generation metadata in `audio-manifest.json`; never commit or print API keys.
-- The mix must duck music under speech, keep the global mute separate from the music control, and avoid clipping on simultaneous cues.
+- The mix must duck music under speech, keep the global mute separate from the music control, and avoid clipping on simultaneous cues. A score file and scheduling code are not sufficient: during full playback, music off/on must produce a plainly audible difference at the opening, middle underscore, and ending on ordinary speakers without masking narration.
 - Initial preparation must fetch only the selected/default voice plus music and essential effects. Enable Start at that point, idle-prefetch other voices during playback, deduplicate concurrent requests, and show localized progress only when a requested voice is not ready.
 - Generated media is committed and provider-independent at runtime. Each local Codex skill, such as `gemini-tts` or `sound-effects`, is a maintainer tool and not a runtime dependency; keep manifests, outputs, scripts, and provenance in the repo rather than vendoring the skills.
 

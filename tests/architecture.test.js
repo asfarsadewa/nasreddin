@@ -19,6 +19,7 @@ test('the collection entry remains free of eager Three.js and media imports', as
   assert.match(catalog, /load:\s*\(\)\s*=>\s*import\('\.\/stories\/smell-of-soup\/entry\.js'\)/);
   assert.match(catalog, /load:\s*\(\)\s*=>\s*import\('\.\/stories\/yan-er-dao-ling\/entry\.js'\)/);
   assert.match(catalog, /load:\s*\(\)\s*=>\s*import\('\.\/stories\/tiger-and-dried-persimmon\/entry\.js'\)/);
+  assert.match(catalog, /load:\s*\(\)\s*=>\s*import\('\.\/stories\/anansi-and-the-pot\/entry\.js'\)/);
 
   const app = rootSources[0];
   assert.match(app, /async function mountApplication\(\)/, 'story loading must run outside root-module evaluation');
@@ -26,7 +27,7 @@ test('the collection entry remains free of eager Three.js and media imports', as
 });
 
 test('story entry modules expose only the lazy mount boundary', async () => {
-  for (const slug of ['smell-of-soup', 'yan-er-dao-ling', 'tiger-and-dried-persimmon']) {
+  for (const slug of ['smell-of-soup', 'yan-er-dao-ling', 'tiger-and-dried-persimmon', 'anansi-and-the-pot']) {
     const entry = await readSource(`src/stories/${slug}/entry.js`);
     assert.match(entry, /export async function mount\(app\)/);
     assert.match(entry, /await import\('\.\/index\.js'\)/);
@@ -42,7 +43,7 @@ test('stories share only the player and audio timeline machinery', async () => {
   assert.match(sharedController, /prefetchLanguages/);
   assert.match(sharedController, /ensureLanguage/);
 
-  for (const slug of ['smell-of-soup', 'yan-er-dao-ling', 'tiger-and-dried-persimmon']) {
+  for (const slug of ['smell-of-soup', 'yan-er-dao-ling', 'tiger-and-dried-persimmon', 'anansi-and-the-pot']) {
     const [audio, controller] = await Promise.all([
       readSource(`src/stories/${slug}/audio.js`),
       readSource(`src/stories/${slug}/index.js`),
@@ -68,6 +69,8 @@ test('generation scripts use environment credentials and namespaced output paths
     'scripts/stories/yan-er-dao-ling/generate-sfx.mjs',
     'scripts/stories/tiger-and-dried-persimmon/generate-music.mjs',
     'scripts/stories/tiger-and-dried-persimmon/generate-sfx.mjs',
+    'scripts/stories/anansi-and-the-pot/generate-music.mjs',
+    'scripts/stories/anansi-and-the-pot/generate-sfx.mjs',
   ];
   for (const path of scripts) {
     const source = await readSource(path);
@@ -80,17 +83,31 @@ test('generation scripts use environment credentials and namespaced output paths
   const soupMusic = await readSource(scripts[0]);
   const tigerMusic = await readSource(scripts[3]);
   const tigerSfx = await readSource(scripts[4]);
+  const anansiMusic = await readSource(scripts[5]);
+  const anansiSfx = await readSource(scripts[6]);
   assert.ok(soupMusic.includes('public/audio/stories/smell-of-soup/music'));
   assert.ok(bellMusic.includes('public/audio/stories/yan-er-dao-ling/music'));
   assert.ok(bellSfx.includes('public/audio/stories/yan-er-dao-ling/sfx'));
   assert.ok(tigerMusic.includes('public/audio/stories/tiger-and-dried-persimmon/music'));
   assert.ok(tigerSfx.includes('public/audio/stories/tiger-and-dried-persimmon/sfx'));
+  assert.ok(anansiMusic.includes('public/audio/stories/anansi-and-the-pot/music'));
+  assert.ok(anansiSfx.includes('public/audio/stories/anansi-and-the-pot/sfx'));
 });
 
 test('the persimmon world uses explicit GPU instancing for its repeated visual grammar', async () => {
   const world = await readSource('src/stories/tiger-and-dried-persimmon/world.js');
   const instancedConstructions = world.match(/new THREE\.InstancedMesh\(/g) ?? [];
   assert.ok(instancedConstructions.length >= 5, 'persimmons, pines, roof tiles, and tiger stripes should remain instanced');
+  assert.match(world, /DynamicDrawUsage/);
+  assert.match(world, /instanceMatrix\.needsUpdate\s*=\s*true/);
+  assert.match(world, /setMatrixAt\(/);
+});
+
+test('the Anansi world makes gathered and scattered wisdom one instanced semantic field', async () => {
+  const world = await readSource('src/stories/anansi-and-the-pot/world.js');
+  const instancedConstructions = world.match(/new THREE\.InstancedMesh\(/g) ?? [];
+  assert.ok(instancedConstructions.length >= 5, 'wisdom, leaves, forest, and ground motifs should remain instanced');
+  assert.match(world, /wisdomRelease/);
   assert.match(world, /DynamicDrawUsage/);
   assert.match(world, /instanceMatrix\.needsUpdate\s*=\s*true/);
   assert.match(world, /setMatrixAt\(/);

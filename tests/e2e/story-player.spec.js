@@ -22,16 +22,16 @@ function watchApplicationFailures(page) {
 test('the collection count follows the catalogue and the Indonesian identity is first-class', async ({ page }) => {
   const failures = watchApplicationFailures(page);
   await page.goto('/');
-  await expect(page.locator('.story-card')).toHaveCount(3);
-  await expect(page.locator('[data-story-count]')).toHaveText('3 stories');
+  await expect(page.locator('.story-card')).toHaveCount(4);
+  await expect(page.locator('[data-story-count]')).toHaveText('4 stories');
   await page.locator('[data-site-language="id"]').click();
   await expect(page.locator('#collection-title')).toContainText('Kumpulan KisahTeladan');
-  await expect(page.locator('[data-story-count]')).toHaveText('3 kisah');
+  await expect(page.locator('[data-story-count]')).toHaveText('4 kisah');
   await page.locator('[data-site-language="zh"]').click();
   await expect(page.locator('#collection-title')).toContainText('智慧短篇');
-  await expect(page.locator('[data-story-count]')).toHaveText('3 则故事');
+  await expect(page.locator('[data-story-count]')).toHaveText('4 则故事');
   await page.locator('[data-site-language="en"]').click();
-  await expect(page.locator('[data-story-count]')).toHaveText('3 stories');
+  await expect(page.locator('[data-story-count]')).toHaveText('4 stories');
   expect(failures).toEqual([]);
 });
 
@@ -53,6 +53,12 @@ const stories = [
     path: '/stories/tiger-and-dried-persimmon/',
     initialVoice: 'id',
     switchVoice: 'zh',
+  },
+  {
+    name: 'Anansi and the Pot',
+    path: '/stories/anansi-and-the-pot/',
+    initialVoice: 'en',
+    switchVoice: 'id',
   },
 ];
 
@@ -93,9 +99,9 @@ for (const story of stories) {
   });
 }
 
-test('The Tiger and the Dried Persimmon keeps every voice, subtitle, and playback control independent', async ({ page }) => {
+test('Anansi and the Pot keeps every voice, subtitle, and playback control independent', async ({ page }) => {
   const failures = watchApplicationFailures(page);
-  await page.goto('/stories/tiger-and-dried-persimmon/');
+  await page.goto('/stories/anansi-and-the-pot/');
   await expect(page.locator('#begin')).toBeEnabled({ timeout: 30_000 });
   await page.locator('.language-launch--opening').click();
 
@@ -111,7 +117,7 @@ test('The Tiger and the Dried Persimmon keeps every voice, subtitle, and playbac
     await choice.click();
     await expect(choice).toHaveAttribute('aria-checked', 'true');
   }
-  await page.locator('[data-subtitle="zh"]').click();
+  await page.locator('[data-subtitle="id"]').click();
   await page.keyboard.press('Escape');
   await expect(page.locator('#language-panel')).toBeHidden();
 
@@ -137,6 +143,77 @@ test('The Tiger and the Dried Persimmon keeps every voice, subtitle, and playbac
   await expect(page.locator('#play-toggle')).toHaveAttribute('aria-pressed', 'true');
   await page.locator('#play-toggle').click();
   await expect(page.locator('#play-toggle')).toHaveAttribute('aria-pressed', 'false');
+  expect(failures).toEqual([]);
+});
+
+test('Anansi and the Pot keeps its mobile opening, dialog, captions, and controls inside a narrow viewport', async ({ page }) => {
+  const failures = watchApplicationFailures(page);
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/stories/anansi-and-the-pot/');
+  await expect(page.locator('#begin')).toBeEnabled({ timeout: 30_000 });
+
+  const openingLayout = await page.evaluate(() => {
+    const box = (selector) => {
+      const rect = document.querySelector(selector)?.getBoundingClientRect();
+      return rect ? { x: rect.x, y: rect.y, width: rect.width, height: rect.height, right: rect.right, bottom: rect.bottom } : null;
+    };
+    return {
+      viewport: { width: window.innerWidth, height: window.innerHeight },
+      documentWidth: document.documentElement.scrollWidth,
+      title: box('#story-title'),
+      begin: box('#begin'),
+      language: box('.language-launch--opening'),
+      canvas: box('#canvas-stage canvas'),
+    };
+  });
+  expect(openingLayout.documentWidth).toBeLessThanOrEqual(openingLayout.viewport.width);
+  for (const element of [openingLayout.title, openingLayout.begin, openingLayout.language, openingLayout.canvas]) {
+    expect(element).not.toBeNull();
+    expect(element.x).toBeGreaterThanOrEqual(0);
+    expect(element.right).toBeLessThanOrEqual(openingLayout.viewport.width + 1);
+  }
+  expect(openingLayout.begin.bottom).toBeLessThanOrEqual(openingLayout.viewport.height);
+  if (process.env.CAPTURE_VISUALS) await page.screenshot({ path: 'test-results/anansi-mobile-opening.png' });
+
+  await page.locator('.language-launch--opening').click();
+  await expect(page.locator('#language-panel')).toBeVisible();
+  const panelLayout = await page.locator('#language-panel').evaluate((panel) => {
+    const rect = panel.getBoundingClientRect();
+    return { x: rect.x, width: rect.width, right: rect.right, top: rect.top, bottom: rect.bottom, scrollTop: panel.scrollTop };
+  });
+  expect(panelLayout.x).toBeGreaterThanOrEqual(0);
+  expect(panelLayout.right).toBeLessThanOrEqual(391);
+  expect(panelLayout.top).toBeGreaterThanOrEqual(0);
+  expect(panelLayout.bottom).toBeLessThanOrEqual(845);
+  expect(panelLayout.scrollTop).toBe(0);
+  await page.keyboard.press('Escape');
+  await expect(page.locator('#language-panel')).toBeHidden();
+
+  await page.locator('#begin').click();
+  await expect(page.locator('#opening')).toHaveAttribute('aria-hidden', 'true');
+  await page.waitForTimeout(1_000);
+  const playbackLayout = await page.evaluate(() => {
+    const caption = document.querySelector('#captions')?.getBoundingClientRect();
+    const controls = [...document.querySelectorAll('.hud__actions button')].map((button) => {
+      const rect = button.getBoundingClientRect();
+      return { width: rect.width, height: rect.height, right: rect.right };
+    });
+    return {
+      documentWidth: document.documentElement.scrollWidth,
+      viewportWidth: window.innerWidth,
+      caption: caption ? { x: caption.x, width: caption.width, right: caption.right, bottom: caption.bottom } : null,
+      controls,
+    };
+  });
+  expect(playbackLayout.documentWidth).toBeLessThanOrEqual(playbackLayout.viewportWidth);
+  expect(playbackLayout.caption.x).toBeGreaterThanOrEqual(0);
+  expect(playbackLayout.caption.right).toBeLessThanOrEqual(playbackLayout.viewportWidth + 1);
+  for (const control of playbackLayout.controls) {
+    expect(control.width).toBeGreaterThanOrEqual(39);
+    expect(control.height).toBeGreaterThanOrEqual(39);
+    expect(control.right).toBeLessThanOrEqual(playbackLayout.viewportWidth + 1);
+  }
+  if (process.env.CAPTURE_VISUALS) await page.screenshot({ path: 'test-results/anansi-mobile-playback.png' });
   expect(failures).toEqual([]);
 });
 

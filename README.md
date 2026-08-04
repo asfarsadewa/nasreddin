@@ -5,11 +5,12 @@ A multilingual collection of timeless tales retold as short cinematic web experi
 - [Open the collection](https://stories.asfar.family/)
 - [Watch Story 01: The Smell of Soup & The Sound of Money](https://stories.asfar.family/stories/smell-of-soup/)
 - [Watch Story 02: 掩耳盗铃](https://stories.asfar.family/stories/yan-er-dao-ling/)
-- Story 03 is in local production: The Tiger and the Dried Persimmon
+- [Watch Story 03: The Tiger and the Dried Persimmon](https://stories.asfar.family/stories/tiger-and-dried-persimmon/)
+- Story 04 is ready in this source tree at `/stories/anansi-and-the-pot/`: Anansi and the Pot
 
-The first story is a Three.js retelling of the Nasreddin Hodja folktale with fully acted English, Mandarin, and Indonesian performances. The second retells the Chinese fable 掩耳盗铃 with the same three-language voice-and-subtitle contract, a moonlit bronze-bell courtyard, a perceptual muffling sequence, original music, and authored cinematic cameras. The third brings the Korean folktale 호랑이와 곶감 into an ink-and-hanji mountain night built around instanced persimmons, pines, roof tiles, and tiger stripes.
+The first story is a Three.js retelling of the Nasreddin Hodja folktale with fully acted English, Mandarin, and Indonesian performances. The second retells the Chinese fable 掩耳盗铃 with the same three-language voice-and-subtitle contract, a moonlit bronze-bell courtyard, a perceptual muffling sequence, original music, and authored cinematic cameras. The third brings the Korean folktale 호랑이와 곶감 into an ink-and-hanji mountain night built around instanced persimmons, pines, roof tiles, and tiger stripes. The fourth follows an Akan account of Kwaku Ananse, Ntikuma, and a gourd of gathered wisdom, staged around a towering tree and a luminous field that changes from hoard to shared web.
 
-Default playback is English voice + Indonesian subtitles for Story 01, Mandarin voice + English subtitles for Story 02, and Indonesian voice + Chinese subtitles for Story 03.
+Default playback is English voice + Indonesian subtitles for Story 01, Mandarin voice + English subtitles for Story 02, Indonesian voice + Chinese subtitles for Story 03, and English voice + Indonesian subtitles for Story 04.
 
 ## Run it
 
@@ -34,7 +35,7 @@ npx playwright install chromium
 npm run test:e2e
 ```
 
-These tests exercise the collection, both story players, Start and pause, on-demand voice switching, background language prefetch, same-origin asset delivery, and the true-404 fallback. They are also run by `.github/workflows/ci.yml`.
+These tests exercise the collection, all story players, Start and pause, on-demand voice switching, background language prefetch, same-origin asset delivery, and the true-404 fallback. They are also run by `.github/workflows/ci.yml`.
 
 Build or deploy the Cloudflare Worker with static assets:
 
@@ -111,4 +112,11 @@ Story 03 uses the same repository-owned boundary:
 ```bash
 npm run audio:music:tiger-and-dried-persimmon
 npm run audio:sfx:tiger-and-dried-persimmon
+```
+
+Story 04's original score and action effects can be regenerated with:
+
+```bash
+npm run audio:music:anansi-and-the-pot
+npm run audio:sfx:anansi-and-the-pot
 ```

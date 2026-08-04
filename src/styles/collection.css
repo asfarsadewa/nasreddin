@@ -677,6 +677,171 @@
 .story-card__link:hover .story-card__persimmons i:nth-child(odd) { transform: translateY(-8px) scale(1.08); }
 .story-card__link:hover .story-card__persimmons i:nth-child(even) { transform: translateY(5px) scale(0.82); }
 
+.story-card__visual--anansi {
+  background:
+    radial-gradient(circle at 72% 19%, rgba(216, 154, 67, 0.17), transparent 22%),
+    linear-gradient(155deg, #163c3b, #0a2427 48%, #07131b);
+}
+
+.story-card__visual--anansi::after {
+  right: -30%;
+  bottom: -49%;
+  left: -30%;
+  height: 70%;
+  background: radial-gradient(circle at 50% 0, #9a472d, #552d24 42%, #07131b 74%);
+  box-shadow: 0 -24px 90px rgba(143, 63, 40, 0.28);
+}
+
+.story-card__anansi-sun {
+  position: absolute;
+  top: 10%;
+  right: 9%;
+  width: clamp(8rem, 16vw, 12rem);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle at 38% 32%, #f1cf82, #d59a45 58%, #9a522c);
+  box-shadow: 0 0 80px rgba(216, 154, 67, 0.2);
+  opacity: 0.78;
+}
+
+.story-card__anansi-tree {
+  position: absolute;
+  bottom: -2%;
+  left: 48%;
+  z-index: 2;
+  width: clamp(2.8rem, 6vw, 4.8rem);
+  height: 92%;
+  border-radius: 48% 58% 0 0;
+  background: linear-gradient(90deg, #2b1918, #674032 52%, #2c1a19);
+  transform: translateX(-50%);
+  box-shadow: 1.2rem 0 2rem rgba(0, 0, 0, 0.28);
+}
+
+.story-card__anansi-tree::before,
+.story-card__anansi-tree::after,
+.story-card__anansi-tree i,
+.story-card__anansi-tree b {
+  content: '';
+  position: absolute;
+  height: clamp(1rem, 2vw, 1.6rem);
+  border-radius: 999px;
+  background: #4c3028;
+  transform-origin: left center;
+}
+.story-card__anansi-tree::before { top: 23%; left: 44%; width: clamp(8rem, 16vw, 14rem); transform: rotate(-23deg); }
+.story-card__anansi-tree::after { top: 35%; right: 44%; width: clamp(8rem, 17vw, 15rem); transform: rotate(206deg); }
+.story-card__anansi-tree i:first-child { top: 8%; left: 47%; width: clamp(7rem, 14vw, 12rem); transform: rotate(-47deg); }
+.story-card__anansi-tree i:nth-child(2) { top: 17%; right: 46%; width: clamp(7rem, 15vw, 13rem); transform: rotate(226deg); }
+.story-card__anansi-tree b { top: 48%; left: 45%; width: clamp(5rem, 10vw, 8rem); transform: rotate(31deg); }
+
+.story-card__anansi-web {
+  position: absolute;
+  top: 28%;
+  left: 48%;
+  z-index: 3;
+  width: 1px;
+  height: 1px;
+}
+.story-card__anansi-web i {
+  position: absolute;
+  border: 1px solid rgba(81, 183, 166, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.9s ease, height 0.9s ease, opacity 0.9s ease;
+}
+.story-card__anansi-web i:first-child { width: 9rem; height: 9rem; }
+.story-card__anansi-web i:nth-child(2) { width: 15rem; height: 15rem; opacity: 0.68; }
+.story-card__anansi-web i:last-child { width: 22rem; height: 22rem; opacity: 0.34; }
+
+.story-card__anansi-spider {
+  position: absolute;
+  top: 42%;
+  left: 43%;
+  z-index: 5;
+  width: clamp(2.7rem, 5vw, 4.1rem);
+  height: clamp(3.3rem, 6vw, 4.8rem);
+  border-radius: 48% 48% 55% 55%;
+  background: #21151a;
+  box-shadow: inset 0.6rem -0.4rem #10090d, 0 0.8rem 1.6rem rgba(0, 0, 0, 0.35);
+  transform: translateX(-50%) rotate(-6deg);
+  transition: transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.story-card__anansi-spider::before {
+  content: '';
+  position: absolute;
+  bottom: 89%;
+  left: 21%;
+  width: 58%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #2b171b;
+}
+.story-card__anansi-spider b {
+  position: absolute;
+  inset: 25% 24%;
+  border: 2px solid #8f3f28;
+  border-radius: 50%;
+}
+.story-card__anansi-spider i {
+  position: absolute;
+  top: 22%;
+  width: 4.4rem;
+  height: 0.28rem;
+  border-radius: 999px;
+  background: #21151a;
+  box-shadow: 0 1.25rem #21151a;
+}
+.story-card__anansi-spider i:nth-of-type(1) { right: 74%; transform: rotate(27deg); }
+.story-card__anansi-spider i:nth-of-type(2) { left: 74%; transform: rotate(-27deg); }
+.story-card__anansi-spider i:nth-of-type(3) { right: 76%; top: 57%; transform: rotate(-25deg); }
+.story-card__anansi-spider i:nth-of-type(4) { left: 76%; top: 57%; transform: rotate(25deg); }
+
+.story-card__anansi-gourd {
+  position: absolute;
+  top: 49%;
+  left: 51%;
+  z-index: 6;
+  width: clamp(3.5rem, 7vw, 5.5rem);
+  height: clamp(4.5rem, 9vw, 7rem);
+  border-radius: 45% 45% 52% 52% / 36% 36% 60% 60%;
+  background: radial-gradient(circle at 34% 27%, #efbd67, #bd7531 63%, #713821);
+  box-shadow: inset 0.5rem -0.7rem rgba(77, 28, 17, 0.2), 0 1.1rem 2rem rgba(0, 0, 0, 0.35);
+  transform: translateX(-50%) rotate(5deg);
+  transition: transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.story-card__anansi-gourd::before {
+  content: '';
+  position: absolute;
+  right: 30%;
+  bottom: 91%;
+  left: 30%;
+  height: 1.3rem;
+  border-radius: 40% 40% 0 0;
+  background: #9b5c29;
+}
+.story-card__anansi-gourd i,
+.story-card__anansi-gourd b { position: absolute; width: 0.4rem; height: 0.4rem; border-radius: 50%; background: #51b7a6; box-shadow: 0 0 15px #51b7a6; }
+.story-card__anansi-gourd i { top: 38%; left: 31%; }
+.story-card__anansi-gourd b { right: 25%; bottom: 30%; background: #f0e5c6; }
+
+.story-card__anansi-wisdom { position: absolute; inset: 0; z-index: 4; }
+.story-card__anansi-wisdom i { position: absolute; width: 0.48rem; height: 0.48rem; background: #51b7a6; transform: rotate(45deg); box-shadow: 0 0 16px rgba(81, 183, 166, 0.7); transition: transform 0.7s ease; }
+.story-card__anansi-wisdom i:nth-child(1) { top: 19%; left: 18%; }
+.story-card__anansi-wisdom i:nth-child(2) { top: 35%; right: 20%; background: #e5b45e; }
+.story-card__anansi-wisdom i:nth-child(3) { bottom: 25%; left: 15%; }
+.story-card__anansi-wisdom i:nth-child(4) { bottom: 14%; right: 18%; background: #e5b45e; }
+.story-card__anansi-wisdom i:nth-child(5) { top: 13%; left: 42%; transform: rotate(45deg) scale(0.7); }
+.story-card__anansi-wisdom i:nth-child(6) { top: 58%; right: 8%; transform: rotate(45deg) scale(0.65); }
+.story-card__anansi-name { position: absolute; right: 5.5%; bottom: 5.5%; z-index: 6; color: rgba(216, 195, 142, 0.55); font: 600 clamp(0.62rem, 1.1vw, 0.82rem)/1 'IBM Plex Mono', monospace; letter-spacing: 0.2em; }
+
+.story-card__link:hover .story-card__anansi-spider { transform: translateX(-50%) translateY(-9px) rotate(2deg); }
+.story-card__link:hover .story-card__anansi-gourd { transform: translateX(-43%) translateY(5px) rotate(-4deg); }
+.story-card__link:hover .story-card__anansi-web i:first-child { width: 12rem; height: 12rem; }
+.story-card__link:hover .story-card__anansi-web i:nth-child(2) { width: 19rem; height: 19rem; }
+.story-card__link:hover .story-card__anansi-web i:last-child { width: 27rem; height: 27rem; }
+.story-card__link:hover .story-card__anansi-wisdom i:nth-child(odd) { transform: rotate(90deg) translateY(-7px); }
+.story-card__link:hover .story-card__anansi-wisdom i:nth-child(even) { transform: rotate(0deg) translateY(6px); }
+
 .story-card__seal {
   position: absolute;
   right: 1.35rem;

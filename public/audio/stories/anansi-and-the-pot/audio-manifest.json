@@ -1,0 +1,36 @@
+{
+  "story": "anansi-and-the-pot",
+  "generated": "2026-08-04",
+  "sourceNote": "docs/stories/anansi-and-the-pot.md",
+  "voice": {
+    "provider": "Gemini TTS",
+    "model": "gemini-3.1-flash-tts-preview",
+    "format": "wav_pcm_s16le_24000_mono",
+    "languages": ["en-US", "zh-CN", "id-ID"],
+    "linesPerLanguage": 12
+  },
+  "music": {
+    "provider": "ElevenLabs Music",
+    "model": "music_v2",
+    "format": "mp3_48000_192",
+    "license": "Generated for this production under the maintainer's ElevenLabs account terms.",
+    "cues": [
+      { "file": "music/calabash-opening.mp3", "durationMs": 28000, "songId": "Odnz5HpJhzm37odWwVnW", "promptSummary": "Calabash pulse, seperewa-like plucked motif, wood, and flute open an intimate Akan-inspired twilight story." },
+      { "file": "music/gourd-secret-underscore.mp3", "durationMs": 46000, "songId": "xqjQbjj5zr8ilfIitl8I", "promptSummary": "Loop-safe plucked strings, muted calabash, dry seeds, and restrained hand-drum motion carry the hoarded-wisdom climb." },
+      { "file": "music/wisdom-scattered-ending.mp3", "durationMs": 30000, "songId": "JAmezXivQkRzlIqHkDBO", "promptSummary": "The narrow opening motif spreads across plucked strings, wood, flute, drums, and distant bell-metal reflections." }
+    ]
+  },
+  "soundEffects": {
+    "provider": "ElevenLabs Sound Effects",
+    "model": "eleven_text_to_sound_v2",
+    "format": "mp3_44100_192",
+    "license": "Generated for this production under the maintainer's ElevenLabs account terms.",
+    "cues": [
+      { "file": "sfx/forest-dusk.mp3", "durationSeconds": 22, "loop": true, "requestId": null, "promptSummary": "Looping Ghana forest-clearing dusk with canopy air, sparse leaves, distant insects, and dry seeds." },
+      { "file": "sfx/wisdom-gather.mp3", "durationSeconds": 5, "loop": false, "requestId": null, "promptSummary": "Dry seeds, raffia, wood, delicate glints, and inward air gather into the gourd." },
+      { "file": "sfx/gourd-knock.mp3", "durationSeconds": 3, "loop": false, "requestId": null, "promptSummary": "A tied hollow calabash knocks bark three times and slips without breaking." },
+      { "file": "sfx/tree-climb.mp3", "durationSeconds": 4, "loop": false, "requestId": null, "promptSummary": "Fast many-legged bark contacts and rope movement climb in three accelerating clusters." },
+      { "file": "sfx/wisdom-scatter.mp3", "durationSeconds": 7, "loop": false, "requestId": null, "promptSummary": "A falling calabash splits into seeds, wood, glints, and airy particles spreading from close to wide." }
+    ]
+  }
+}

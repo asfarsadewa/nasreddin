@@ -1,0 +1,25 @@
+{
+  "id": "anansi_and_the_pot_id",
+  "language": "id-ID",
+  "style": "Anansesem dari tradisi lisan suku Akan, dituturkan dalam Bahasa Indonesia baku yang luwes, hangat, dan sinematik dengan humor bersahaja. Jangan terdengar kekanak-kanakan, berlebihan, teatrikal, atau seperti iklan. Pertahankan nama Kwaku Ananse dan Ntikuma. Ucapkan Ananse sebagai a-NAN-se dan Ntikuma sebagai en-ti-KU-ma. Bunyi pendakian dan pecahnya tempayan harus hidup seperti bunyi dalam dongeng lisan, bukan kata asing yang sedang dijelaskan. Sisakan napas alami singkat pada akhir setiap baris.",
+  "mode": "per_line",
+  "speakers": [
+    { "name": "Narator", "voice": "Charon", "style": "Pendongeng dewasa yang hangat dan lapang, membiarkan kelucuan lahir dari gerak tanpa menambahkan kesimpulan moral." },
+    { "name": "Kwaku Ananse", "voice": "Puck", "style": "Cekatan, angkuh, penuh akal, dan yakin tak pernah luput; tajam saat frustrasi tetapi bukan penjahat kartun." },
+    { "name": "Ntikuma", "voice": "Leda", "style": "Anak kecil yang jeli, berbicara sederhana, hormat, dan tulus tanpa kesan mengejek atau suara bayi yang dibuat-buat." }
+  ],
+  "lines": [
+    { "speaker": "Narator", "text": "Dahulu kala, Kwaku Ananse mengumpulkan setiap keping kebijaksanaan yang dapat ia temukan di bumi.", "direction": "Buka dengan irama dongeng lama dan cakrawala yang luas; beri sedikit tenaga pada mengumpulkan.", "file": "01_narrator_gathers.wav" },
+    { "speaker": "Narator", "text": "Semua ia jejalkan ke dalam sebuah tempayan labu—setiap jawaban, rahasia, dan pikiran cerdik.", "direction": "Dekati tempayan; buat tiga unsur setelah tanda pisah terasa semakin rapat dan penuh.", "file": "02_narrator_gourd.wav" },
+    { "speaker": "Kwaku Ananse", "text": "Akhirnya, seluruh kebijaksanaan menjadi milikku. Akan kugantung di tempat yang tak dapat dijangkau siapa pun.", "direction": "Kemenangan yang tenang dan puas sepenuhnya; tegaskan milikku, lalu sampaikan rencana seolah tanpa cela.", "file": "03_anansi_mine.wav" },
+    { "speaker": "Narator", "text": "Ia mengikat tempayan itu di depan tubuhnya lalu berdiri di kaki sebatang pohon tinggi.", "direction": "Bergerak dari ikatan tali yang dekat menuju skala pohon yang menjulang; tenang dan visual.", "file": "04_narrator_tree.wav" },
+    { "speaker": "Narator", "text": "Ananse memanjat. Tempayan menghantam batang, menghalangi kakinya, lalu menyeretnya turun.", "direction": "Jatuhkan setiap gerak dengan jelas dan akhiri dengan humor kering; jangan berlebihan.", "file": "05_narrator_strikes.wav" },
+    { "speaker": "Narator", "text": "Ia mencoba lagi dan lagi. Setiap kali, kebijaksanaan di dadanya justru menghalanginya naik.", "direction": "Biarkan pengulangan membawa rasa lelah; perlambat sedikit pada ironi di akhir.", "file": "06_narrator_again.wav" },
+    { "speaker": "Ntikuma", "text": "Ayah, mengapa tidak membalikkan tempayan itu ke punggungmu? Dengan begitu Ayah bisa memanjat.", "direction": "Saran praktis yang tulus dari bawah, hormat dan sederhana, tanpa nada pamer atau menggoda.", "file": "07_ntikuma_back.wav" },
+    { "speaker": "Kwaku Ananse", "text": "Pergi sana dengan petuah kunomu!", "direction": "Bentakan singkat karena harga diri terluka; tegas dan cepat tetapi tidak berteriak.", "file": "08_anansi_away.wav" },
+    { "speaker": "Narator", "text": "Namun setelah satu percobaan sia-sia lagi, Ananse berhenti. Ia memindahkan tempayan ke punggungnya.", "direction": "Sisakan ruang hening setelah berhenti; perpindahan terasa disengaja dan enggan.", "file": "09_narrator_turns.wav" },
+    { "speaker": "Narator", "text": "Naiklah ia—kra, kra, kra—dengan cepat sampai ke tempat dahan-dahan menyebar.", "direction": "Cerah dan percepat irama melalui bunyi pendakian, lalu buka frasa terakhir ke ruang tajuk pohon.", "file": "10_narrator_climbs.wav" },
+    { "speaker": "Kwaku Ananse", "text": "Aku mengumpulkan seluruh kebijaksanaan, tetapi anakku yang kecil menunjukkan apa yang tak kulihat.", "direction": "Kesadaran yang sungguh mengejutkan dengan sedikit malu; lebih pelan dan lembut daripada kesombongannya tadi.", "file": "11_anansi_missed.wav" },
+    { "speaker": "Narator", "text": "Ia menyentak tempayan itu dan melemparkannya ke bawah. Tintini! Tesee! Kebijaksanaan berhamburan, tak lagi dapat ia simpan.", "direction": "Bangun tenaga pada lemparan, beri dua bunyi Akan daya musik yang tajam, lalu luaskan dan lembutkan kalimat terakhir.", "file": "12_narrator_scatters.wav" }
+  ]
+}
