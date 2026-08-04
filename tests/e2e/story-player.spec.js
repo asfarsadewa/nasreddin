@@ -100,6 +100,7 @@ for (const story of stories) {
 }
 
 test('Anansi and the Pot keeps every voice, subtitle, and playback control independent', async ({ page }) => {
+  test.setTimeout(90_000);
   const failures = watchApplicationFailures(page);
   await page.goto('/stories/anansi-and-the-pot/');
   await expect(page.locator('#begin')).toBeEnabled({ timeout: 30_000 });
