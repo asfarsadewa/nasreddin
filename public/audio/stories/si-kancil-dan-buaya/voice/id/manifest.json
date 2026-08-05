@@ -1,0 +1,25 @@
+{
+  "id": "si_kancil_dan_buaya_id",
+  "language": "id-ID",
+  "style": "Fabel Si Kancil dari tradisi tutur Indonesia, dibawakan dalam Bahasa Indonesia baku yang luwes, hangat, cerdik, dan sinematik. Kelucuan muncul dari kesungguhan para tokoh dan ketepatan irama hitungan, bukan dari suara kartun. Ucapkan Kancil secara alami dalam Bahasa Indonesia. Beri setiap angka pada dua baris penyeberangan pijakan yang jelas dan terpisah. Jangan menambahkan amanat. Sisakan napas alami singkat di akhir setiap baris.",
+  "mode": "per_line",
+  "speakers": [
+    { "name": "Narator", "voice": "Charon", "style": "Pendongeng dewasa dengan suara hangat, bertekstur, dan visual; tenang saat membangun sungai, lalu ringan dan presisi mengikuti lompatan." },
+    { "name": "Si Kancil", "voice": "Puck", "style": "Sosok kecil yang cekatan dan jeli; awalnya gentar sungguhan, lalu tenang saat siasat terbentuk. Cerdik tanpa terdengar congkak atau kekanak-kanakan." },
+    { "name": "Buaya Perkasa", "voice": "Fenrir", "style": "Buaya besar dengan suara rendah, basah, dan berwibawa; lapar, mudah tersinggung, serta sangat yakin pada logikanya sendiri tanpa menjadi monster kartun." }
+  ],
+  "lines": [
+    { "speaker": "Narator", "text": "Suatu sore, Si Kancil tiba di sungai sempit dalam perjalanan mengunjungi kakeknya. Delapan buaya sedang bermalas-malasan di air.", "direction": "Buka dengan ruang yang luas dan hawa sore yang lembap; dekatkan perhatian pada sungai sempit dan jatuhkan kata delapan dengan tenang.", "file": "01_narrator_river.wav" },
+    { "speaker": "Narator", "text": "Seekor buaya ternyata hanya berpura-pura tidur. Sebelah mata kuningnya terbuka. “Kancil!” serunya, membangunkan seisi sungai.", "direction": "Mulai seperti rahasia dekat permukaan air; buat seruan Kancil mendadak dan tajam, lalu lebarkan gema ke seluruh sungai.", "file": "02_narrator_eye.wav" },
+    { "speaker": "Buaya Perkasa", "text": "Ha! Hari ini, kaulah santapan kami!", "direction": "Kemenangan lapar yang lantang dan rendah; tekankan kaulah tanpa raungan berlebihan.", "file": "03_crocodile_meal.wav" },
+    { "speaker": "Si Kancil", "text": "Tu-tunggu! Kalau kalian memakanku, bagaimana tubuhku akan dibagi dengan adil untuk kalian semua?", "direction": "Gagap pertama lahir dari takut sungguhan; di tengah kalimat, rasa takut berubah menjadi pertanyaan yang sengaja memancing keserakahan.", "file": "04_kancil_share.wav" },
+    { "speaker": "Narator", "text": "Buaya Kurus mengeluh karena selalu mendapat bagian paling kecil. Tak lama kemudian, sungai bergolak oleh pertengkaran.", "direction": "Humor kering dan observasional; kalimat kedua melebar menjadi keributan yang tetap jelas untuk narasi.", "file": "05_narrator_argument.wav" },
+    { "speaker": "Buaya Perkasa", "text": "Cukup! Kita hitung dulu jumlah kita. Tapi… siapa yang bisa mengurutkan angka dengan benar?", "direction": "Hentikan pertengkaran dengan wibawa; setelah tapi, beri jeda malu yang menunjukkan ia sendiri tidak tahu.", "file": "06_crocodile_count.wav" },
+    { "speaker": "Si Kancil", "text": "Aku bisa. Berbarislah dari tepi ini sampai ke seberang. Aku akan menghitung kalian dari atas punggung.", "direction": "Kini sepenuhnya tenang dan praktis. Sampaikan arah barisan seperti instruksi sederhana yang tak perlu dicurigai.", "file": "07_kancil_line.wav" },
+    { "speaker": "Narator", "text": "Moncong bertemu ekor, para buaya membentang melawan arus—jembatan hidup dari sisik dan gigi.", "direction": "Mulai dekat pada bentuk tubuh, lalu buka lebar pada jembatan hidup; sisik dan gigi terasa indah sekaligus berbahaya.", "file": "08_narrator_bridge.wav" },
+    { "speaker": "Narator", "text": "Satu—dua—tiga—empat. Si Kancil melompat dari satu punggung lebar ke punggung berikutnya, sementara para buaya ikut berhitung.", "direction": "Setiap angka berdiri sendiri seperti empat pijakan yang ringan dan tepat; percepat bagian sesudah hitungan tanpa kehilangan kejelasan.", "file": "09_narrator_one_four.wav" },
+    { "speaker": "Narator", "text": "Lima—enam—tujuh. “Delapan!” seru para buaya dengan gembira ketika Si Kancil mendarat di punggung terakhir.", "direction": "Tiga angka pertama semakin cepat; Delapan adalah seruan kelompok yang puas dan serempak, lalu mendarat lembut pada akhir kalimat.", "file": "10_narrator_five_eight.wav" },
+    { "speaker": "Buaya Perkasa", "text": "Bagus! Sekarang kita bisa membagi Kancil menjadi delapan bagian yang sama!", "direction": "Sangat gembira karena merasa masalah sudah selesai; jangan menyadari lompatan terakhir yang terjadi di luar fokusnya.", "file": "11_crocodile_eight.wav" },
+    { "speaker": "Narator", "text": "Namun saat mereka menoleh, Si Kancil telah tiba di seberang dan lenyap di antara pepohonan. Delapan perut kosong pun memulai pertengkaran baru.", "direction": "Biarkan pengungkapan pertama lapang dan ringan; tutup kalimat terakhir dengan humor kering, tanpa mengucapkan amanat.", "file": "12_narrator_gone.wav" }
+  ]
+}

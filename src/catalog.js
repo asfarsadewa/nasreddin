@@ -203,6 +203,40 @@ export const STORIES = [
     languages: '中文 · EN · ID',
     load: () => import('./stories/anansi-and-the-pot/entry.js'),
   },
+  {
+    slug: 'si-kancil-dan-buaya',
+    path: '/stories/si-kancil-dan-buaya',
+    sequence: '05',
+    status: 'available',
+    cover: 'kancil',
+    title: {
+      en: 'Si Kancil and the Crocodiles',
+      id: 'Si Kancil dan Buaya',
+      zh: '小鼷鹿与鳄鱼',
+    },
+    description: {
+      en: 'Eight hungry crocodiles, one narrow river, and the careful count that turns a trap into a living bridge.',
+      id: 'Delapan buaya lapar, satu sungai sempit, dan hitungan cermat yang mengubah jebakan menjadi jembatan hidup.',
+      zh: '八条饥饿的鳄鱼、一条狭窄的河，以及一次把陷阱变成活桥的巧妙数数。',
+    },
+    tradition: {
+      en: 'An Indonesian fable',
+      id: 'Fabel Indonesia',
+      zh: '印度尼西亚寓言',
+    },
+    duration: {
+      en: 'About 2 minutes',
+      id: 'Sekitar 2 menit',
+      zh: '约 2 分钟',
+    },
+    format: {
+      en: '3D animation · Trilingual voice',
+      id: 'Animasi 3D · Suara trilingual',
+      zh: '3D 动画 · 三语配音',
+    },
+    languages: '中文 · EN · ID',
+    load: () => import('./stories/si-kancil-dan-buaya/entry.js'),
+  },
 ];
 
 export function normalizePath(pathname) {

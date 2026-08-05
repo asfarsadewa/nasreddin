@@ -40,6 +40,16 @@ import {
   UI_COPY as ANANSI_UI_COPY,
 } from '../src/stories/anansi-and-the-pot/story.js';
 import { createStoryTemplate as createAnansiTemplate } from '../src/stories/anansi-and-the-pot/template.js';
+import { StoryAudio as KancilAudio } from '../src/stories/si-kancil-dan-buaya/audio.js';
+import {
+  AUDIO_TRACKS as KANCIL_AUDIO_TRACKS,
+  CAMERA_POSES as KANCIL_CAMERA_POSES,
+  MUSIC_CUES as KANCIL_MUSIC_CUES,
+  SFX_CUES as KANCIL_SFX_CUES,
+  STORY_LINES as KANCIL_LINES,
+  UI_COPY as KANCIL_UI_COPY,
+} from '../src/stories/si-kancil-dan-buaya/story.js';
+import { createStoryTemplate as createKancilTemplate } from '../src/stories/si-kancil-dan-buaya/template.js';
 
 const REQUIRED_TEMPLATE_IDS = [
   'experience', 'canvas-stage', 'opening', 'story-title', 'begin', 'load-status',
@@ -76,6 +86,13 @@ const STORIES = [
     languages: ['en', 'zh', 'id'], createTemplate: createAnansiTemplate,
     createAudio: () => new AnansiAudio(ANANSI_LINES, ANANSI_AUDIO_TRACKS, ANANSI_MUSIC_CUES, ANANSI_SFX_CUES, 'en'),
     timing: { lead: 1.15, gap: 0.5, tail: 3.8 }, defaults: { voice: 'en', subtitle: 'id' },
+  },
+  {
+    slug: 'si-kancil-dan-buaya', lines: KANCIL_LINES, tracks: KANCIL_AUDIO_TRACKS,
+    cameras: KANCIL_CAMERA_POSES, ui: KANCIL_UI_COPY, music: KANCIL_MUSIC_CUES, sfx: KANCIL_SFX_CUES,
+    languages: ['en', 'zh', 'id'], createTemplate: createKancilTemplate,
+    createAudio: () => new KancilAudio(KANCIL_LINES, KANCIL_AUDIO_TRACKS, KANCIL_MUSIC_CUES, KANCIL_SFX_CUES, 'id'),
+    timing: { lead: 1.2, gap: 0.5, tail: 4.0 }, defaults: { voice: 'id', subtitle: 'en' },
   },
 ];
 

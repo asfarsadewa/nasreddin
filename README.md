@@ -7,10 +7,11 @@ A multilingual collection of timeless tales retold as short cinematic web experi
 - [Watch Story 02: 掩耳盗铃](https://stories.asfar.family/stories/yan-er-dao-ling/)
 - [Watch Story 03: The Tiger and the Dried Persimmon](https://stories.asfar.family/stories/tiger-and-dried-persimmon/)
 - [Watch Story 04: Anansi and the Pot](https://stories.asfar.family/stories/anansi-and-the-pot/)
+- [Watch Story 05: Si Kancil dan Buaya](https://stories.asfar.family/stories/si-kancil-dan-buaya/)
 
-The first story is a Three.js retelling of the Nasreddin Hodja folktale with fully acted English, Mandarin, and Indonesian performances. The second retells the Chinese fable 掩耳盗铃 with the same three-language voice-and-subtitle contract, a moonlit bronze-bell courtyard, a perceptual muffling sequence, original music, and authored cinematic cameras. The third brings the Korean folktale 호랑이와 곶감 into an ink-and-hanji mountain night built around instanced persimmons, pines, roof tiles, and tiger stripes. The fourth follows an Akan account of Kwaku Ananse, Ntikuma, and a gourd of gathered wisdom, staged around a towering tree and a luminous field that changes from hoard to shared web.
+The first story is a Three.js retelling of the Nasreddin Hodja folktale with fully acted English, Mandarin, and Indonesian performances. The second retells the Chinese fable 掩耳盗铃 with the same three-language voice-and-subtitle contract, a moonlit bronze-bell courtyard, a perceptual muffling sequence, original music, and authored cinematic cameras. The third brings the Korean folktale 호랑이와 곶감 into an ink-and-hanji mountain night built around instanced persimmons, pines, roof tiles, and tiger stripes. The fourth follows an Akan account of Kwaku Ananse, Ntikuma, and a gourd of gathered wisdom, staged around a towering tree and a luminous field that changes from hoard to shared web. The fifth stages the Indonesian fable Si Kancil dan Buaya as a moonlit tropical-river crossing, with a dynamically assembled instanced crocodile bridge, counted landing ripples, and an authored camera arc that follows Kancil from trap to far-bank escape.
 
-Default playback is English voice + Indonesian subtitles for Story 01, Mandarin voice + English subtitles for Story 02, Indonesian voice + Chinese subtitles for Story 03, and English voice + Indonesian subtitles for Story 04.
+Default playback is English voice + Indonesian subtitles for Story 01, Mandarin voice + English subtitles for Story 02, Indonesian voice + Chinese subtitles for Story 03, English voice + Indonesian subtitles for Story 04, and Indonesian voice + English subtitles for Story 05.
 
 ## Run it
 
@@ -119,4 +120,11 @@ Story 04's original score and action effects can be regenerated with:
 ```bash
 npm run audio:music:anansi-and-the-pot
 npm run audio:sfx:anansi-and-the-pot
+```
+
+Story 05's original river score and crossing effects can be regenerated with:
+
+```bash
+npm run audio:music:si-kancil-dan-buaya
+npm run audio:sfx:si-kancil-dan-buaya
 ```

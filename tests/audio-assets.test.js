@@ -29,6 +29,13 @@ import {
 } from '../src/stories/anansi-and-the-pot/story.js';
 import { StoryAudio as TigerStoryAudio } from '../src/stories/tiger-and-dried-persimmon/audio.js';
 import { StoryAudio as AnansiStoryAudio } from '../src/stories/anansi-and-the-pot/audio.js';
+import {
+  AUDIO_TRACKS as KANCIL_TRACKS,
+  MUSIC_CUES as KANCIL_MUSIC,
+  SFX_CUES as KANCIL_SFX,
+  STORY_LINES as KANCIL_LINES,
+} from '../src/stories/si-kancil-dan-buaya/story.js';
+import { StoryAudio as KancilStoryAudio } from '../src/stories/si-kancil-dan-buaya/audio.js';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const fromPublicUrl = (url) => join(ROOT, 'public', ...url.replace(/^\//, '').split('/'));
@@ -119,6 +126,13 @@ const VOICE_PRODUCTIONS = [
       join(ROOT, `public/audio/stories/anansi-and-the-pot/voice/${language}/manifest.json`),
     ])),
   },
+  {
+    slug: 'si-kancil-dan-buaya', lines: KANCIL_LINES, tracks: KANCIL_TRACKS,
+    manifests: Object.fromEntries(['en', 'zh', 'id'].map((language) => [
+      language,
+      join(ROOT, `public/audio/stories/si-kancil-dan-buaya/voice/${language}/manifest.json`),
+    ])),
+  },
 ];
 
 for (const production of VOICE_PRODUCTIONS) {
@@ -159,12 +173,14 @@ test('all referenced score and effect cues are valid, non-trivial MP3 files', as
     ...Object.fromEntries(Object.entries(TIGER_SFX).map(([name, url]) => [`tiger:sfx:${name}`, url])),
     ...Object.fromEntries(Object.entries(ANANSI_MUSIC).map(([name, url]) => [`anansi:music:${name}`, url])),
     ...Object.fromEntries(Object.entries(ANANSI_SFX).map(([name, url]) => [`anansi:sfx:${name}`, url])),
+    ...Object.fromEntries(Object.entries(KANCIL_MUSIC).map(([name, url]) => [`kancil:music:${name}`, url])),
+    ...Object.fromEntries(Object.entries(KANCIL_SFX).map(([name, url]) => [`kancil:sfx:${name}`, url])),
   };
   assert.equal(new Set(Object.values(cues)).size, Object.values(cues).length, 'each score/effect cue should have its own public asset');
   for (const [name, url] of Object.entries(cues)) assertMp3(await readFile(fromPublicUrl(url)), name);
 });
 
-test('story 03 and 04 mix plans keep opening, middle, and ending score audible under narration', () => {
+test('story 03, 04, and 05 mix plans keep opening, middle, and ending score audible under narration', () => {
   const productions = [
     {
       slug: 'tiger-and-dried-persimmon',
@@ -175,6 +191,11 @@ test('story 03 and 04 mix plans keep opening, middle, and ending score audible u
       slug: 'anansi-and-the-pot',
       audio: new AnansiStoryAudio(ANANSI_LINES, ANANSI_TRACKS, ANANSI_MUSIC, ANANSI_SFX, 'en'),
       language: 'en',
+    },
+    {
+      slug: 'si-kancil-dan-buaya',
+      audio: new KancilStoryAudio(KANCIL_LINES, KANCIL_TRACKS, KANCIL_MUSIC, KANCIL_SFX, 'id'),
+      language: 'id',
     },
   ];
 
@@ -234,5 +255,17 @@ test('audio provenance manifests cover every generated score and effect cue', as
   assert.deepEqual(
     anansiManifest.soundEffects.cues.map((cue) => `/audio/stories/anansi-and-the-pot/${cue.file}`).sort(),
     Object.values(ANANSI_SFX).sort(),
+  );
+
+  const kancilManifest = await readJson(join(ROOT, 'public/audio/stories/si-kancil-dan-buaya/audio-manifest.json'));
+  assert.equal(kancilManifest.voice.linesPerLanguage, KANCIL_LINES.length);
+  assert.deepEqual(kancilManifest.voice.languages.sort(), ['en-US', 'id-ID', 'zh-CN']);
+  assert.deepEqual(
+    kancilManifest.music.cues.map((cue) => `/audio/stories/si-kancil-dan-buaya/${cue.file}`).sort(),
+    Object.values(KANCIL_MUSIC).sort(),
+  );
+  assert.deepEqual(
+    kancilManifest.soundEffects.cues.map((cue) => `/audio/stories/si-kancil-dan-buaya/${cue.file}`).sort(),
+    Object.values(KANCIL_SFX).sort(),
   );
 });

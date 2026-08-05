@@ -1,0 +1,36 @@
+{
+  "story": "si-kancil-dan-buaya",
+  "generated": "2026-08-05",
+  "sourceNote": "docs/stories/si-kancil-dan-buaya.md",
+  "voice": {
+    "provider": "Gemini TTS",
+    "model": "gemini-3.1-flash-tts-preview",
+    "format": "wav_pcm_s16le_24000_mono",
+    "languages": ["en-US", "zh-CN", "id-ID"],
+    "linesPerLanguage": 12
+  },
+  "music": {
+    "provider": "ElevenLabs Music",
+    "model": "music_v2",
+    "format": "mp3_48000_192",
+    "license": "Generated for this production under the maintainer's ElevenLabs account terms.",
+    "cues": [
+      { "file": "music/river-at-dusk-opening.mp3", "durationMs": 30000, "songId": "oIKOrjnhjjBFlYiT6dFK", "promptSummary": "River air, kecapi-like plucks, bamboo breath, restrained hand percussion, and a bronze reflection open the Indonesian crossing." },
+      { "file": "music/crocodile-current-underscore.mp3", "durationMs": 50000, "songId": "4z0KvM1z7cqxO3C8tLvz", "promptSummary": "Loop-safe plucked wood, muted drum skin, bamboo breath, and eight-step pulses carry the threat and counting trick." },
+      { "file": "music/far-bank-ending.mp3", "durationMs": 32000, "songId": "bEe8YbkILzfqWpz4JM2Z", "promptSummary": "Eight separated plucks open into bamboo, wood, hand rhythm, and bronze reflections as Kancil reaches the far bank." }
+    ]
+  },
+  "soundEffects": {
+    "provider": "ElevenLabs Sound Effects",
+    "model": "eleven_text_to_sound_v2",
+    "format": "mp3_44100_192",
+    "license": "Generated for this production under the maintainer's ElevenLabs account terms.",
+    "cues": [
+      { "file": "sfx/tropical-river-dusk.mp3", "durationSeconds": 22, "loop": true, "requestId": null, "promptSummary": "Looping humid Indonesian river current, muddy banks, roots, reeds, distant insects, and sparse leaves." },
+      { "file": "sfx/crocodiles-wake.mp3", "durationSeconds": 4, "loop": false, "requestId": null, "promptSummary": "One eyelid, a widening ripple, surfacing bodies, and restrained jaw clacks wake the river." },
+      { "file": "sfx/crocodile-bridge.mp3", "durationSeconds": 7, "loop": false, "requestId": null, "promptSummary": "Eight wet crocodile bodies steer and settle snout-to-tail from one bank to the other." },
+      { "file": "sfx/kancil-crossing.mp3", "durationSeconds": 10, "loop": false, "requestId": null, "promptSummary": "Eight separated mousedeer hoof contacts and concentric ripples cross wet crocodile backs." },
+      { "file": "sfx/final-bank-leap.mp3", "durationSeconds": 5, "loop": false, "requestId": null, "promptSummary": "A light spring from scales, fast airborne arc, muddy bank landing, reeds, and confused tails." }
+    ]
+  }
+}

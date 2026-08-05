@@ -20,6 +20,7 @@ test('the collection entry remains free of eager Three.js and media imports', as
   assert.match(catalog, /load:\s*\(\)\s*=>\s*import\('\.\/stories\/yan-er-dao-ling\/entry\.js'\)/);
   assert.match(catalog, /load:\s*\(\)\s*=>\s*import\('\.\/stories\/tiger-and-dried-persimmon\/entry\.js'\)/);
   assert.match(catalog, /load:\s*\(\)\s*=>\s*import\('\.\/stories\/anansi-and-the-pot\/entry\.js'\)/);
+  assert.match(catalog, /load:\s*\(\)\s*=>\s*import\('\.\/stories\/si-kancil-dan-buaya\/entry\.js'\)/);
 
   const app = rootSources[0];
   assert.match(app, /async function mountApplication\(\)/, 'story loading must run outside root-module evaluation');
@@ -27,7 +28,7 @@ test('the collection entry remains free of eager Three.js and media imports', as
 });
 
 test('story entry modules expose only the lazy mount boundary', async () => {
-  for (const slug of ['smell-of-soup', 'yan-er-dao-ling', 'tiger-and-dried-persimmon', 'anansi-and-the-pot']) {
+  for (const slug of ['smell-of-soup', 'yan-er-dao-ling', 'tiger-and-dried-persimmon', 'anansi-and-the-pot', 'si-kancil-dan-buaya']) {
     const entry = await readSource(`src/stories/${slug}/entry.js`);
     assert.match(entry, /export async function mount\(app\)/);
     assert.match(entry, /await import\('\.\/index\.js'\)/);
@@ -43,7 +44,7 @@ test('stories share only the player and audio timeline machinery', async () => {
   assert.match(sharedController, /prefetchLanguages/);
   assert.match(sharedController, /ensureLanguage/);
 
-  for (const slug of ['smell-of-soup', 'yan-er-dao-ling', 'tiger-and-dried-persimmon', 'anansi-and-the-pot']) {
+  for (const slug of ['smell-of-soup', 'yan-er-dao-ling', 'tiger-and-dried-persimmon', 'anansi-and-the-pot', 'si-kancil-dan-buaya']) {
     const [audio, controller] = await Promise.all([
       readSource(`src/stories/${slug}/audio.js`),
       readSource(`src/stories/${slug}/index.js`),
@@ -71,6 +72,8 @@ test('generation scripts use environment credentials and namespaced output paths
     'scripts/stories/tiger-and-dried-persimmon/generate-sfx.mjs',
     'scripts/stories/anansi-and-the-pot/generate-music.mjs',
     'scripts/stories/anansi-and-the-pot/generate-sfx.mjs',
+    'scripts/stories/si-kancil-dan-buaya/generate-music.mjs',
+    'scripts/stories/si-kancil-dan-buaya/generate-sfx.mjs',
   ];
   for (const path of scripts) {
     const source = await readSource(path);
@@ -85,6 +88,8 @@ test('generation scripts use environment credentials and namespaced output paths
   const tigerSfx = await readSource(scripts[4]);
   const anansiMusic = await readSource(scripts[5]);
   const anansiSfx = await readSource(scripts[6]);
+  const kancilMusic = await readSource(scripts[7]);
+  const kancilSfx = await readSource(scripts[8]);
   assert.ok(soupMusic.includes('public/audio/stories/smell-of-soup/music'));
   assert.ok(bellMusic.includes('public/audio/stories/yan-er-dao-ling/music'));
   assert.ok(bellSfx.includes('public/audio/stories/yan-er-dao-ling/sfx'));
@@ -92,6 +97,8 @@ test('generation scripts use environment credentials and namespaced output paths
   assert.ok(tigerSfx.includes('public/audio/stories/tiger-and-dried-persimmon/sfx'));
   assert.ok(anansiMusic.includes('public/audio/stories/anansi-and-the-pot/music'));
   assert.ok(anansiSfx.includes('public/audio/stories/anansi-and-the-pot/sfx'));
+  assert.ok(kancilMusic.includes('public/audio/stories/si-kancil-dan-buaya/music'));
+  assert.ok(kancilSfx.includes('public/audio/stories/si-kancil-dan-buaya/sfx'));
 });
 
 test('the persimmon world uses explicit GPU instancing for its repeated visual grammar', async () => {
@@ -115,6 +122,22 @@ test('the Anansi world instances repeated wisdom and articulated spider anatomy'
   assert.match(world, /group\.scale\.setScalar\(0\.64\)/);
   assert.match(world, /cameraPath\.getPoint\(/);
   assert.doesNotMatch(world, /cameraPath\.getPointAt\(/);
+  assert.match(world, /DynamicDrawUsage/);
+  assert.match(world, /instanceMatrix\.needsUpdate\s*=\s*true/);
+  assert.match(world, /setMatrixAt\(/);
+});
+
+test('the Kancil world builds a dynamic instanced crocodile bridge and counted landing path', async () => {
+  const world = await readSource('src/stories/si-kancil-dan-buaya/world.js');
+  const instancedConstructions = world.match(/new THREE\.InstancedMesh\(/g) ?? [];
+  assert.ok(instancedConstructions.length >= 13, 'crocodile anatomy, forest, river details, and count ripples should remain instanced');
+  for (const batch of ['crocBodies', 'crocHeads', 'crocJaws', 'crocTails', 'crocEyes', 'crocScutes']) {
+    assert.match(world, new RegExp(`this\\.${batch}`), `${batch} must remain a dedicated instanced batch`);
+  }
+  assert.match(world, /crossingPoints/);
+  assert.match(world, /crossingPosition\(/);
+  assert.match(world, /updateCountRipples\(/);
+  assert.match(world, /endPosition/);
   assert.match(world, /DynamicDrawUsage/);
   assert.match(world, /instanceMatrix\.needsUpdate\s*=\s*true/);
   assert.match(world, /setMatrixAt\(/);

@@ -1,0 +1,25 @@
+{
+  "id": "si_kancil_dan_buaya_en",
+  "language": "en-US",
+  "style": "An Indonesian Si Kancil fable performed in warm, nimble, cinematic English. Keep the Indonesian name Si Kancil, pronounced see KAHN-chill. Let the comedy emerge from sincere danger, crocodile certainty, and exact counting rather than cartoon voices. Give every number in the two crossing lines a distinct physical landing. Do not add a moral. Leave a short natural breath after every line.",
+  "mode": "per_line",
+  "speakers": [
+    { "name": "Narrator", "voice": "Charon", "style": "A mature, textured storyteller with spacious visual phrasing, dry warmth, and crisp momentum during the crossing." },
+    { "name": "Si Kancil", "voice": "Puck", "style": "Small, quick, observant, and genuinely frightened at first; composure arrives the instant the plan forms. Clever without smugness or a childish cartoon register." },
+    { "name": "The Brawny Crocodile", "voice": "Fenrir", "style": "A large crocodile with a low, wet-edged authority; hungry, impatient, and absolutely confident in his own faulty logic without becoming a monster caricature." }
+  ],
+  "lines": [
+    { "speaker": "Narrator", "text": "One afternoon, Si Kancil came to the narrow river on his way to visit his grandfather. Eight crocodiles dozed in the water.", "direction": "Open on a humid, spacious afternoon; draw focus toward the narrow crossing and let eight land quietly but clearly.", "file": "01_narrator_river.wav" },
+    { "speaker": "Narrator", "text": "One crocodile was only pretending to sleep. An amber eye opened. “A kancil!” it cried, waking the river.", "direction": "Begin as a close waterline secret; make the cry sudden and sharp, then widen its consequence across the whole river.", "file": "02_narrator_eye.wav" },
+    { "speaker": "The Brawny Crocodile", "text": "Ha! Today, you will be our meal!", "direction": "A deep, hungry declaration of victory; stress you without roaring or playing a cartoon villain.", "file": "03_crocodile_meal.wav" },
+    { "speaker": "Si Kancil", "text": "W-wait! If you eat me, how will you divide me fairly among all of you?", "direction": "The first stammer is real fear; during the question, let fear become a deliberate invitation to greed.", "file": "04_kancil_share.wav" },
+    { "speaker": "Narrator", "text": "The skinny crocodile complained that he always got the smallest piece. Soon, the river churned with an argument.", "direction": "Dry, observant humor; widen the second sentence into noisy movement without muddying the narration.", "file": "05_narrator_argument.wav" },
+    { "speaker": "The Brawny Crocodile", "text": "Enough! We shall count ourselves first. But… who can put the numbers in the right order?", "direction": "Stop the quarrel with authority; after but, allow an embarrassed pause that reveals he cannot count either.", "file": "06_crocodile_count.wav" },
+    { "speaker": "Si Kancil", "text": "I can. Line up from this bank to the other. I will count you from your backs.", "direction": "Now completely calm and practical. Give the instructions as the obvious solution no one could reasonably suspect.", "file": "07_kancil_line.wav" },
+    { "speaker": "Narrator", "text": "Snout to tail, the crocodiles stretched across the current—a living bridge of scales and teeth.", "direction": "Begin close on bodies, then open wide on living bridge; let scales and teeth feel beautiful and dangerous.", "file": "08_narrator_bridge.wav" },
+    { "speaker": "Narrator", "text": "One—two—three—four. Si Kancil sprang from one broad back to the next while the crocodiles counted along.", "direction": "Each number is its own light, precise landing; accelerate the sentence after the count without losing clarity.", "file": "09_narrator_one_four.wav" },
+    { "speaker": "Narrator", "text": "Five—six—seven. “Eight!” the crocodiles shouted, delighted, as Si Kancil landed on the final back.", "direction": "Let the first three numbers quicken; Eight is a delighted group shout, then settle gently on the final landing.", "file": "10_narrator_five_eight.wav" },
+    { "speaker": "The Brawny Crocodile", "text": "Splendid! Now we can divide the kancil into eight equal pieces!", "direction": "Thoroughly pleased that the problem is solved; remain oblivious to the final leap happening beyond his focus.", "file": "11_crocodile_eight.wav" },
+    { "speaker": "Narrator", "text": "But when they turned, Si Kancil had reached the far bank and vanished among the trees. Eight empty stomachs began a brand-new quarrel.", "direction": "Give the reveal open, airy relief; close the last sentence with dry warmth and no spoken moral.", "file": "12_narrator_gone.wav" }
+  ]
+}

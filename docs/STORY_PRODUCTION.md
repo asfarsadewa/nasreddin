@@ -144,6 +144,7 @@ Default combinations are deliberate product decisions:
 - Story 02, `yan-er-dao-ling`: Mandarin voice + English subtitles.
 - Story 03, `tiger-and-dried-persimmon`: Indonesian voice + Chinese subtitles.
 - Story 04, `anansi-and-the-pot`: English voice + Indonesian subtitles.
+- Story 05, `si-kancil-dan-buaya`: Indonesian voice + English subtitles.
 
 Localize title, deck, button states, loading/error messages, chapters, speaker names, ending copy, accessibility labels, and live announcements. Update `<html lang>`, page title, and description where relevant.
 

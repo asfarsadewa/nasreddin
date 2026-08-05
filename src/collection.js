@@ -19,6 +19,19 @@ function languageControl(language, copy) {
 }
 
 function storyVisual(story) {
+  if (story.cover === 'kancil') {
+    return `
+      <div class="story-card__visual story-card__visual--kancil" aria-hidden="true">
+        <span class="story-card__number">${story.sequence}</span>
+        <div class="story-card__kancil-sun"></div>
+        <div class="story-card__kancil-river"><i></i><i></i><i></i></div>
+        <div class="story-card__kancil-crocs"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="story-card__kancil-deer"><i></i><b></b></div>
+        <span class="story-card__kancil-count">SATU · DUA · TIGA · EMPAT · LIMA · ENAM · TUJUH · DELAPAN</span>
+      </div>
+    `;
+  }
+
   if (story.cover === 'anansi') {
     return `
       <div class="story-card__visual story-card__visual--anansi" aria-hidden="true">

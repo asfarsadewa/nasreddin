@@ -20,6 +20,8 @@
     "audio:sfx:tiger-and-dried-persimmon": "node scripts/stories/tiger-and-dried-persimmon/generate-sfx.mjs",
     "audio:music:anansi-and-the-pot": "node scripts/stories/anansi-and-the-pot/generate-music.mjs",
     "audio:sfx:anansi-and-the-pot": "node scripts/stories/anansi-and-the-pot/generate-sfx.mjs",
+    "audio:music:si-kancil-dan-buaya": "node scripts/stories/si-kancil-dan-buaya/generate-music.mjs",
+    "audio:sfx:si-kancil-dan-buaya": "node scripts/stories/si-kancil-dan-buaya/generate-sfx.mjs",
     "deploy:dry-run": "npm run build && wrangler deploy --dry-run",
     "deploy": "npm run build && wrangler deploy"
   },

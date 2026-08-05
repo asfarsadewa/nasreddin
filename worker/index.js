@@ -38,6 +38,12 @@ export const SOCIAL_METADATA = Object.freeze({
     canonicalPath: '/stories/anansi-and-the-pot/',
     type: 'article',
   },
+  '/stories/si-kancil-dan-buaya': {
+    title: 'Si Kancil dan Buaya | Wisdom Short Stories',
+    description: 'A beloved Indonesian fable about one clever mousedeer, eight hungry crocodiles, and the careful count that turns a dangerous river into a living bridge—cinematically told in Indonesian, English, and Chinese.',
+    canonicalPath: '/stories/si-kancil-dan-buaya/',
+    type: 'article',
+  },
 });
 
 function normalizePath(pathname) {
