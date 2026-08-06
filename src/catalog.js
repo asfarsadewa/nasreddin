@@ -237,6 +237,40 @@ export const STORIES = [
     languages: '中文 · EN · ID',
     load: () => import('./stories/si-kancil-dan-buaya/entry.js'),
   },
+  {
+    slug: 'moon-in-the-well',
+    path: '/stories/moon-in-the-well',
+    sequence: '06',
+    status: 'available',
+    cover: 'moonwell',
+    title: {
+      en: 'The Moon in the Well',
+      id: 'Bulan di Dalam Sumur',
+      zh: '井里的月亮',
+    },
+    description: {
+      en: 'A moon in the sky, another trembling in dark water, and Nasreddin’s heroic rescue of something that was never in danger.',
+      id: 'Satu bulan di langit, satu lagi bergetar di air gelap, dan penyelamatan heroik Nasreddin atas sesuatu yang tak pernah terancam.',
+      zh: '天上一轮月亮，暗水里又颤着一轮，还有纳斯尔丁对一个从未遇险之物的英勇营救。',
+    },
+    tradition: {
+      en: 'A Nasreddin Hodja tale',
+      id: 'Kisah Nasreddin Hodja',
+      zh: '纳斯尔丁·霍加故事',
+    },
+    duration: {
+      en: 'About 2 minutes',
+      id: 'Sekitar 2 menit',
+      zh: '约 2 分钟',
+    },
+    format: {
+      en: '3D animation · Trilingual voice',
+      id: 'Animasi 3D · Suara trilingual',
+      zh: '3D 动画 · 三语配音',
+    },
+    languages: '中文 · EN · ID',
+    load: () => import('./stories/moon-in-the-well/entry.js'),
+  },
 ];
 
 export function normalizePath(pathname) {

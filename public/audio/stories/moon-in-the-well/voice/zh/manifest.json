@@ -1,0 +1,92 @@
+{
+  "id": "nasreddin_moon_in_the_well_zh",
+  "language": "zh-CN",
+  "style": "一则月夜里的纳斯尔丁·霍加民间故事。普通话自然、清晰、富有电影感；惊奇要真诚，动作要有触感，幽默要含蓄而温厚。不要像广告、卡通配音或说教。每句末尾留一小口呼吸，最后的笑意不要刻意强调。",
+  "mode": "per_line",
+  "speakers": [
+    {
+      "name": "旁白",
+      "voice": "Charon",
+      "style": "成熟温暖的男声说书人，音色低而有质感，节奏从容；理解纳斯尔丁的荒唐，却始终尊重他的真诚。"
+    },
+    {
+      "name": "纳斯尔丁",
+      "voice": "Orus",
+      "style": "年长男子，温厚朴实，对营救月亮深信不疑；用力时要真实，不要把自己演成知道笑点的喜剧角色。"
+    }
+  ],
+  "lines": [
+    {
+      "speaker": "旁白",
+      "text": "一个深夜，纳斯尔丁来到井边打水。寂静的院子上空，一轮满月静静守望。",
+      "direction": "安静、舒展地开场，先让月亮成为夜色中的存在。",
+      "file": "01_narrator_night.wav"
+    },
+    {
+      "speaker": "旁白",
+      "text": "他探头越过井沿。幽深的水面上，另一轮月亮正在微微颤动。",
+      "direction": "把井的纵深说出来，结尾带克制的惊奇。",
+      "file": "02_narrator_reflection.wav"
+    },
+    {
+      "speaker": "纳斯尔丁",
+      "text": "天哪！月亮掉进井里了！",
+      "direction": "真正吃了一惊，急切但不要夸张喊叫。",
+      "file": "03_nasreddin_fallen.wav"
+    },
+    {
+      "speaker": "纳斯尔丁",
+      "text": "别怕，老朋友。我这就把你拉上来。",
+      "direction": "先温柔安慰，再以英雄般的认真许下承诺。",
+      "file": "04_nasreddin_promise.wav"
+    },
+    {
+      "speaker": "旁白",
+      "text": "他把铁钩系在绳上，小心地放了下去。月影在铁钩四周碎成一圈圈银光。",
+      "direction": "动作清楚、有触感；在‘一圈圈银光’处舒展开来。",
+      "file": "05_narrator_hook.wav"
+    },
+    {
+      "speaker": "旁白",
+      "text": "井底，铁钩卡在一块暗石下面。纳斯尔丁感觉绳子猛地绷紧了。",
+      "direction": "压低声音营造悬念，结尾短促有力。",
+      "file": "06_narrator_caught.wav"
+    },
+    {
+      "speaker": "纳斯尔丁",
+      "text": "抓住你了！这就上来吧……",
+      "direction": "先欣喜笃定，后半句自然带出拉绳的用力。",
+      "file": "07_nasreddin_caught.wav"
+    },
+    {
+      "speaker": "旁白",
+      "text": "石头不肯松手，绳索越绷越紧。纳斯尔丁把一只脚抵住井沿，使出全身力气往后拉。",
+      "direction": "逐层累积身体压力，最后一句不要赶。",
+      "file": "08_narrator_strain.wav"
+    },
+    {
+      "speaker": "纳斯尔丁",
+      "text": "再加一把劲！这世上可不能没有月亮！",
+      "direction": "气息里有用力后的喘，但意志庄重坚定，完全真诚。",
+      "file": "09_nasreddin_world.wav"
+    },
+    {
+      "speaker": "旁白",
+      "text": "绳子啪地断了。纳斯尔丁向后飞出去，仰面摔在地上。井里的月亮顿时碎成满池银光。",
+      "direction": "‘啪地’清脆，摔落有重量，最后一句放慢并转为美丽的水面图景。",
+      "file": "10_narrator_snap.wav"
+    },
+    {
+      "speaker": "旁白",
+      "text": "他晕乎乎地睁开眼。月亮就在那里——又圆又亮，安安稳稳地挂在天上。",
+      "direction": "带着如释重负的静意揭晓，藏一点不动声色的笑。",
+      "file": "11_narrator_sky.wav"
+    },
+    {
+      "speaker": "纳斯尔丁",
+      "text": "谢天谢地！我的背是摔疼了，可月亮总算回到了它该在的地方。",
+      "direction": "庆幸、疼痛又心满意足；绝不能让他显得明白自己弄错了。",
+      "file": "12_nasreddin_saved.wav"
+    }
+  ]
+}

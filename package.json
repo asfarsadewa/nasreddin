@@ -22,6 +22,8 @@
     "audio:sfx:anansi-and-the-pot": "node scripts/stories/anansi-and-the-pot/generate-sfx.mjs",
     "audio:music:si-kancil-dan-buaya": "node scripts/stories/si-kancil-dan-buaya/generate-music.mjs",
     "audio:sfx:si-kancil-dan-buaya": "node scripts/stories/si-kancil-dan-buaya/generate-sfx.mjs",
+    "audio:music:moon-in-the-well": "node scripts/stories/moon-in-the-well/generate-music.mjs",
+    "audio:sfx:moon-in-the-well": "node scripts/stories/moon-in-the-well/generate-sfx.mjs",
     "deploy:dry-run": "npm run build && wrangler deploy --dry-run",
     "deploy": "npm run build && wrangler deploy"
   },

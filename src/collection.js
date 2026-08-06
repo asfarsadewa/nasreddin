@@ -19,6 +19,19 @@ function languageControl(language, copy) {
 }
 
 function storyVisual(story) {
+  if (story.cover === 'moonwell') {
+    return `
+      <div class="story-card__visual story-card__visual--moonwell" aria-hidden="true">
+        <span class="story-card__number">${story.sequence}</span>
+        <div class="story-card__moonwell-sky"></div>
+        <div class="story-card__moonwell-well"><i></i><i></i><i></i><b></b></div>
+        <div class="story-card__moonwell-rope"><i></i></div>
+        <div class="story-card__moonwell-figure"><i></i><b></b></div>
+        <span class="story-card__moonwell-depth">SKY / STONE / WATER / MOON</span>
+      </div>
+    `;
+  }
+
   if (story.cover === 'kancil') {
     return `
       <div class="story-card__visual story-card__visual--kancil" aria-hidden="true">

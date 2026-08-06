@@ -21,6 +21,7 @@ test('the collection entry remains free of eager Three.js and media imports', as
   assert.match(catalog, /load:\s*\(\)\s*=>\s*import\('\.\/stories\/tiger-and-dried-persimmon\/entry\.js'\)/);
   assert.match(catalog, /load:\s*\(\)\s*=>\s*import\('\.\/stories\/anansi-and-the-pot\/entry\.js'\)/);
   assert.match(catalog, /load:\s*\(\)\s*=>\s*import\('\.\/stories\/si-kancil-dan-buaya\/entry\.js'\)/);
+  assert.match(catalog, /load:\s*\(\)\s*=>\s*import\('\.\/stories\/moon-in-the-well\/entry\.js'\)/);
 
   const app = rootSources[0];
   assert.match(app, /async function mountApplication\(\)/, 'story loading must run outside root-module evaluation');
@@ -28,7 +29,7 @@ test('the collection entry remains free of eager Three.js and media imports', as
 });
 
 test('story entry modules expose only the lazy mount boundary', async () => {
-  for (const slug of ['smell-of-soup', 'yan-er-dao-ling', 'tiger-and-dried-persimmon', 'anansi-and-the-pot', 'si-kancil-dan-buaya']) {
+  for (const slug of ['smell-of-soup', 'yan-er-dao-ling', 'tiger-and-dried-persimmon', 'anansi-and-the-pot', 'si-kancil-dan-buaya', 'moon-in-the-well']) {
     const entry = await readSource(`src/stories/${slug}/entry.js`);
     assert.match(entry, /export async function mount\(app\)/);
     assert.match(entry, /await import\('\.\/index\.js'\)/);
@@ -44,7 +45,7 @@ test('stories share only the player and audio timeline machinery', async () => {
   assert.match(sharedController, /prefetchLanguages/);
   assert.match(sharedController, /ensureLanguage/);
 
-  for (const slug of ['smell-of-soup', 'yan-er-dao-ling', 'tiger-and-dried-persimmon', 'anansi-and-the-pot', 'si-kancil-dan-buaya']) {
+  for (const slug of ['smell-of-soup', 'yan-er-dao-ling', 'tiger-and-dried-persimmon', 'anansi-and-the-pot', 'si-kancil-dan-buaya', 'moon-in-the-well']) {
     const [audio, controller] = await Promise.all([
       readSource(`src/stories/${slug}/audio.js`),
       readSource(`src/stories/${slug}/index.js`),
@@ -74,6 +75,8 @@ test('generation scripts use environment credentials and namespaced output paths
     'scripts/stories/anansi-and-the-pot/generate-sfx.mjs',
     'scripts/stories/si-kancil-dan-buaya/generate-music.mjs',
     'scripts/stories/si-kancil-dan-buaya/generate-sfx.mjs',
+    'scripts/stories/moon-in-the-well/generate-music.mjs',
+    'scripts/stories/moon-in-the-well/generate-sfx.mjs',
   ];
   for (const path of scripts) {
     const source = await readSource(path);
@@ -90,6 +93,8 @@ test('generation scripts use environment credentials and namespaced output paths
   const anansiSfx = await readSource(scripts[6]);
   const kancilMusic = await readSource(scripts[7]);
   const kancilSfx = await readSource(scripts[8]);
+  const moonwellMusic = await readSource(scripts[9]);
+  const moonwellSfx = await readSource(scripts[10]);
   assert.ok(soupMusic.includes('public/audio/stories/smell-of-soup/music'));
   assert.ok(bellMusic.includes('public/audio/stories/yan-er-dao-ling/music'));
   assert.ok(bellSfx.includes('public/audio/stories/yan-er-dao-ling/sfx'));
@@ -99,6 +104,8 @@ test('generation scripts use environment credentials and namespaced output paths
   assert.ok(anansiSfx.includes('public/audio/stories/anansi-and-the-pot/sfx'));
   assert.ok(kancilMusic.includes('public/audio/stories/si-kancil-dan-buaya/music'));
   assert.ok(kancilSfx.includes('public/audio/stories/si-kancil-dan-buaya/sfx'));
+  assert.ok(moonwellMusic.includes('public/audio/stories/moon-in-the-well/music'));
+  assert.ok(moonwellSfx.includes('public/audio/stories/moon-in-the-well/sfx'));
 });
 
 test('the persimmon world uses explicit GPU instancing for its repeated visual grammar', async () => {
@@ -137,6 +144,19 @@ test('the Kancil world builds a dynamic instanced crocodile bridge and counted l
   assert.match(world, /crossingPoints/);
   assert.match(world, /crossingPosition\(/);
   assert.match(world, /updateCountRipples\(/);
+  assert.match(world, /endPosition/);
+  assert.match(world, /DynamicDrawUsage/);
+  assert.match(world, /instanceMatrix\.needsUpdate\s*=\s*true/);
+  assert.match(world, /setMatrixAt\(/);
+});
+
+test('the moon-well world makes the reflection and rescue semantic, procedural, and camera-authored', async () => {
+  const world = await readSource('src/stories/moon-in-the-well/world.js');
+  assert.match(world, /new THREE\.ShaderMaterial\(/);
+  assert.match(world, /uDisturbance/);
+  assert.match(world, /updateHookAndRope\(/);
+  assert.match(world, /CatmullRomCurve3/);
+  assert.match(world, /updateNasreddin\(/);
   assert.match(world, /endPosition/);
   assert.match(world, /DynamicDrawUsage/);
   assert.match(world, /instanceMatrix\.needsUpdate\s*=\s*true/);

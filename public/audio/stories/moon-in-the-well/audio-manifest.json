@@ -1,0 +1,36 @@
+{
+  "story": "moon-in-the-well",
+  "generated": "2026-08-06",
+  "sourceNote": "docs/stories/moon-in-the-well.md",
+  "voice": {
+    "provider": "Gemini TTS",
+    "model": "gemini-3.1-flash-tts-preview",
+    "format": "wav_pcm_s16le_24000_mono",
+    "languages": ["en-US", "zh-CN", "id-ID"],
+    "linesPerLanguage": 12
+  },
+  "music": {
+    "provider": "ElevenLabs Music",
+    "model": "music_v2",
+    "format": "mp3_48000_192",
+    "license": "Generated for this production under the maintainer's ElevenLabs account terms.",
+    "cues": [
+      { "file": "music/moon-over-stone-opening.mp3", "durationMs": 30000, "songId": "ecuiMTRWiyXA6U2dxz6A", "promptSummary": "Airy ney-like breath, sparse oud-like plucks, frame-drum skin, low bowed wood, and glassy moon over a silent stone courtyard." },
+      { "file": "music/deep-water-underscore.mp3", "durationMs": 50000, "songId": "HmfGYWk4ADc5OiwaZEoK", "promptSummary": "Loop-safe muted plucks, breath, frame drum, iron overtones, and deep-water articulations tighten with the rescue rope." },
+      { "file": "music/back-in-the-sky-ending.mp3", "durationMs": 32000, "songId": "xad6C9Unfu2S8EKTJjqX", "promptSummary": "A soft physical release opens into rising wood, airy breath, and a broad glassy halo as the untouched moon is revealed." }
+    ]
+  },
+  "soundEffects": {
+    "provider": "ElevenLabs Sound Effects",
+    "model": "eleven_text_to_sound_v2",
+    "format": "mp3_44100_192",
+    "license": "Generated for this production under the maintainer's ElevenLabs account terms.",
+    "cues": [
+      { "file": "sfx/courtyard-by-the-well.mp3", "durationSeconds": 22, "loop": true, "requestId": null, "promptSummary": "Quiet night courtyard, faint leaves and insects, stone air, well resonance, and a rare distant drop." },
+      { "file": "sfx/hook-descends-into-well.mp3", "durationSeconds": 8, "loop": false, "requestId": null, "promptSummary": "Natural fibre rope feeds over stone while a small hook descends through a tall resonant shaft." },
+      { "file": "sfx/iron-hook-catches-stone.mp3", "durationSeconds": 4, "loop": false, "requestId": null, "promptSummary": "Iron brushes water, clicks over submerged stone, catches beneath rock, and draws the rope tight." },
+      { "file": "sfx/rope-strain-and-snap.mp3", "durationSeconds": 8, "loop": false, "requestId": null, "promptSummary": "Escalating fibre tension across a stone rim ends in one dry snap and whipping broken end." },
+      { "file": "sfx/backward-fall-and-ripples.mp3", "durationSeconds": 6, "loop": false, "requestId": null, "promptSummary": "Layered cloth arcs backward, lands safely on dusty stone, and the deep well answers with widening ripples." }
+    ]
+  }
+}

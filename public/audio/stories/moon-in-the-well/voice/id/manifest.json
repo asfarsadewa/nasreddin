@@ -1,0 +1,92 @@
+{
+  "id": "nasreddin_moon_in_the_well_id",
+  "language": "id-ID",
+  "style": "Dongeng Nasreddin Hodja pada malam terang bulan. Bahasa Indonesia baku yang luwes, intim, sinematik, dan penuh kelakar halus. Rasa takjub harus tulus, tarikan fisik harus terasa nyata, dan humor tidak boleh terdengar sengaja dilucu-lucukan. Jangan terdengar seperti iklan, kartun, atau petuah. Sisakan napas singkat di akhir setiap baris.",
+  "mode": "per_line",
+  "speakers": [
+    {
+      "name": "Narator",
+      "voice": "Charon",
+      "style": "Pendongeng pria sepuh dengan suara rendah bertekstur, akrab, tenang, dan diam-diam menikmati kesungguhan Nasreddin."
+    },
+    {
+      "name": "Nasreddin",
+      "voice": "Orus",
+      "style": "Lelaki sepuh yang hangat dan bersahaja; sepenuhnya yakin bahwa bulan harus diselamatkan, dengan usaha fisik yang nyata dan tanpa kedipan komedi kepada pendengar."
+    }
+  ],
+  "lines": [
+    {
+      "speaker": "Narator",
+      "text": "Larut pada suatu malam, Nasreddin datang ke sumur untuk mengambil air. Di atas halaman yang sunyi, bulan purnama berjaga.",
+      "direction": "Buka dengan tenang dan lapang; hadirkan bulan sebelum masalah muncul.",
+      "file": "01_narrator_night.wav"
+    },
+    {
+      "speaker": "Narator",
+      "text": "Ia membungkuk melewati bibir sumur. Jauh di bawah, bulan yang lain bergetar di permukaan air yang gelap.",
+      "direction": "Tekankan kedalaman vertikal sumur dan lembutkan akhir kalimat dengan takjub.",
+      "file": "02_narrator_reflection.wav"
+    },
+    {
+      "speaker": "Nasreddin",
+      "text": "Ya ampun! Bulan jatuh ke dalam sumur!",
+      "direction": "Penemuan yang sungguh mengejutkan dan mendesak, tetapi jangan berteriak atau melucu.",
+      "file": "03_nasreddin_fallen.wav"
+    },
+    {
+      "speaker": "Nasreddin",
+      "text": "Jangan takut, kawan lama. Akan kutarik kau keluar.",
+      "direction": "Awali dengan lembut, lalu nyatakan tekad kepahlawanan yang tenang.",
+      "file": "04_nasreddin_promise.wav"
+    },
+    {
+      "speaker": "Narator",
+      "text": "Ia mengikatkan kait besi pada seutas tali, lalu menurunkannya dengan hati-hati. Bayangan bulan pecah menjadi lingkaran-lingkaran perak.",
+      "direction": "Jelas dan penuh tekstur; beri ruang pada lingkaran-lingkaran perak.",
+      "file": "05_narrator_hook.wav"
+    },
+    {
+      "speaker": "Narator",
+      "text": "Di dasar sumur, kait itu tersangkut di bawah sebuah batu tersembunyi. Nasreddin merasakan talinya menegang.",
+      "direction": "Bangun ketegangan dengan suara rendah dan akhiri kata menegang dengan tegas.",
+      "file": "06_narrator_caught.wav"
+    },
+    {
+      "speaker": "Nasreddin",
+      "text": "Dapat! Mari naik…",
+      "direction": "Penuh keyakinan gembira, lalu beralih alami menjadi usaha menarik.",
+      "file": "07_nasreddin_caught.wav"
+    },
+    {
+      "speaker": "Narator",
+      "text": "Batu itu tidak mau melepaskan kaitnya. Tali semakin tegang. Nasreddin menahan satu kaki pada sumur dan menarik sekuat tenaga.",
+      "direction": "Bangun tekanan fisik kalimat demi kalimat tanpa mempercepat usaha terakhir.",
+      "file": "08_narrator_strain.wav"
+    },
+    {
+      "speaker": "Nasreddin",
+      "text": "Sedikit lagi! Dunia tidak boleh kehilangan bulannya!",
+      "direction": "Sedikit terengah karena menarik, namun luhur, teguh, dan sepenuhnya tulus.",
+      "file": "09_nasreddin_world.wav"
+    },
+    {
+      "speaker": "Narator",
+      "text": "Talinya putus. Nasreddin terpelanting ke belakang dan jatuh telentang. Bulan di dalam sumur pun pecah menjadi serpihan cahaya.",
+      "direction": "Buat putusnya tali singkat dan tajam, jatuhnya berbobot, lalu perlambat pada serpihan cahaya.",
+      "file": "10_narrator_snap.wav"
+    },
+    {
+      "speaker": "Narator",
+      "text": "Dengan kepala pening, ia membuka mata. Bulan ada di sana—bulat, terang, dan tenang sempurna di langit.",
+      "direction": "Ungkapkan dengan keheningan yang lega dan senyum kecil yang tidak kentara.",
+      "file": "11_narrator_sky.wav"
+    },
+    {
+      "speaker": "Nasreddin",
+      "text": "Syukurlah! Punggungku memang sakit, tetapi setidaknya bulan sudah kembali ke tempatnya.",
+      "direction": "Bersyukur, kesakitan, dan puas sepenuhnya; jangan pernah memberi kesan bahwa ia memahami kekeliruannya.",
+      "file": "12_nasreddin_saved.wav"
+    }
+  ]
+}

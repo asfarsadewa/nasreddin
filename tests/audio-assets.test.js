@@ -36,6 +36,13 @@ import {
   STORY_LINES as KANCIL_LINES,
 } from '../src/stories/si-kancil-dan-buaya/story.js';
 import { StoryAudio as KancilStoryAudio } from '../src/stories/si-kancil-dan-buaya/audio.js';
+import {
+  AUDIO_TRACKS as MOONWELL_TRACKS,
+  MUSIC_CUES as MOONWELL_MUSIC,
+  SFX_CUES as MOONWELL_SFX,
+  STORY_LINES as MOONWELL_LINES,
+} from '../src/stories/moon-in-the-well/story.js';
+import { StoryAudio as MoonwellStoryAudio } from '../src/stories/moon-in-the-well/audio.js';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const fromPublicUrl = (url) => join(ROOT, 'public', ...url.replace(/^\//, '').split('/'));
@@ -133,6 +140,13 @@ const VOICE_PRODUCTIONS = [
       join(ROOT, `public/audio/stories/si-kancil-dan-buaya/voice/${language}/manifest.json`),
     ])),
   },
+  {
+    slug: 'moon-in-the-well', lines: MOONWELL_LINES, tracks: MOONWELL_TRACKS,
+    manifests: Object.fromEntries(['en', 'zh', 'id'].map((language) => [
+      language,
+      join(ROOT, `public/audio/stories/moon-in-the-well/voice/${language}/manifest.json`),
+    ])),
+  },
 ];
 
 for (const production of VOICE_PRODUCTIONS) {
@@ -175,12 +189,14 @@ test('all referenced score and effect cues are valid, non-trivial MP3 files', as
     ...Object.fromEntries(Object.entries(ANANSI_SFX).map(([name, url]) => [`anansi:sfx:${name}`, url])),
     ...Object.fromEntries(Object.entries(KANCIL_MUSIC).map(([name, url]) => [`kancil:music:${name}`, url])),
     ...Object.fromEntries(Object.entries(KANCIL_SFX).map(([name, url]) => [`kancil:sfx:${name}`, url])),
+    ...Object.fromEntries(Object.entries(MOONWELL_MUSIC).map(([name, url]) => [`moonwell:music:${name}`, url])),
+    ...Object.fromEntries(Object.entries(MOONWELL_SFX).map(([name, url]) => [`moonwell:sfx:${name}`, url])),
   };
   assert.equal(new Set(Object.values(cues)).size, Object.values(cues).length, 'each score/effect cue should have its own public asset');
   for (const [name, url] of Object.entries(cues)) assertMp3(await readFile(fromPublicUrl(url)), name);
 });
 
-test('story 03, 04, and 05 mix plans keep opening, middle, and ending score audible under narration', () => {
+test('story 03 through 06 mix plans keep opening, middle, and ending score audible under narration', () => {
   const productions = [
     {
       slug: 'tiger-and-dried-persimmon',
@@ -196,6 +212,11 @@ test('story 03, 04, and 05 mix plans keep opening, middle, and ending score audi
       slug: 'si-kancil-dan-buaya',
       audio: new KancilStoryAudio(KANCIL_LINES, KANCIL_TRACKS, KANCIL_MUSIC, KANCIL_SFX, 'id'),
       language: 'id',
+    },
+    {
+      slug: 'moon-in-the-well',
+      audio: new MoonwellStoryAudio(MOONWELL_LINES, MOONWELL_TRACKS, MOONWELL_MUSIC, MOONWELL_SFX, 'zh'),
+      language: 'zh',
     },
   ];
 
@@ -267,5 +288,17 @@ test('audio provenance manifests cover every generated score and effect cue', as
   assert.deepEqual(
     kancilManifest.soundEffects.cues.map((cue) => `/audio/stories/si-kancil-dan-buaya/${cue.file}`).sort(),
     Object.values(KANCIL_SFX).sort(),
+  );
+
+  const moonwellManifest = await readJson(join(ROOT, 'public/audio/stories/moon-in-the-well/audio-manifest.json'));
+  assert.equal(moonwellManifest.voice.linesPerLanguage, MOONWELL_LINES.length);
+  assert.deepEqual(moonwellManifest.voice.languages.sort(), ['en-US', 'id-ID', 'zh-CN']);
+  assert.deepEqual(
+    moonwellManifest.music.cues.map((cue) => `/audio/stories/moon-in-the-well/${cue.file}`).sort(),
+    Object.values(MOONWELL_MUSIC).sort(),
+  );
+  assert.deepEqual(
+    moonwellManifest.soundEffects.cues.map((cue) => `/audio/stories/moon-in-the-well/${cue.file}`).sort(),
+    Object.values(MOONWELL_SFX).sort(),
   );
 });

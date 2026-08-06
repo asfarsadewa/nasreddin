@@ -50,6 +50,16 @@ import {
   UI_COPY as KANCIL_UI_COPY,
 } from '../src/stories/si-kancil-dan-buaya/story.js';
 import { createStoryTemplate as createKancilTemplate } from '../src/stories/si-kancil-dan-buaya/template.js';
+import { StoryAudio as MoonwellAudio } from '../src/stories/moon-in-the-well/audio.js';
+import {
+  AUDIO_TRACKS as MOONWELL_AUDIO_TRACKS,
+  CAMERA_POSES as MOONWELL_CAMERA_POSES,
+  MUSIC_CUES as MOONWELL_MUSIC_CUES,
+  SFX_CUES as MOONWELL_SFX_CUES,
+  STORY_LINES as MOONWELL_LINES,
+  UI_COPY as MOONWELL_UI_COPY,
+} from '../src/stories/moon-in-the-well/story.js';
+import { createStoryTemplate as createMoonwellTemplate } from '../src/stories/moon-in-the-well/template.js';
 
 const REQUIRED_TEMPLATE_IDS = [
   'experience', 'canvas-stage', 'opening', 'story-title', 'begin', 'load-status',
@@ -93,6 +103,13 @@ const STORIES = [
     languages: ['en', 'zh', 'id'], createTemplate: createKancilTemplate,
     createAudio: () => new KancilAudio(KANCIL_LINES, KANCIL_AUDIO_TRACKS, KANCIL_MUSIC_CUES, KANCIL_SFX_CUES, 'id'),
     timing: { lead: 1.2, gap: 0.5, tail: 4.0 }, defaults: { voice: 'id', subtitle: 'en' },
+  },
+  {
+    slug: 'moon-in-the-well', lines: MOONWELL_LINES, tracks: MOONWELL_AUDIO_TRACKS,
+    cameras: MOONWELL_CAMERA_POSES, ui: MOONWELL_UI_COPY, music: MOONWELL_MUSIC_CUES, sfx: MOONWELL_SFX_CUES,
+    languages: ['en', 'zh', 'id'], createTemplate: createMoonwellTemplate,
+    createAudio: () => new MoonwellAudio(MOONWELL_LINES, MOONWELL_AUDIO_TRACKS, MOONWELL_MUSIC_CUES, MOONWELL_SFX_CUES, 'zh'),
+    timing: { lead: 1.2, gap: 0.5, tail: 4.2 }, defaults: { voice: 'zh', subtitle: 'id' },
   },
 ];
 

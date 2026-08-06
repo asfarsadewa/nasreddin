@@ -44,6 +44,12 @@ export const SOCIAL_METADATA = Object.freeze({
     canonicalPath: '/stories/si-kancil-dan-buaya/',
     type: 'article',
   },
+  '/stories/moon-in-the-well': {
+    title: 'The Moon in the Well | Wisdom Short Stories',
+    description: 'A Nasreddin Hodja tale about one moon overhead, another trembling in a dark well, and an urgent rescue of something that was never in danger—cinematically told in Chinese, English, and Indonesian.',
+    canonicalPath: '/stories/moon-in-the-well/',
+    type: 'article',
+  },
 });
 
 function normalizePath(pathname) {

@@ -1,0 +1,92 @@
+{
+  "id": "nasreddin_moon_in_the_well_en",
+  "language": "en-US",
+  "style": "A moonlit Nasreddin Hodja folktale told intimately at night. Natural cinematic English, low-key wonder, tactile physical effort, and dry humane comedy. Never sound like a cartoon, advertisement, or moral lesson. Preserve a small breath after each line and let the final joke land without a comic sting.",
+  "mode": "per_line",
+  "speakers": [
+    {
+      "name": "Narrator",
+      "voice": "Charon",
+      "style": "An inviting older storyteller with a low textured voice, unhurried clarity, and quiet delight in Nasreddin's complete sincerity."
+    },
+    {
+      "name": "Nasreddin",
+      "voice": "Orus",
+      "style": "An older man with dry warmth and absolute earnest conviction; his concern for the moon is sincere, his physical effort believable, and the humour never knowingly performed."
+    }
+  ],
+  "lines": [
+    {
+      "speaker": "Narrator",
+      "text": "Late one night, Nasreddin came to the well for water. Above the silent courtyard, a full moon kept watch.",
+      "direction": "Open quietly and spaciously; make the moon feel present before the problem begins.",
+      "file": "01_narrator_night.wav"
+    },
+    {
+      "speaker": "Narrator",
+      "text": "He leaned over the rim. Far below, another moon trembled in the dark water.",
+      "direction": "Lean into the vertical distance and soften the final phrase with wonder.",
+      "file": "02_narrator_reflection.wav"
+    },
+    {
+      "speaker": "Nasreddin",
+      "text": "Mercy! The moon has fallen into the well!",
+      "direction": "A genuine shocked discovery, urgent but not shouted or played for comedy.",
+      "file": "03_nasreddin_fallen.wav"
+    },
+    {
+      "speaker": "Nasreddin",
+      "text": "Do not fear, old friend. I shall pull you out.",
+      "direction": "Tender reassurance followed by calm heroic resolve.",
+      "file": "04_nasreddin_promise.wav"
+    },
+    {
+      "speaker": "Narrator",
+      "text": "He tied an iron hook to a rope and lowered it carefully. The moon broke into silver rings around it.",
+      "direction": "Tactile and precise; leave visual room around silver rings.",
+      "file": "05_narrator_hook.wav"
+    },
+    {
+      "speaker": "Narrator",
+      "text": "At the bottom, the hook caught beneath a hidden stone. Nasreddin felt the rope go tight.",
+      "direction": "Quiet suspense, ending with a short firm emphasis on tight.",
+      "file": "06_narrator_caught.wav"
+    },
+    {
+      "speaker": "Nasreddin",
+      "text": "I have you! Up you come…",
+      "direction": "Delighted certainty that turns into the first effort of pulling.",
+      "file": "07_nasreddin_caught.wav"
+    },
+    {
+      "speaker": "Narrator",
+      "text": "The stone would not let go. The rope drew tighter. Nasreddin braced one foot against the well and pulled with all his strength.",
+      "direction": "Build physical tension sentence by sentence without rushing the final effort.",
+      "file": "08_narrator_strain.wav"
+    },
+    {
+      "speaker": "Nasreddin",
+      "text": "Just a little more! The world cannot go without its moon!",
+      "direction": "Breathless from effort, nobly determined, and completely sincere.",
+      "file": "09_nasreddin_world.wav"
+    },
+    {
+      "speaker": "Narrator",
+      "text": "The rope snapped. Nasreddin flew backward and landed flat on his back. The moon in the well shattered into light.",
+      "direction": "Make the snap crisp, the fall physical, then slow into the beautiful water image.",
+      "file": "10_narrator_snap.wav"
+    },
+    {
+      "speaker": "Narrator",
+      "text": "Dazed, he opened his eyes. There was the moon—round, bright, and perfectly still in the sky.",
+      "direction": "Let the reveal arrive with relieved stillness and a tiny hidden smile.",
+      "file": "11_narrator_sky.wav"
+    },
+    {
+      "speaker": "Nasreddin",
+      "text": "Praise be! My back may be bruised, but at least the moon is where it belongs.",
+      "direction": "Grateful, sore, and serenely satisfied; never signal that he understands the mistake.",
+      "file": "12_nasreddin_saved.wav"
+    }
+  ]
+}

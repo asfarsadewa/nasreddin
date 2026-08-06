@@ -22,16 +22,16 @@ function watchApplicationFailures(page) {
 test('the collection count follows the catalogue and the Indonesian identity is first-class', async ({ page }) => {
   const failures = watchApplicationFailures(page);
   await page.goto('/');
-  await expect(page.locator('.story-card')).toHaveCount(5);
-  await expect(page.locator('[data-story-count]')).toHaveText('5 stories');
+  await expect(page.locator('.story-card')).toHaveCount(6);
+  await expect(page.locator('[data-story-count]')).toHaveText('6 stories');
   await page.locator('[data-site-language="id"]').click();
   await expect(page.locator('#collection-title')).toContainText('Kumpulan KisahTeladan');
-  await expect(page.locator('[data-story-count]')).toHaveText('5 kisah');
+  await expect(page.locator('[data-story-count]')).toHaveText('6 kisah');
   await page.locator('[data-site-language="zh"]').click();
   await expect(page.locator('#collection-title')).toContainText('智慧短篇');
-  await expect(page.locator('[data-story-count]')).toHaveText('5 则故事');
+  await expect(page.locator('[data-story-count]')).toHaveText('6 则故事');
   await page.locator('[data-site-language="en"]').click();
-  await expect(page.locator('[data-story-count]')).toHaveText('5 stories');
+  await expect(page.locator('[data-story-count]')).toHaveText('6 stories');
   expect(failures).toEqual([]);
 });
 
@@ -65,6 +65,12 @@ const stories = [
     path: '/stories/si-kancil-dan-buaya/',
     initialVoice: 'id',
     switchVoice: 'en',
+  },
+  {
+    name: 'The Moon in the Well',
+    path: '/stories/moon-in-the-well/',
+    initialVoice: 'zh',
+    switchVoice: 'id',
   },
 ];
 
